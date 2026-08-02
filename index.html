@@ -61,7 +61,11 @@ a:hover,a:focus-visible{text-decoration:underline}
 a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:2px}
 
 /* ---------- hero ---------- */
-.hero{padding:72px 0 48px;border-bottom:1px solid var(--line)}
+.hero{
+  padding:72px 0 48px;border-bottom:1px solid var(--line);
+  background-image:radial-gradient(color-mix(in oklab, var(--accent) 22%, transparent) 1px, transparent 1px);
+  background-size:26px 26px;
+}
 .hero .eyebrow{font-size:13px;letter-spacing:.14em;color:var(--accent);font-weight:700;text-transform:uppercase;margin:0 0 14px}
 .hero h1{font-size:clamp(30px,5vw,42px);line-height:1.25;margin:0 0 6px;font-weight:800;letter-spacing:-.01em;text-wrap:balance}
 .hero .role{font-size:clamp(17px,2.6vw,20px);color:var(--sub);margin:0 0 22px;font-weight:500}
@@ -134,6 +138,56 @@ p{margin:0 0 14px}
   font-size:13.5px;max-width:66ch;
 }
 .case-step .crisis b{color:var(--accent)}
+
+/* flow diagram */
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:6px;margin:14px 0 4px;padding:0;list-style:none}
+.flow li{
+  display:flex;flex-direction:column;justify-content:center;
+  background:var(--chip-bg);border:1px solid var(--line);border-radius:9px;
+  padding:8px 12px;font-size:13px;line-height:1.45;min-width:0;
+}
+.flow li .f-role{font-size:11px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;color:var(--accent)}
+.flow li .f-name{font-weight:650;color:var(--ink)}
+.flow li .f-desc{color:var(--sub);font-size:12px}
+.flow li:not(:last-child){position:relative;margin-right:14px}
+.flow li:not(:last-child)::after{
+  content:"→";position:absolute;right:-15px;top:50%;transform:translateY(-50%);
+  color:var(--faint);font-size:13px;font-weight:700;
+}
+.flow-note{font-size:12.5px;color:var(--faint);margin:6px 0 0}
+
+/* impact bars */
+.impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
+.impact{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px 18px 16px}
+.impact h4{margin:0 0 2px;font-size:14.5px;font-weight:750}
+.impact .i-src{font-size:12px;color:var(--faint);margin:0 0 14px}
+.i-row{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:center;margin-bottom:8px}
+.i-row .i-k{font-size:11.5px;font-weight:700;color:var(--faint);letter-spacing:.04em}
+.i-track{display:flex;align-items:center;gap:8px;min-width:0}
+.i-bar{height:16px;border-radius:4px;flex-shrink:0}
+.i-bar.before{background:transparent;border:1.5px solid var(--faint)}
+.i-bar.after{background:var(--accent)}
+.i-val{font-size:12.5px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.i-delta{
+  display:inline-block;margin-top:8px;font-size:12.5px;font-weight:800;
+  color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:3px 9px;
+  font-variant-numeric:tabular-nums;
+}
+.i-note{font-size:11.5px;color:var(--faint);margin:12px 0 0}
+
+/* timeline */
+.tl{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;margin-top:8px}
+.tl-col{position:relative;padding:14px 16px 0 0}
+.tl-col::before{content:"";position:absolute;top:0;left:0;right:0;height:2px;background:var(--line)}
+.tl-col::after{
+  content:"";position:absolute;top:-4px;left:0;width:10px;height:10px;border-radius:50%;
+  background:var(--accent);border:2px solid var(--paper);
+}
+.tl-year{font-size:13px;font-weight:800;color:var(--accent);font-variant-numeric:tabular-nums;margin:0 0 8px}
+.tl-col ul{margin:0;padding:0;list-style:none}
+.tl-col li{font-size:13px;margin-bottom:7px;line-height:1.45}
+.tl-col li b{font-weight:700}
+.tl-col li span{display:block;font-size:12px;color:var(--faint)}
 
 /* experience */
 .xp{display:flex;flex-direction:column;gap:26px}
@@ -214,6 +268,41 @@ footer .cta{font-size:17px;color:var(--ink);font-weight:650;margin-bottom:8px}
   </div>
 </header>
 
+<section id="journey">
+  <h2>Journey</h2>
+  <p class="sec-lead">현장에서 데이터로, 데이터에서 기획으로</p>
+  <div class="tl">
+    <div class="tl-col">
+      <p class="tl-year">2022 – 23</p>
+      <ul>
+        <li><b>전통시장 매장 운영</b><span>일 200명 응대 · 클레임 유형화</span></li>
+      </ul>
+    </div>
+    <div class="tl-col">
+      <p class="tl-year">2024</p>
+      <ul>
+        <li><b>한국금융연수원</b><span>판매·송장 데이터 결합 분석 제안</span></li>
+        <li><b>따릉이 수요 예측</b><span>한이음 · 팀장</span></li>
+      </ul>
+    </div>
+    <div class="tl-col">
+      <p class="tl-year">2025</p>
+      <ul>
+        <li><b>셀렉트스타 인턴</b><span>LLM 데이터 품질 · 오차율 0.8%</span></li>
+        <li><b>연구랩업 대상</b><span>문화시설 접근성 분석</span></li>
+        <li><b>멀티 AI 파이프라인</b><span>갭이어 우수 참여자</span></li>
+      </ul>
+    </div>
+    <div class="tl-col">
+      <p class="tl-year">2026</p>
+      <ul>
+        <li><b>Dear Log 실배포</b><span>캡스톤 대상 · dear-log.com</span></li>
+        <li><b>졸업 예정 (8월)</b><span>국민대 AI빅데이터융합경영 · MIS</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
 <section id="process">
   <h2>Process</h2>
   <p class="sec-lead">서비스 기획자로서, 이렇게 일합니다</p>
@@ -291,6 +380,12 @@ footer .cta{font-size:17px;color:var(--ink);font-weight:650;margin-bottom:8px}
         <p class="phase">03 · 지표 설계</p>
         <h4>'문화 접근성 지표'를 직접 정의했다</h4>
         <p>단순 직선거리 대신 2SFCA 방법론에 배차 간격·도보 거리 변수를 반영한 접근성 지표를 설계 — 분석 정밀도가 25% 올랐습니다. Moran's I·LISA·K-means로 소외 패턴을 정량화하고, AHP·TOPSIS로 취약 지역 5곳과 최적 입지를 도출했습니다.</p>
+        <ul class="flow">
+          <li><span class="f-role">수집</span><span class="f-name">공공데이터 50만 건</span><span class="f-desc">인구 · 시설 · 교통 10여 종</span></li>
+          <li><span class="f-role">정제</span><span class="f-name">표준화 파이프라인</span><span class="f-desc">pandas · geopandas 좌표 통일</span></li>
+          <li><span class="f-role">지표</span><span class="f-name">2SFCA 접근성 지표</span><span class="f-desc">배차 간격 · 도보 거리 반영</span></li>
+          <li><span class="f-role">도출</span><span class="f-name">취약 5곳 · 최적 입지</span><span class="f-desc">AHP · TOPSIS</span></li>
+        </ul>
       </div>
       <div class="case-step">
         <p class="phase">04 · 이해관계자 정렬</p>
@@ -305,6 +400,46 @@ footer .cta{font-size:17px;color:var(--ink);font-weight:650;margin-bottom:8px}
       </div>
     </div>
   </div>
+</section>
+
+<section id="numbers">
+  <h2>Numbers</h2>
+  <p class="sec-lead">숫자로 보는 개선</p>
+  <div class="impact-grid">
+    <div class="impact">
+      <h4>LLM 데이터 오차율</h4>
+      <p class="i-src">셀렉트스타 · 사전 필터링 체계 구축</p>
+      <div class="i-row"><span class="i-k">이전</span><div class="i-track"><div class="i-bar before" style="width:100%"></div></div></div>
+      <div class="i-row"><span class="i-k">이후</span><div class="i-track"><div class="i-bar after" style="width:5.3%"></div><span class="i-val">0.8%</span></div></div>
+      <div class="i-row"><span class="i-k"></span><span class="i-val" style="color:var(--faint);font-weight:600">이전 15%</span></div>
+      <span class="i-delta">−94.7%</span>
+    </div>
+    <div class="impact">
+      <h4>공약 검증 처리 시간</h4>
+      <p class="i-src">갭이어 · 멀티 AI 역할 분리 (이전=100 기준)</p>
+      <div class="i-row"><span class="i-k">이전</span><div class="i-track"><div class="i-bar before" style="width:100%"></div></div></div>
+      <div class="i-row"><span class="i-k">이후</span><div class="i-track"><div class="i-bar after" style="width:20%"></div><span class="i-val">20</span></div></div>
+      <div class="i-row"><span class="i-k"></span><span class="i-val" style="color:var(--faint);font-weight:600">수작업 검색 100</span></div>
+      <span class="i-delta">−80%</span>
+    </div>
+    <div class="impact">
+      <h4>실시간 데이터 처리 시간</h4>
+      <p class="i-src">따릉이 · Airflow ETL 자동화 (이전=100 기준)</p>
+      <div class="i-row"><span class="i-k">이전</span><div class="i-track"><div class="i-bar before" style="width:100%"></div></div></div>
+      <div class="i-row"><span class="i-k">이후</span><div class="i-track"><div class="i-bar after" style="width:15%"></div><span class="i-val">15</span></div></div>
+      <div class="i-row"><span class="i-k"></span><span class="i-val" style="color:var(--faint);font-weight:600">수작업 처리 100</span></div>
+      <span class="i-delta">−85%</span>
+    </div>
+    <div class="impact">
+      <h4>컨센서스 데이터 검수 시간</h4>
+      <p class="i-src">한이음 투자 AI · 교차 검증 로직 (이전=100 기준)</p>
+      <div class="i-row"><span class="i-k">이전</span><div class="i-track"><div class="i-bar before" style="width:100%"></div></div></div>
+      <div class="i-row"><span class="i-k">이후</span><div class="i-track"><div class="i-bar after" style="width:70%"></div><span class="i-val">70</span></div></div>
+      <div class="i-row"><span class="i-k"></span><span class="i-val" style="color:var(--faint);font-weight:600">개별 검수 100</span></div>
+      <span class="i-delta">−30%</span>
+    </div>
+  </div>
+  <p class="i-note">상대값 막대는 개선 전을 100으로 둔 지수 기준. 모든 수치는 각 프로젝트 결과 보고 기준.</p>
 </section>
 
 <section id="experience">
@@ -359,8 +494,17 @@ footer .cta{font-size:17px;color:var(--ink);font-weight:650;margin-bottom:8px}
     <p class="meta">졸업 캡스톤 디자인 · 2026.03 – 2026.05 · 6인 팀 · 기획·개발 참여 · dear-log.com 배포</p>
     <dl class="pa">
       <dt>문제</dt><dd>시니어의 생애 기억은 가장 사라지기 쉬운 기록 — 기록 서비스는 많지만 정작 시니어에게 회원가입·비밀번호·앱 설치라는 진입 장벽이 있음. 구조를 뒤집어 <em>보호자가 주도하고, 시니어는 링크 한 번만 누르면 되는</em> 서비스로 재설계</dd>
-      <dt>접근</dt><dd>보호자 가입 → 1회용 토큰 초대 링크(14일) → 시니어는 비밀번호 없는 자동 로그인. 질문은 공통 풀 + 사진 기반 자동 생성 + 보호자 직접 작성 3원으로 설계, 음성 자유 발화와 통화형 예약 인터뷰 지원. STT 텍스트화 시 원문 음성 조각을 함께 보관해 자서전 문장의 근거 추적 가능. 보호자 검수·태깅 → 챕터 구성 → 문체·표지 선택 → 인쇄용 PDF(A5/B5) 비동기 생성 파이프라인</dd>
-      <dt>결과</dt><dd>캡스톤 디자인 대상 수상, dear-log.com 실배포(웹 + Capacitor iOS 앱). 저장된 기억 기반 AI 분신 대화·기념일 알림으로 1회성 자서전 제작을 구독형 재방문 루프로 확장</dd>
+      <dt>접근</dt><dd>질문은 공통 풀 + 사진 기반 자동 생성 + 보호자 직접 작성 3원으로 설계, 음성 자유 발화와 통화형 예약 인터뷰 지원. STT 텍스트화 시 원문 음성 조각을 함께 보관해 자서전 문장의 근거 추적 가능
+        <ul class="flow">
+          <li><span class="f-role">보호자</span><span class="f-name">가입 · 초대</span><span class="f-desc">1회용 토큰 링크 (14일)</span></li>
+          <li><span class="f-role">시니어</span><span class="f-name">링크 클릭 한 번</span><span class="f-desc">비밀번호 없는 자동 로그인</span></li>
+          <li><span class="f-role">인터뷰</span><span class="f-name">음성 응답</span><span class="f-desc">자유 발화 · 통화형 예약</span></li>
+          <li><span class="f-role">기록</span><span class="f-name">STT + 원문 보관</span><span class="f-desc">문장 근거 추적</span></li>
+          <li><span class="f-role">편집</span><span class="f-name">검수 · 챕터 구성</span><span class="f-desc">보호자 태깅 · 문체 선택</span></li>
+          <li><span class="f-role">출간</span><span class="f-name">인쇄용 PDF</span><span class="f-desc">A5/B5 비동기 생성</span></li>
+        </ul>
+      </dd>
+      <dt>결과</dt><dd>캡스톤 디자인 대상 수상, <a href="https://dear-log.com" target="_blank" rel="noopener">dear-log.com</a> 실배포(웹 + Capacitor iOS 앱). 저장된 기억 기반 AI 분신 대화·기념일 알림으로 1회성 자서전 제작을 구독형 재방문 루프로 확장</dd>
     </dl>
     <div class="chips">
       <span class="chip"><b>대상</b> 수상</span>
@@ -379,7 +523,15 @@ footer .cta{font-size:17px;color:var(--ink);font-weight:650;margin-bottom:8px}
     <p class="meta">경기청년 갭이어 · 2025.06 – 2025.11 · 기획 · 파이프라인 설계</p>
     <dl class="pa">
       <dt>문제</dt><dd>담당자가 뉴스·공문서를 수작업 검색해 공약 이행을 판단 — 대상이 늘수록 처리 시간이 선형 증가하고, 단일 LLM은 할루시네이션 리스크를 안고 있음</dd>
-      <dt>접근</dt><dd>Gemini(실시간 수집) · Perplexity(보강 검색) · Claude(이행 분석) · ChatGPT(팩트체크)로 역할을 분리하고 상호 검증하는 다중 AI 구조(MCP·LangChain) 설계. 할루시네이션 지표를 '교차 검색 불일치율'로 직접 조작적 정의</dd>
+      <dt>접근</dt><dd>AI별 강점 기준으로 역할을 분리하고 상호 검증하는 다중 AI 구조(MCP·LangChain) 설계. 할루시네이션 지표를 '교차 검색 불일치율'로 직접 조작적 정의
+        <ul class="flow">
+          <li><span class="f-role">수집</span><span class="f-name">Gemini</span><span class="f-desc">Grounding 실시간 검색</span></li>
+          <li><span class="f-role">보강</span><span class="f-name">Perplexity</span><span class="f-desc">보강 검색</span></li>
+          <li><span class="f-role">분석</span><span class="f-name">Claude</span><span class="f-desc">이행 여부 판단</span></li>
+          <li><span class="f-role">검증</span><span class="f-name">ChatGPT</span><span class="f-desc">팩트체크</span></li>
+        </ul>
+        <p class="flow-note">각 단계 출력을 다음 AI가 교차 검증 — 단일 모델 할루시네이션을 구조적으로 저감</p>
+      </dd>
       <dt>결과</dt><dd>운영 중 정적 크롤링이 사이트 개편에 취약함을 발견하자 실패 빈도를 정량화해 팀을 설득, AI 에이전트 수집 구조로 즉시 전환</dd>
     </dl>
     <div class="chips">
