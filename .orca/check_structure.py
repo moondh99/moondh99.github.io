@@ -17,7 +17,7 @@ ALLOWED_HEX = {
 fails = []
 
 # 1) Featured Projects 4건 각각 4단 서사, 순서 고정
-projects = re.findall(r'<article class="proj">.*?</article>', s, re.S)
+projects = re.findall(r'<article class="proj"[^>]*>.*?</article>', s, re.S)
 assert projects, "no .proj articles found"
 if len(projects) != 4:
     fails.append(f"Featured Projects 4건이어야 하는데 {len(projects)}건")

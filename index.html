@@ -86,6 +86,7 @@ a:focus-visible{text-decoration-color:currentColor;outline:2px solid var(--accen
 .hero .thesis strong{color:var(--accent)}
 .contact{display:flex;flex-wrap:wrap;gap:8px 18px;font-size:14px;color:var(--sub);margin:0 0 34px;padding:0;list-style:none}
 .contact a{color:inherit}
+.hero .contact a{display:inline-flex;align-items:center;min-height:44px}
 .stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:0;border-top:1px solid var(--line)}
 .stat{padding:16px 20px 0 0}
 .stat b{display:block;font-family:var(--mono);font-size:clamp(18px,2.6vw,22px);font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums;letter-spacing:-.01em;white-space:nowrap}
@@ -106,6 +107,19 @@ h2{font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:up
 #case .sec-lead{font-size:clamp(22px,3.4vw,28px)}
 p{margin:0 0 14px}
 .muted{color:var(--sub)}
+
+/* about */
+.about-copy{max-width:66ch}
+.profile-facts{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;
+  margin:24px 0 0;
+}
+.profile-fact{border-top:1px solid var(--line);padding-top:12px}
+.profile-fact dt{
+  font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--accent);margin:0 0 4px;
+}
+.profile-fact dd{font-size:14px;margin:0;color:var(--ink)}
 
 /* process */
 .steps{display:flex;flex-direction:column;gap:0;counter-reset:step;margin:0;padding:0;list-style:none}
@@ -228,7 +242,22 @@ p{margin:0 0 14px}
 .xp-item li::marker{color:var(--accent)}
 
 /* projects */
-.proj{background:var(--card);box-shadow:var(--shadow-card);border-radius:16px;padding:26px 26px 22px;margin-bottom:20px}
+.project-index{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px;
+  margin:0 0 30px;
+}
+.project-index-card{
+  display:flex;flex-direction:column;min-width:0;padding:16px;
+  background:var(--card);box-shadow:var(--shadow-card);border-radius:12px;
+  text-decoration:none;
+}
+.project-index-title{font-size:15px;font-weight:700;line-height:1.55;color:var(--ink)}
+.project-index-role{font-size:12px;color:var(--sub);margin-top:6px}
+.project-index-metric{
+  display:block;font-family:var(--mono);font-size:16px;font-weight:700;color:var(--accent);
+  font-variant-numeric:tabular-nums;margin-top:auto;padding-top:12px;
+}
+.proj{background:var(--card);box-shadow:var(--shadow-card);border-radius:16px;padding:26px 26px 22px;margin-bottom:20px;scroll-margin-top:24px}
 .proj-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 12px;margin-bottom:2px}
 .proj h3{margin:0;font-size:19px;font-weight:800;letter-spacing:-.01em}
 .badge{font-size:12px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:3px 10px;white-space:nowrap}
@@ -272,6 +301,8 @@ blockquote{
 .skill-row{display:grid;grid-template-columns:130px 1fr;gap:14px;font-size:14px}
 @media (max-width:600px){.skill-row{grid-template-columns:1fr;gap:2px}}
 .skill-row .k{font-family:var(--mono);color:var(--faint);font-weight:700;font-size:12px;letter-spacing:.04em;padding-top:2px}
+.skill-list{display:flex;flex-wrap:wrap;gap:8px;margin:0;padding:0;list-style:none}
+.skill-list .chip{display:inline-flex;align-items:center}
 .awards li{margin-bottom:8px}
 .awards{padding-left:18px;font-size:15px;margin:0}
 .awards li::marker{color:var(--accent)}
@@ -279,8 +310,23 @@ blockquote{
 @media (max-width:600px){.two-col{grid-template-columns:1fr}}
 h3.sub-h{font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--faint);font-weight:700;margin:0 0 14px}
 
+/* contact */
+.contact-panel{background:var(--card);box-shadow:var(--shadow-card);border-radius:16px;padding:26px}
+.contact-panel .cta{font-size:19px;line-height:1.55;color:var(--ink);font-weight:700;margin:0;max-width:66ch}
+.contact-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:20px}
+.contact-link{
+  display:inline-flex;align-items:center;min-height:44px;padding:8px 16px;
+  background:var(--accent-soft);border-radius:8px;color:var(--accent);
+  font-size:14px;font-weight:700;
+}
+
 footer{padding:44px 0 64px;color:var(--sub);font-size:14px}
-footer .cta{font-size:17px;color:var(--ink);font-weight:600;margin-bottom:8px}
+footer p{margin:0}
+
+@media (max-width:600px){
+  .project-index{grid-template-columns:1fr}
+  .contact-panel{padding:22px 18px}
+}
 </style>
 
 <div class="wrap">
@@ -293,8 +339,6 @@ footer .cta{font-size:17px;color:var(--ink);font-weight:600;margin-bottom:8px}
   <ul class="contact">
     <li><a href="mailto:mdh0204@naver.com">mdh0204@naver.com</a></li>
     <li><a href="tel:+821086979227">010-8697-9227</a></li>
-    <li>경기 의정부시</li>
-    <li>국민대 AI빅데이터융합경영 · 경영정보(MIS) 복수전공 (2026.8 졸업예정)</li>
   </ul>
   <div class="stats">
     <div class="stat"><b>10+</b><span>프로젝트 (팀장·PM 4건)</span></div>
@@ -306,8 +350,27 @@ footer .cta{font-size:17px;color:var(--ink);font-weight:600;margin-bottom:8px}
 
 <main>
 
-<section id="journey">
-  <h2>Journey</h2>
+<section id="about" aria-labelledby="about-title">
+  <h2 id="about-title">About</h2>
+  <p class="sec-lead">현장의 반복을 데이터로 구조화하고, 실행 가능한 기획으로 연결합니다</p>
+  <div class="about-copy">
+    <p>문제를 바로 해결하기보다 실패 원인과 판단 기준부터 구조화하는 서비스 기획자입니다. 현장에서 발견한 반복 패턴을 요구사항으로 바꾸고, 모호한 성과는 측정 가능한 지표로 정의합니다.</p>
+    <p>데이터 분석과 AI·인프라 역량을 기획의 도구로 사용합니다. 서로 다른 의견은 비교 가능한 근거와 작동하는 프로토타입으로 좁히고, 결과는 가이드·검증 로그·실행 로드맵으로 남겨 다음 의사결정까지 이어지게 합니다.</p>
+  </div>
+  <dl class="profile-facts">
+    <div class="profile-fact">
+      <dt>Education</dt>
+      <dd>국민대 AI빅데이터융합경영 · 경영정보(MIS) 복수전공, 2026.8 졸업예정</dd>
+    </div>
+    <div class="profile-fact">
+      <dt>Location</dt>
+      <dd>경기 의정부시</dd>
+    </div>
+  </dl>
+</section>
+
+<section id="journey" aria-labelledby="journey-title">
+  <h2 id="journey-title">Journey</h2>
   <p class="sec-lead">현장에서 데이터로, 데이터에서 기획으로</p>
   <div class="tl">
     <div class="tl-col">
@@ -341,8 +404,8 @@ footer .cta{font-size:17px;color:var(--ink);font-weight:600;margin-bottom:8px}
   </div>
 </section>
 
-<section id="process">
-  <h2>Process</h2>
+<section id="process" aria-labelledby="process-title">
+  <h2 id="process-title">Process</h2>
   <p class="sec-lead">서비스 기획자로서, 이렇게 일합니다</p>
   <ol class="steps">
     <li class="step">
@@ -388,8 +451,8 @@ footer .cta{font-size:17px;color:var(--ink);font-weight:600;margin-bottom:8px}
   </ol>
 </section>
 
-<section id="case">
-  <h2>Case Study</h2>
+<section id="case" aria-labelledby="case-title">
+  <h2 id="case-title">Case Study</h2>
   <p class="sec-lead">프로세스가 실제로 작동한 기록 — 경기도 문화시설 접근성 분석</p>
   <div class="case">
     <div class="case-head">
@@ -440,8 +503,8 @@ footer .cta{font-size:17px;color:var(--ink);font-weight:600;margin-bottom:8px}
   </div>
 </section>
 
-<section id="numbers">
-  <h2>Numbers</h2>
+<section id="numbers" aria-labelledby="numbers-title">
+  <h2 id="numbers-title">Numbers</h2>
   <p class="sec-lead">숫자로 보는 개선</p>
   <div class="impact-grid">
     <div class="impact">
@@ -476,8 +539,8 @@ footer .cta{font-size:17px;color:var(--ink);font-weight:600;margin-bottom:8px}
   <p class="i-note">상대값 막대는 개선 전을 100으로 둔 지수 기준. 모든 수치는 각 프로젝트 결과 보고 기준.</p>
 </section>
 
-<section id="experience">
-  <h2>Experience</h2>
+<section id="experience" aria-labelledby="experience-title">
+  <h2 id="experience-title">Experience</h2>
   <p class="sec-lead">경력</p>
   <div class="xp">
     <div class="xp-item">
@@ -516,11 +579,34 @@ footer .cta{font-size:17px;color:var(--ink);font-weight:600;margin-bottom:8px}
   </div>
 </section>
 
-<section id="projects">
-  <h2>Featured Projects</h2>
+<section id="projects" aria-labelledby="projects-title">
+  <h2 id="projects-title">Featured Projects</h2>
   <p class="sec-lead">대표 프로젝트</p>
 
-  <article class="proj">
+  <nav class="project-index" aria-label="대표 프로젝트 목록">
+    <a class="project-index-card" href="#p-dearlog">
+      <span class="project-index-title">Dear Log — AI 인터뷰 기반 가족 기억 아카이브</span>
+      <span class="project-index-role">캡스톤 6인 팀 · 기획·개발</span>
+      <strong class="project-index-metric">대상 · 실서비스 배포</strong>
+    </a>
+    <a class="project-index-card" href="#p-multiai">
+      <span class="project-index-title">멀티 AI 공약 이행 검증 파이프라인</span>
+      <span class="project-index-role">갭이어 · 기획·파이프라인 설계</span>
+      <strong class="project-index-metric">처리 속도 −80%</strong>
+    </a>
+    <a class="project-index-card" href="#p-analyst">
+      <span class="project-index-title">유가증권 투자 애널리스트 AI</span>
+      <span class="project-index-role">한이음 5인 팀 · 팀장/PM</span>
+      <strong class="project-index-metric">예측 정확도 +12%</strong>
+    </a>
+    <a class="project-index-card" href="#p-bike">
+      <span class="project-index-title">따릉이 수요 예측 · 운영 최적화</span>
+      <span class="project-index-role">한이음 4인 팀 · 팀장</span>
+      <strong class="project-index-metric">일 20만 건 자동 수집</strong>
+    </a>
+  </nav>
+
+  <article class="proj" id="p-dearlog">
     <div class="proj-top">
       <h3>Dear Log — AI 인터뷰 기반 가족 기억 아카이브</h3>
       <span class="badge">캡스톤 대상 · 실서비스</span>
@@ -558,7 +644,7 @@ footer .cta{font-size:17px;color:var(--ink);font-weight:600;margin-bottom:8px}
     <p class="pm-note"><b>기획자로서의 한 수:</b> 동의를 기능으로 설계 — 5종 목적별 동의를 기억 데이터 자체에 붙이고 소비 지점에서 집행해, 철회한 기억이 자서전 초안을 우회해 책으로 되돌아오던 경로를 차단. 보안 감사로 인증 경계 허점을 찾아 회귀 테스트와 권한 매트릭스 문서로 고정 — 신뢰를 UX로 만든 판단.</p>
   </article>
 
-  <article class="proj">
+  <article class="proj" id="p-multiai">
     <div class="proj-top">
       <h3>멀티 AI 공약 이행 검증 파이프라인</h3>
       <span class="badge">우수 참여자</span>
@@ -594,7 +680,7 @@ footer .cta{font-size:17px;color:var(--ink);font-weight:600;margin-bottom:8px}
     <p class="pm-note"><b>기획자로서의 한 수:</b> '기존 보완 vs 근본 재설계' 갈등에서 말 대신 작동하는 프로토타입과 재작업 최소화 지점을 제시해 일정 우려까지 해소.</p>
   </article>
 
-  <article class="proj">
+  <article class="proj" id="p-analyst">
     <div class="proj-top">
       <h3>유가증권 투자 애널리스트 AI</h3>
       <span class="badge">한이음 · 팀장</span>
@@ -624,7 +710,7 @@ footer .cta{font-size:17px;color:var(--ink);font-weight:600;margin-bottom:8px}
     <p class="pm-note"><b>기획자로서의 한 수:</b> 개인 투자 중 공시 수치와 컨센서스가 다른 이유를 추적한 경험이 출발점 — "신뢰할 수 있는 정보는 누가 어떤 기준으로 검증했는가에서 갈린다."</p>
   </article>
 
-  <article class="proj">
+  <article class="proj" id="p-bike">
     <div class="proj-top">
       <h3>따릉이 수요 예측 · 운영 최적화</h3>
       <span class="badge">한이음 · 팀장</span>
@@ -653,8 +739,8 @@ footer .cta{font-size:17px;color:var(--ink);font-weight:600;margin-bottom:8px}
   </article>
 </section>
 
-<section id="more">
-  <h2>More Work</h2>
+<section id="more" aria-labelledby="more-title">
+  <h2 id="more-title">More Work</h2>
   <p class="sec-lead">그 외 프로젝트 · 기획</p>
   <div class="mini-grid">
     <div class="mini">
@@ -685,8 +771,8 @@ footer .cta{font-size:17px;color:var(--ink);font-weight:600;margin-bottom:8px}
   </div>
 </section>
 
-<section id="stories">
-  <h2>How I Work</h2>
+<section id="stories" aria-labelledby="stories-title">
+  <h2 id="stories-title">How I Work</h2>
   <p class="sec-lead">두 가지 장면</p>
 
   <div class="story">
@@ -702,16 +788,36 @@ footer .cta{font-size:17px;color:var(--ink);font-weight:600;margin-bottom:8px}
   </div>
 </section>
 
-<section id="skills">
-  <h2>Skills &amp; Awards</h2>
+<section id="skills" aria-labelledby="skills-title">
+  <h2 id="skills-title">Skills &amp; Awards</h2>
   <div class="two-col">
     <div>
       <h3 class="sub-h">Skills</h3>
       <div class="skill-rows">
-        <div class="skill-row"><span class="k">기획</span><span>문제 정의 · PRD/요구사항 정의서 · 페르소나 · User Journey Map · 와이어프레임(Figma) · KPI 설계 · WBS · 애자일/스크럼</span></div>
-        <div class="skill-row"><span class="k">데이터</span><span>Python(pandas · geopandas) · SQL(MySQL) · Airflow ETL · Tableau · QGIS · Excel</span></div>
-        <div class="skill-row"><span class="k">AI</span><span>LangChain · MCP · RAG · 멀티 에이전트 설계 · LLM 데이터 품질 엔지니어링 · Claude/Gemini/Perplexity API</span></div>
-        <div class="skill-row"><span class="k">인프라</span><span>AWS EC2 · Docker · Linux</span></div>
+        <div class="skill-row">
+          <span class="k">기획</span>
+          <ul class="skill-list">
+            <li class="chip">문제 정의</li><li class="chip">PRD/요구사항 정의서</li><li class="chip">페르소나</li><li class="chip">User Journey Map</li><li class="chip">와이어프레임(Figma)</li><li class="chip">KPI 설계</li><li class="chip">WBS</li><li class="chip">애자일/스크럼</li>
+          </ul>
+        </div>
+        <div class="skill-row">
+          <span class="k">데이터</span>
+          <ul class="skill-list">
+            <li class="chip">Python(pandas · geopandas)</li><li class="chip">SQL(MySQL)</li><li class="chip">Airflow ETL</li><li class="chip">Tableau</li><li class="chip">QGIS</li><li class="chip">Excel</li>
+          </ul>
+        </div>
+        <div class="skill-row">
+          <span class="k">AI</span>
+          <ul class="skill-list">
+            <li class="chip">LangChain</li><li class="chip">MCP</li><li class="chip">RAG</li><li class="chip">멀티 에이전트 설계</li><li class="chip">LLM 데이터 품질 엔지니어링</li><li class="chip">Claude/Gemini/Perplexity API</li>
+          </ul>
+        </div>
+        <div class="skill-row">
+          <span class="k">인프라</span>
+          <ul class="skill-list">
+            <li class="chip">AWS EC2</li><li class="chip">Docker</li><li class="chip">Linux</li>
+          </ul>
+        </div>
       </div>
     </div>
     <div>
@@ -730,11 +836,21 @@ footer .cta{font-size:17px;color:var(--ink);font-weight:600;margin-bottom:8px}
   </div>
 </section>
 
+<section id="contact" aria-labelledby="contact-title">
+  <h2 id="contact-title">Contact</h2>
+  <div class="contact-panel">
+    <p class="cta">데이터로 문제를 정의하는 기획자를 찾고 계신다면, 대화하고 싶습니다.</p>
+    <div class="contact-actions">
+      <a class="contact-link" href="mailto:mdh0204@naver.com">이메일: mdh0204@naver.com</a>
+      <a class="contact-link" href="tel:+821086979227">전화: 010-8697-9227</a>
+    </div>
+  </div>
+</section>
+
 </main>
 
 <footer>
-  <p class="cta">데이터로 문제를 정의하는 기획자를 찾고 계신다면, 대화하고 싶습니다.</p>
-  <p><a href="mailto:mdh0204@naver.com">mdh0204@naver.com</a> · <a href="tel:+821086979227">010-8697-9227</a></p>
+  <p>© 2026 문대한</p>
 </footer>
 
 </div>
