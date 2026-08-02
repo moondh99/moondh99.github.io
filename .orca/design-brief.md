@@ -85,6 +85,8 @@
 | 16 | 기본 본문 (`body`) |
 | 17 | `.step h3`, `.xp-item h3` |
 | 19 | `.proj h3` |
+| `clamp(17px,2.6vw,20px)` | `.hero .role` |
+| `clamp(18px,2.6vw,22px)` | `.stat b` (히어로 지표 수치) |
 | `clamp(19px,2.8vw,23px)` | Hero 논지, `.case-head h3` |
 | `clamp(20px,3vw,25px)` | `.sec-lead` |
 | `clamp(22px,3.4vw,28px)` | `#case .sec-lead` |
@@ -93,6 +95,7 @@
 ### 규칙
 
 - **한글 본문 `line-height:1.7` 고정.** 영문 기준 1.5 쓰지 말 것. 제목은 1.25–1.55.
+- **위 표의 `clamp()` 를 고정 px 로 평탄화하지 마라.** 반응형 타이포가 죽는다. "허용 크기 목록에 없다"는 이유로 clamp 를 걷어내는 것은 이탈 교정이 아니라 회귀다.
 - 웨이트는 **500 / 700 / 800** 세 단계만. 400은 `body` 기본값으로만.
 - `letter-spacing`: mono 라벨 `.06em` (또는 `.02em`/`.04em`), 큰 제목 `-.01em`. 본문은 기본값.
 - `word-break:keep-all` + `overflow-wrap:break-word` — 한글 어절 단위 줄바꿈. 제거 금지.
@@ -176,16 +179,21 @@ repeat(auto-fit, minmax(250px, 1fr))   /* .impact-grid */
 - 외부 링크 `rel="noopener"`
 - 단일 `h1`, `h2 → h3 → h4` 위계 유지
 
-**Task 3 점검 항목**
+**Task 3 처리 결과**
 
-- [ ] skip-to-content 링크 없음 → 추가
-- [ ] `<section>` 에 `aria-labelledby` 없음 → `h2` 에 `id` 부여 후 연결
-- [ ] 터치 타깃 44×44px 미만 요소 확인 (`.contact` 인라인 링크, footer 링크)
-- [ ] `[data-theme]` 셀렉터는 있으나 **토글 UI가 없음** → 토글 추가하거나 죽은 CSS 제거 (둘 중 하나, 방치 금지)
-- [ ] `.i-bar` 임팩트 막대가 순수 시각 요소 — 수치가 텍스트로 병기돼 있는지 재확인
-- [ ] `.tl-col::before/::after` 장식 요소가 스크린리더에 노출되지 않는지 확인
-- [ ] 600px 미만 / 320px 폭에서 `.flow` 가로 넘침 확인
-- [ ] 명도 대비 §2 표 유지, §2 금지 조합 신규 사용 여부 검사
+- [x] skip-to-content 링크 추가 (`.skip-link` → `<main id="main">`, 포커스 시 노출, 44px)
+- [x] 전 `<section>` 에 `aria-labelledby` + `h2` `id` 연결
+- [x] 터치 타깃 44×44px — `.contact-link`, `.skip-link`, `.theme-toggle`, 히어로 연락처
+- [x] `[data-theme]` → **토글 UI 추가**로 정리. `aria-pressed` + 키보드 + `localStorage`.
+      최초 로드 시엔 저장하지 않는다 — 저장하면 이후 OS 테마 변경이 무시된다
+- [x] `.i-val` 수치를 `.i-track` 밖으로 분리 후 막대에만 `aria-hidden` — 수치는 계속 낭독됨
+- [x] `#numbers` 카드 제목 `h4` → `h3` (h2 → h4 위계 건너뜀 해소)
+- [x] 320px `.flow` 가로 넘침 차단 (600px 이하 `width:100%`, 화살표 `display:none`)
+- [x] 명도 대비 §2 표 유지, 금지 조합 신규 사용 0건, 신규 hex 하드코딩 0건
+
+**자동 검사**: `python3 .orca/check_structure.py`
+4단 서사 순서 · chips 선행 · 팔레트 밖 hex · h1 단일성 · 브레이크포인트 600px 단일 ·
+320px 오버플로(minmax/고정 컬럼 합 ≤ 272px) · skip link · 전 섹션 `aria-labelledby`
 
 ---
 

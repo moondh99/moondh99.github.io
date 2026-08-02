@@ -11,7 +11,16 @@
 <title>문대한 — 서비스 기획 포트폴리오</title>
 </head>
 <body>
+<a href="#main" class="skip-link">본문으로 건너뛰기</a>
 <style>
+.skip-link{
+  position:absolute;top:-9999px;left:50%;transform:translateX(-50%);
+  background:var(--accent);color:var(--card);
+  padding:8px 16px;z-index:10000;border-radius:0 0 8px 8px;
+  font-weight:700;font-size:14px;text-decoration:none;min-height:44px;
+  display:inline-flex;align-items:center;
+}
+.skip-link:focus{top:0;outline:2px solid var(--ink)}
 :root{
   --paper:#f7f7f5;
   --card:#ffffff;
@@ -79,7 +88,17 @@ a:focus-visible{text-decoration-color:currentColor;outline:2px solid var(--accen
 
 /* ---------- hero ---------- */
 .hero{padding:72px 0 48px;border-bottom:1px solid var(--line)}
-.hero .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--accent);font-weight:700;text-transform:uppercase;margin:0 0 14px}
+.hero-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.hero-top .eyebrow{margin:0}
+.hero .eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.06em;color:var(--accent);font-weight:700;text-transform:uppercase}
+.theme-toggle{
+  display:inline-flex;align-items:center;justify-content:center;
+  min-width:44px;min-height:44px;padding:8px 12px;
+  background:var(--chip-bg);color:var(--ink);border:1px solid var(--line);
+  border-radius:8px;font-family:var(--mono);font-size:13px;font-weight:700;
+  cursor:pointer;
+}
+.theme-toggle:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
 .hero h1{font-size:clamp(30px,5vw,42px);line-height:1.25;margin:0 0 6px;font-weight:800;letter-spacing:-.01em}
 .hero .role{font-size:clamp(17px,2.6vw,20px);color:var(--sub);margin:0 0 22px;font-weight:500}
 .hero .thesis{font-size:clamp(19px,2.8vw,23px);line-height:1.55;font-weight:500;max-width:44ch;margin:0 0 30px}
@@ -103,7 +122,7 @@ a:focus-visible{text-decoration-color:currentColor;outline:2px solid var(--accen
 section{padding:52px 0;border-bottom:1px solid var(--line);scroll-margin-top:24px}
 section:last-of-type{border-bottom:none}
 h2{font-family:var(--mono);font-size:13px;letter-spacing:.06em;text-transform:uppercase;color:var(--accent);font-weight:700;margin:0 0 8px}
-.sec-lead{font-size:clamp(20px,3vw,25px);font-weight:700;margin:0 0 28px;letter-spacing:-.01em}
+.sec-lead{font-size:clamp(20px,3vw,25px);font-weight:700;margin:0 0 26px;letter-spacing:-.01em}
 #case .sec-lead{font-size:clamp(22px,3.4vw,28px)}
 p{margin:0 0 14px}
 .muted{color:var(--sub)}
@@ -148,7 +167,7 @@ p{margin:0 0 14px}
 .case{background:var(--card);box-shadow:var(--shadow-card);border-top:3px solid var(--accent);border-radius:16px;padding:30px 30px 26px}
 @media (max-width:600px){.case,.proj{padding:22px 18px}}
 .case-head{margin-bottom:6px}
-.case-head h3{margin:0 0 4px;font-size:clamp(19px,3vw,23px);font-weight:800;letter-spacing:-.01em}
+.case-head h3{margin:0 0 4px;font-size:clamp(19px,2.8vw,23px);font-weight:800;letter-spacing:-.01em}
 .case-head .meta{font-family:var(--mono);font-size:12px;color:var(--faint);margin:0 0 14px;font-variant-numeric:tabular-nums}
 .case .chips{margin-bottom:22px}
 .case-steps{display:flex;flex-direction:column}
@@ -183,11 +202,11 @@ p{margin:0 0 14px}
   padding:8px 12px;font-size:13px;line-height:1.45;min-width:0;
 }
 .flow li .f-role{font-family:var(--mono);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--accent)}
-.flow li .f-name{font-weight:600;color:var(--ink)}
+.flow li .f-name{font-weight:700;color:var(--ink)}
 .flow li .f-desc{color:var(--sub);font-size:12px}
-.flow li:not(:last-child){position:relative;margin-right:14px}
+.flow li:not(:last-child){position:relative;margin-right:18px}
 .flow li:not(:last-child)::after{
-  content:"→" / "";position:absolute;right:-15px;top:50%;transform:translateY(-50%);
+  content:"→" / "";position:absolute;right:-14px;top:50%;transform:translateY(-50%);
   color:var(--faint);font-size:13px;font-weight:700;
 }
 .flow-note{font-size:12px;color:var(--faint);margin:6px 0 0}
@@ -195,9 +214,9 @@ p{margin:0 0 14px}
 /* impact bars */
 .impact-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px}
 .impact{background:var(--card);box-shadow:var(--shadow-card);border-radius:12px;padding:18px 18px 16px}
-.impact h4{margin:0 0 2px;font-size:14px;font-weight:700}
+.impact h3{margin:0 0 2px;font-size:14px;font-weight:700}
 .impact .i-src{font-size:12px;color:var(--faint);margin:0 0 14px}
-.i-row{display:grid;grid-template-columns:34px 1fr;gap:10px;align-items:center;margin-bottom:8px}
+.i-row{display:grid;grid-template-columns:34px 1fr auto;gap:10px;align-items:center;margin-bottom:8px}
 .i-row .i-k{font-family:var(--mono);font-size:12px;font-weight:700;color:var(--faint);letter-spacing:.02em}
 .i-track{display:flex;align-items:center;gap:8px;min-width:0}
 .i-bar{height:16px;border-radius:4px;flex-shrink:0}
@@ -208,10 +227,10 @@ p{margin:0 0 14px}
   .i-bar.after.in{transform:scaleX(1)}
 }
 .i-val{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
-.i-val.prev{color:var(--faint);font-weight:600}
+.i-val.prev{color:var(--faint);font-weight:500}
 .i-delta{
   display:inline-block;margin-top:8px;font-family:var(--mono);font-size:13px;font-weight:700;
-  color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:3px 9px;
+  color:var(--accent);background:var(--accent-soft);border-radius:6px;padding:4px 8px;
   font-variant-numeric:tabular-nums;
 }
 .i-note{font-size:12px;color:var(--faint);margin:12px 0 0}
@@ -226,7 +245,7 @@ p{margin:0 0 14px}
 }
 .tl-year{font-family:var(--mono);font-size:13px;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums;margin:0 0 8px}
 .tl-col ul{margin:0;padding:0;list-style:none}
-.tl-col li{font-size:13px;margin-bottom:7px;line-height:1.45}
+.tl-col li{font-size:13px;margin-bottom:8px;line-height:1.45}
 .tl-col li b{font-weight:700}
 .tl-col li span{display:block;font-size:12px;color:var(--faint)}
 
@@ -234,7 +253,7 @@ p{margin:0 0 14px}
 .xp{display:flex;flex-direction:column;gap:26px}
 .xp-item{display:grid;grid-template-columns:150px 1fr;gap:18px}
 @media (max-width:600px){.xp-item{grid-template-columns:1fr;gap:4px}}
-.xp-when{font-family:var(--mono);font-size:13px;color:var(--faint);font-variant-numeric:tabular-nums;padding-top:3px}
+.xp-when{font-family:var(--mono);font-size:13px;color:var(--faint);font-variant-numeric:tabular-nums;padding-top:4px}
 .xp-item h3{margin:0;font-size:17px;font-weight:700}
 .xp-item .org-role{font-size:14px;color:var(--sub);margin:2px 0 10px}
 .xp-item ul{margin:0;padding-left:18px;font-size:15px}
@@ -260,7 +279,7 @@ p{margin:0 0 14px}
 .proj{background:var(--card);box-shadow:var(--shadow-card);border-radius:16px;padding:26px 26px 22px;margin-bottom:20px;scroll-margin-top:24px}
 .proj-top{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 12px;margin-bottom:2px}
 .proj h3{margin:0;font-size:19px;font-weight:800;letter-spacing:-.01em}
-.badge{font-size:12px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:3px 10px;white-space:nowrap}
+.badge{font-size:12px;font-weight:700;color:var(--accent);background:var(--accent-soft);border-radius:999px;padding:4px 10px;white-space:nowrap}
 .proj .meta{font-family:var(--mono);font-size:12px;color:var(--faint);margin:0 0 16px;font-variant-numeric:tabular-nums}
 .pa{display:grid;grid-template-columns:82px 1fr;gap:14px;font-size:15px;margin-bottom:14px}
 .pa dt{font-family:var(--mono);color:var(--faint);font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding-top:4px;border-top:1px solid var(--line)}
@@ -275,7 +294,7 @@ p{margin:0 0 14px}
 .hyp{background:transparent;border-left:2px solid var(--accent);padding:2px 0 2px 14px;font-size:14px;max-width:66ch;margin:10px 0 0}
 .hyp .ev-k{font-family:var(--mono);color:var(--accent);font-weight:700;font-size:12px;letter-spacing:.06em;margin-right:6px}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
-.chip{font-size:13px;font-weight:600;background:var(--chip-bg);border-radius:8px;padding:4px 10px;color:var(--ink);font-variant-numeric:tabular-nums}
+.chip{font-size:13px;font-weight:500;background:var(--chip-bg);border-radius:8px;padding:4px 10px;color:var(--ink);font-variant-numeric:tabular-nums}
 .chip b{font-family:var(--mono);color:var(--accent);font-weight:700}
 .pm-note{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line);font-size:14px;color:var(--sub)}
 .pm-note b{color:var(--ink)}
@@ -324,15 +343,23 @@ footer{padding:44px 0 64px;color:var(--sub);font-size:14px}
 footer p{margin:0}
 
 @media (max-width:600px){
-  .project-index{grid-template-columns:1fr}
+  .project-index,.impact-grid,.mini-grid,.profile-facts{grid-template-columns:1fr}
   .contact-panel{padding:22px 18px}
+  .flow li{width:100%}
+  .flow li:not(:last-child){margin-right:0}
+  .flow li:not(:last-child)::after{display:none}
 }
 </style>
 
 <div class="wrap">
 
 <header class="hero">
-  <p class="eyebrow">Portfolio · Service Planning / PM</p>
+  <div class="hero-top">
+    <p class="eyebrow">Portfolio · Service Planning / PM</p>
+    <button type="button" id="theme-toggle" class="theme-toggle" aria-label="테마 전환" aria-pressed="false">
+      <span class="theme-toggle-text">DARK</span>
+    </button>
+  </div>
   <h1>문대한</h1>
   <p class="role">데이터를 이해하는 서비스 기획자</p>
   <p class="thesis">"어떻게 만들 것인가"보다 <strong>"왜 기존 방식이 실패하는가"</strong>를 먼저 묻습니다. 문제를 유형으로 구조화하고, 이견은 데이터로 좁히고, 성과는 지표로 증명해 온 10여 개 프로젝트의 기록입니다.</p>
@@ -348,7 +375,7 @@ footer p{margin:0}
   </div>
 </header>
 
-<main>
+<main id="main">
 
 <section id="about" aria-labelledby="about-title">
   <h2 id="about-title">About</h2>
@@ -508,31 +535,31 @@ footer p{margin:0}
   <p class="sec-lead">숫자로 보는 개선</p>
   <div class="impact-grid">
     <div class="impact">
-      <h4>LLM 데이터 오차율</h4>
+      <h3>LLM 데이터 오차율</h3>
       <p class="i-src">셀렉트스타 · 사전 필터링 체계 구축</p>
-      <div class="i-row"><span class="i-k">이전</span><div class="i-track"><div class="i-bar before" style="width:86%"></div><span class="i-val prev">15%</span></div></div>
-      <div class="i-row"><span class="i-k">이후</span><div class="i-track"><div class="i-bar after" style="width:4.6%"></div><span class="i-val">0.8%</span></div></div>
+      <div class="i-row"><span class="i-k">이전</span><div class="i-track" aria-hidden="true"><div class="i-bar before" style="width:86%"></div></div><span class="i-val prev">15%</span></div>
+      <div class="i-row"><span class="i-k">이후</span><div class="i-track" aria-hidden="true"><div class="i-bar after" style="width:4.6%"></div></div><span class="i-val">0.8%</span></div>
       <span class="i-delta">−94.7%</span>
     </div>
     <div class="impact">
-      <h4>공약 검증 처리 시간</h4>
+      <h3>공약 검증 처리 시간</h3>
       <p class="i-src">갭이어 · 멀티 AI 역할 분리 (이전=100 기준)</p>
-      <div class="i-row"><span class="i-k">이전</span><div class="i-track"><div class="i-bar before" style="width:86%"></div><span class="i-val prev">100</span></div></div>
-      <div class="i-row"><span class="i-k">이후</span><div class="i-track"><div class="i-bar after" style="width:17.2%"></div><span class="i-val">20</span></div></div>
+      <div class="i-row"><span class="i-k">이전</span><div class="i-track" aria-hidden="true"><div class="i-bar before" style="width:86%"></div></div><span class="i-val prev">100</span></div>
+      <div class="i-row"><span class="i-k">이후</span><div class="i-track" aria-hidden="true"><div class="i-bar after" style="width:17.2%"></div></div><span class="i-val">20</span></div>
       <span class="i-delta">−80%</span>
     </div>
     <div class="impact">
-      <h4>실시간 데이터 처리 시간</h4>
+      <h3>실시간 데이터 처리 시간</h3>
       <p class="i-src">따릉이 · Airflow ETL 자동화 (이전=100 기준)</p>
-      <div class="i-row"><span class="i-k">이전</span><div class="i-track"><div class="i-bar before" style="width:86%"></div><span class="i-val prev">100</span></div></div>
-      <div class="i-row"><span class="i-k">이후</span><div class="i-track"><div class="i-bar after" style="width:12.9%"></div><span class="i-val">15</span></div></div>
+      <div class="i-row"><span class="i-k">이전</span><div class="i-track" aria-hidden="true"><div class="i-bar before" style="width:86%"></div></div><span class="i-val prev">100</span></div>
+      <div class="i-row"><span class="i-k">이후</span><div class="i-track" aria-hidden="true"><div class="i-bar after" style="width:12.9%"></div></div><span class="i-val">15</span></div>
       <span class="i-delta">−85%</span>
     </div>
     <div class="impact">
-      <h4>컨센서스 데이터 검수 시간</h4>
+      <h3>컨센서스 데이터 검수 시간</h3>
       <p class="i-src">한이음 투자 AI · 교차 검증 로직 (이전=100 기준)</p>
-      <div class="i-row"><span class="i-k">이전</span><div class="i-track"><div class="i-bar before" style="width:86%"></div><span class="i-val prev">100</span></div></div>
-      <div class="i-row"><span class="i-k">이후</span><div class="i-track"><div class="i-bar after" style="width:60.2%"></div><span class="i-val">70</span></div></div>
+      <div class="i-row"><span class="i-k">이전</span><div class="i-track" aria-hidden="true"><div class="i-bar before" style="width:86%"></div></div><span class="i-val prev">100</span></div>
+      <div class="i-row"><span class="i-k">이후</span><div class="i-track" aria-hidden="true"><div class="i-bar after" style="width:60.2%"></div></div><span class="i-val">70</span></div>
       <span class="i-delta">−30%</span>
     </div>
   </div>
@@ -857,6 +884,32 @@ footer p{margin:0}
 
 <script>
 (function(){
+  /* theme toggle */
+  var btn = document.getElementById('theme-toggle');
+  if(btn){
+    function getPreferredTheme(){
+      var saved = localStorage.getItem('theme');
+      if(saved === 'dark' || saved === 'light') return saved;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+    function setTheme(theme, persist){
+      document.documentElement.setAttribute('data-theme', theme);
+      /* 최초 적용 시엔 저장하지 않는다 — 저장하면 이후 OS 테마 변경이 무시된다 */
+      if(persist) localStorage.setItem('theme', theme);
+      var isDark = theme === 'dark';
+      btn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
+      var label = btn.querySelector('.theme-toggle-text');
+      if(label) label.textContent = isDark ? 'LIGHT' : 'DARK';
+    }
+    var current = getPreferredTheme();
+    setTheme(current, false);
+    btn.addEventListener('click', function(){
+      var now = document.documentElement.getAttribute('data-theme') || current;
+      setTheme(now === 'dark' ? 'light' : 'dark', true);
+    });
+  }
+
+  /* impact bars observer */
   var bars = document.querySelectorAll('.i-bar.after');
   if(!('IntersectionObserver' in window)){ bars.forEach(function(b){ b.classList.add('in'); }); return; }
   var io = new IntersectionObserver(function(es){

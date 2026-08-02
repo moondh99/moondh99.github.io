@@ -44,6 +44,28 @@ n_h1 = len(re.findall(r"<h1[\s>]", s))
 if n_h1 != 1:
     fails.append(f"h1 은 1개여야 하는데 {n_h1}개")
 
+# 5) 브레이크포인트는 600px 하나만 (브리프 §4)
+bps = set(re.findall(r"@media\s*\(max-width:\s*(\d+)px\)", s))
+if bps - {"600"}:
+    fails.append(f"허용되지 않은 브레이크포인트: {sorted(bps - {'600'})}")
+
+# 6) 320px 오버플로 가드 — 뷰포트 320 - .wrap 좌우 패딩 48 = 콘텐츠 272px
+NARROW = 320 - 48
+for track in re.findall(r"minmax\((\d+)px", s):
+    if int(track) > NARROW:
+        fails.append(f"minmax({track}px) 가 320px 화면 콘텐츠 폭 {NARROW}px 초과")
+for cols in re.findall(r"grid-template-columns:\s*([^;}]+)", s):
+    fixed = [int(x) for x in re.findall(r"(\d+)px", cols)]
+    if fixed and sum(fixed) > NARROW:
+        fails.append(f"고정 컬럼 합 {sum(fixed)}px 가 {NARROW}px 초과: {cols.strip()}")
+
+# 7) 접근성 기본 — skip link, main, 섹션 aria-labelledby
+if 'href="#main"' not in s or 'id="main"' not in s:
+    fails.append("skip-to-content 링크 또는 #main 대상 없음")
+for sec in re.findall(r"<section\b[^>]*>", s):
+    if "aria-labelledby" not in sec:
+        fails.append(f"aria-labelledby 없는 section: {sec}")
+
 if fails:
     print("FAIL")
     for f in fails:
