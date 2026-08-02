@@ -60,7 +60,7 @@
 - `--faint` on `--accent-soft` → 4.37 ✗
 - `--faint` on `--chip-bg` → 4.50 (라이트에서 경계값) ✗
 
-`--line` 은 대비 1.17로 **장식용 구분선 전용**. 정보를 전달하는 경계(입력 필드 테두리 등)에 쓰지 않는다.
+`--line` 은 대비 1.17로 **장식용 구분선 전용**. 정보를 전달하는 경계(버튼·입력 필드 테두리 등)에 쓰지 않는다 — WCAG 1.4.11 비텍스트 대비 3:1 미달. 그런 경계는 `--accent` 를 쓴다.
 
 ---
 
@@ -124,7 +124,7 @@ repeat(auto-fit, minmax(250px, 1fr))   /* .impact-grid */
 150px 1fr   /* .xp-item  — 600px 이하 1fr */
 130px 1fr   /* .skill-row — 600px 이하 1fr */
 36px 1fr    /* .step */
-64px 1fr    /* .pa */
+82px 1fr    /* .pa — 4단 라벨(리서치·가설/기획 프로세스) 수용 폭. 600px 이하 1열 */
 1fr 1fr     /* .two-col — 600px 이하 1fr */
 ```
 
@@ -185,10 +185,14 @@ repeat(auto-fit, minmax(250px, 1fr))   /* .impact-grid */
 - [x] 전 `<section>` 에 `aria-labelledby` + `h2` `id` 연결
 - [x] 터치 타깃 44×44px — `.contact-link`, `.skip-link`, `.theme-toggle`, 히어로 연락처
 - [x] `[data-theme]` → **토글 UI 추가**로 정리. `aria-pressed` + 키보드 + `localStorage`.
-      최초 로드 시엔 저장하지 않는다 — 저장하면 이후 OS 테마 변경이 무시된다
+      **저장값이 없으면 `data-theme` 속성을 아예 걸지 않는다** — 속성이 박히는 순간
+      `@media (prefers-color-scheme)` 가 무력화돼 OS 테마 변경이 영구 무시된다.
+      `matchMedia` `change` 로 미저장 상태의 OS 변경을 추종한다.
+      버튼 라벨은 `다크 테마` 로 고정하고 `aria-pressed` 로만 상태 표현 (WCAG 2.5.3 label-in-name)
 - [x] `.i-val` 수치를 `.i-track` 밖으로 분리 후 막대에만 `aria-hidden` — 수치는 계속 낭독됨
 - [x] `#numbers` 카드 제목 `h4` → `h3` (h2 → h4 위계 건너뜀 해소)
-- [x] 320px `.flow` 가로 넘침 차단 (600px 이하 `width:100%`, 화살표 `display:none`)
+- [x] 320px `.flow` 가로 넘침 차단 (600px 이하 `width:100%`, 화살표를 아래 방향 `↓` 로 전환 —
+      숨기면 단계 방향 정보가 사라진다)
 - [x] 명도 대비 §2 표 유지, 금지 조합 신규 사용 0건, 신규 hex 하드코딩 0건
 
 **자동 검사**: `python3 .orca/check_structure.py`

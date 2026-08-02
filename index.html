@@ -94,7 +94,7 @@ a:focus-visible{text-decoration-color:currentColor;outline:2px solid var(--accen
 .theme-toggle{
   display:inline-flex;align-items:center;justify-content:center;
   min-width:44px;min-height:44px;padding:8px 12px;
-  background:var(--chip-bg);color:var(--ink);border:1px solid var(--line);
+  background:var(--chip-bg);color:var(--ink);border:1px solid var(--accent);
   border-radius:8px;font-family:var(--mono);font-size:13px;font-weight:700;
   cursor:pointer;
 }
@@ -291,7 +291,7 @@ p{margin:0 0 14px}
   .pa dd{padding-top:4px;margin-bottom:2px;border-top:none}
 }
 .pa dd strong{color:var(--accent);font-variant-numeric:tabular-nums}
-.hyp{background:transparent;border-left:2px solid var(--accent);padding:2px 0 2px 14px;font-size:14px;max-width:66ch;margin:10px 0 0}
+.hyp{background:transparent;border-left:2px solid var(--line);padding:2px 0 2px 14px;font-size:13px;color:var(--sub);max-width:66ch;margin:10px 0 0}
 .hyp .ev-k{font-family:var(--mono);color:var(--accent);font-weight:700;font-size:12px;letter-spacing:.06em;margin-right:6px}
 .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:4px}
 .chip{font-size:13px;font-weight:500;background:var(--chip-bg);border-radius:8px;padding:4px 10px;color:var(--ink);font-variant-numeric:tabular-nums}
@@ -343,11 +343,10 @@ footer{padding:44px 0 64px;color:var(--sub);font-size:14px}
 footer p{margin:0}
 
 @media (max-width:600px){
-  .project-index,.impact-grid,.mini-grid,.profile-facts{grid-template-columns:1fr}
   .contact-panel{padding:22px 18px}
   .flow li{width:100%}
-  .flow li:not(:last-child){margin-right:0}
-  .flow li:not(:last-child)::after{display:none}
+  .flow li:not(:last-child){margin-right:0;margin-bottom:14px}
+  .flow li:not(:last-child)::after{content:"\2193" / "";right:auto;left:50%;top:auto;bottom:-14px;transform:translateX(-50%)}
 }
 </style>
 
@@ -356,9 +355,7 @@ footer p{margin:0}
 <header class="hero">
   <div class="hero-top">
     <p class="eyebrow">Portfolio · Service Planning / PM</p>
-    <button type="button" id="theme-toggle" class="theme-toggle" aria-label="테마 전환" aria-pressed="false">
-      <span class="theme-toggle-text">DARK</span>
-    </button>
+    <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false">다크 테마</button>
   </div>
   <h1>문대한</h1>
   <p class="role">데이터를 이해하는 서비스 기획자</p>
@@ -381,8 +378,8 @@ footer p{margin:0}
   <h2 id="about-title">About</h2>
   <p class="sec-lead">현장의 반복을 데이터로 구조화하고, 실행 가능한 기획으로 연결합니다</p>
   <div class="about-copy">
-    <p>문제를 바로 해결하기보다 실패 원인과 판단 기준부터 구조화하는 서비스 기획자입니다. 현장에서 발견한 반복 패턴을 요구사항으로 바꾸고, 모호한 성과는 측정 가능한 지표로 정의합니다.</p>
-    <p>데이터 분석과 AI·인프라 역량을 기획의 도구로 사용합니다. 서로 다른 의견은 비교 가능한 근거와 작동하는 프로토타입으로 좁히고, 결과는 가이드·검증 로그·실행 로드맵으로 남겨 다음 의사결정까지 이어지게 합니다.</p>
+    <p>전통시장 매장에서 하루 200명을 응대하던 5개월이 출발점이었습니다. 반복되는 클레임에 처리 기준이 없다는 걸 발견하고 유형을 나눠 응대 기준을 만든 경험이, 이후 데이터를 다루는 방식으로 그대로 이어졌습니다. 경영정보(MIS)와 AI·빅데이터를 복수전공하며 파이프라인·모델·인프라를 직접 만져본 것도 같은 이유입니다 — 문제를 정의하려면 데이터가 어디서 어떻게 오는지 알아야 했습니다.</p>
+    <p>그래서 분석과 기획 사이에 끼어 있는 일을 편하게 합니다. 데이터를 읽는 사람과 서비스를 만드는 사람이 서로 다른 언어를 쓸 때 그 사이를 번역하는 역할입니다. 앞으로는 이 역량을 실사용자가 매일 쓰는 서비스의 지표 설계와 개선 사이클에 쓰고 싶습니다.</p>
   </div>
   <dl class="profile-facts">
     <div class="profile-fact">
@@ -646,15 +643,15 @@ footer p{margin:0}
       <span class="chip">React·Express·LLM 프록시·iOS</span>
     </div>
     <dl class="pa">
-      <dt><span class="step-n">01</span>문제 정의</dt>
-      <dd>시니어의 생애 기억은 가장 사라지기 쉬운 기록입니다. 기록 서비스는 이미 많은데도 시니어 이용률이 낮은 이유를 따라가 보니, 문제는 기능이 아니라 진입 지점에 있었습니다 — 회원가입·비밀번호·앱 설치. <strong>기존 서비스는 "기록하고 싶은 사람"과 "기록을 남길 사람"을 같은 한 명으로 가정</strong>하고 있었습니다.</dd>
+      <dt><span class="step-n" aria-hidden="true">01</span>문제 정의</dt>
+      <dd>시니어의 생애 기억은 가장 사라지기 쉬운 기록입니다. 기록 서비스는 이미 많지만, 정작 시니어에게는 회원가입·비밀번호·앱 설치가 진입 장벽으로 남아 있습니다. <strong>기존 서비스가 "기록하고 싶은 사람"과 "기록을 남길 사람"을 같은 한 명으로 가정한다는 점</strong>을 문제로 잡았습니다.</dd>
 
-      <dt><span class="step-n">02</span>리서치·가설</dt>
-      <dd>그렇다면 두 역할을 분리하면 진입 장벽 자체가 사라진다고 봤습니다. 기록을 원하는 쪽은 보호자이고, 실제 기억을 가진 쪽은 시니어입니다. 부담을 보호자에게 전부 옮기고 시니어에게는 응답만 남기는 구조로 뒤집었습니다.
+      <dt><span class="step-n" aria-hidden="true">02</span>리서치·가설</dt>
+      <dd>두 역할을 분리하면 진입 장벽 자체가 사라진다고 가정했습니다. 기록을 원하는 쪽은 보호자이고, 실제 기억을 가진 쪽은 시니어입니다. 부담을 보호자에게 전부 옮기고 시니어에게는 응답만 남기는 구조로 뒤집었습니다.
         <p class="hyp"><span class="ev-k">검증 기준</span>시니어 측에 남는 조작 수 — 가입 0회, 비밀번호 0개, 앱 설치 0회. 링크 클릭 한 번으로 인터뷰까지 도달하면 가설이 성립.</p>
       </dd>
 
-      <dt><span class="step-n">03</span>기획 프로세스</dt>
+      <dt><span class="step-n" aria-hidden="true">03</span>기획 프로세스</dt>
       <dd>보호자가 1회용 토큰 링크(기본 14일 만료)로 초대하면 시니어는 클릭만으로 자동 로그인합니다. 질문은 공통 풀 + 사진 기반 자동 생성 + 보호자 직접 작성 3원으로 설계했고, 음성 자유 발화와 통화형 예약 인터뷰를 모두 지원합니다. STT로 텍스트화하되 원문 음성 조각을 함께 보관해 자서전 문장의 근거를 되짚을 수 있게 했습니다.
         <ul class="flow">
           <li><span class="f-role">보호자</span><span class="f-name">가입 · 초대</span><span class="f-desc">1회용 토큰 링크 (14일)</span></li>
@@ -665,7 +662,7 @@ footer p{margin:0}
           <li><span class="f-role">출간</span><span class="f-name">인쇄용 PDF</span><span class="f-desc">A5/B5 비동기 생성</span></li>
         </ul>
       </dd>
-      <dt><span class="step-n">04</span>결과·임팩트</dt>
+      <dt><span class="step-n" aria-hidden="true">04</span>결과·임팩트</dt>
       <dd>캡스톤 디자인 <strong>대상</strong> 수상, <a href="https://dear-log.com" target="_blank" rel="noopener">dear-log.com</a> 실배포(웹 + Capacitor iOS 앱)로 6인 팀 프로젝트를 실사용 가능한 서비스까지 완결했습니다. 저장된 기억 기반 AI 분신 대화·기념일 알림을 붙여, 1회성 자서전 제작에서 끝나던 흐름을 구독형 재방문 루프로 확장했습니다.</dd>
     </dl>
     <p class="pm-note"><b>기획자로서의 한 수:</b> 동의를 기능으로 설계 — 5종 목적별 동의를 기억 데이터 자체에 붙이고 소비 지점에서 집행해, 철회한 기억이 자서전 초안을 우회해 책으로 되돌아오던 경로를 차단. 보안 감사로 인증 경계 허점을 찾아 회귀 테스트와 권한 매트릭스 문서로 고정 — 신뢰를 UX로 만든 판단.</p>
@@ -683,15 +680,15 @@ footer p{margin:0}
       <span class="chip">프로토타입으로 <b>48시간 내</b> 팀 합의</span>
     </div>
     <dl class="pa">
-      <dt><span class="step-n">01</span>문제 정의</dt>
+      <dt><span class="step-n" aria-hidden="true">01</span>문제 정의</dt>
       <dd>담당자가 뉴스·공문서를 일일이 검색해 공약 이행 여부를 판단하고 있었습니다. 대상이 늘수록 처리 시간이 선형으로 증가하는 구조인데, 그렇다고 단일 LLM에 맡기면 할루시네이션이 그대로 결과가 됩니다. <strong>속도와 신뢰도 중 하나를 포기해야 하는 상태</strong>였습니다.</dd>
 
-      <dt><span class="step-n">02</span>리서치·가설</dt>
+      <dt><span class="step-n" aria-hidden="true">02</span>리서치·가설</dt>
       <dd>단일 모델의 정확도를 끌어올리는 대신, 역할을 나눠 서로를 검증하게 하면 할루시네이션을 구조적으로 줄일 수 있다고 봤습니다. 문제는 '할루시네이션'이 그대로는 측정 불가능한 말이라는 점이었습니다.
         <p class="hyp"><span class="ev-k">조작적 정의</span>할루시네이션을 <b>'교차 검색 불일치율'</b>로 직접 정의 — 서로 다른 모델이 같은 사실에 대해 내놓은 결과가 어긋나는 비율. 측정 가능해진 뒤에야 개선을 주장할 수 있다고 판단.</p>
       </dd>
 
-      <dt><span class="step-n">03</span>기획 프로세스</dt>
+      <dt><span class="step-n" aria-hidden="true">03</span>기획 프로세스</dt>
       <dd>AI별 강점을 기준으로 역할을 분리하고 각 단계 출력을 다음 AI가 교차 검증하는 다중 AI 구조를 MCP·LangChain으로 설계했습니다.
         <ul class="flow">
           <li><span class="f-role">수집</span><span class="f-name">Gemini</span><span class="f-desc">Grounding 실시간 검색</span></li>
@@ -701,7 +698,7 @@ footer p{margin:0}
         </ul>
         <p class="flow-note">각 단계 출력을 다음 AI가 교차 검증 — 단일 모델 할루시네이션을 구조적으로 저감</p>
       </dd>
-      <dt><span class="step-n">04</span>결과·임팩트</dt>
+      <dt><span class="step-n" aria-hidden="true">04</span>결과·임팩트</dt>
       <dd>처리 속도 <strong>−80%</strong>, 교차 검색 불일치율 기준 할루시네이션 <strong>−15%</strong>. 운영 중에는 정적 크롤링이 사이트 개편에 취약하다는 점이 드러났는데, 의견을 말로 밀지 않고 실패 빈도를 정량화해 팀을 설득했고 AI 에이전트 수집 구조로 <strong>48시간 내</strong> 전환했습니다.</dd>
     </dl>
     <p class="pm-note"><b>기획자로서의 한 수:</b> '기존 보완 vs 근본 재설계' 갈등에서 말 대신 작동하는 프로토타입과 재작업 최소화 지점을 제시해 일정 우려까지 해소.</p>
@@ -720,18 +717,18 @@ footer p{margin:0}
       <span class="chip">개발 기간 <b>-20%</b></span>
     </div>
     <dl class="pa">
-      <dt><span class="step-n">01</span>문제 정의</dt>
+      <dt><span class="step-n" aria-hidden="true">01</span>문제 정의</dt>
       <dd>증권사별 컨센서스 데이터는 티커 체계·형식·시점이 전부 제각각입니다. 개인 투자 중 공시 수치와 컨센서스가 어긋나는 이유를 추적하다 출발한 문제로, 수치 오인식과 최신성 미반영이 곧바로 <strong>리포트 신뢰도 붕괴</strong>로 이어지는 구조였습니다.</dd>
 
-      <dt><span class="step-n">02</span>리서치·가설</dt>
+      <dt><span class="step-n" aria-hidden="true">02</span>리서치·가설</dt>
       <dd>네이버 증권과 FnGuide를 <b>"누구의 의사결정 속도를 높이는 설계인가"</b> 관점으로 비교 분석했습니다. 두 서비스는 같은 데이터를 다루면서도 갱신 주기·노출 순서·상세 수준이 달랐고, 그 차이는 타깃 사용자가 다르기 때문이었습니다.
         <p class="hyp"><span class="ev-k">가설</span>신뢰도는 모델 성능이 아니라 <b>데이터가 통과하는 검증 게이트의 수</b>에서 갈린다 — 이상값을 사후에 잡는 대신 파이프라인 단계마다 미리 거른다.</p>
       </dd>
 
-      <dt><span class="step-n">03</span>기획 프로세스</dt>
+      <dt><span class="step-n" aria-hidden="true">03</span>기획 프로세스</dt>
       <dd>수치 정합성 7개·최신성 5개, 총 <strong>12개 테스트 케이스</strong>를 설계해 수집·정제·출력 각 단계에 품질 게이트로 배치했습니다. 5인 팀 팀장으로 WBS를 수립해 업무를 배분하고 애자일로 일정을 관리했습니다.</dd>
 
-      <dt><span class="step-n">04</span>결과·임팩트</dt>
+      <dt><span class="step-n" aria-hidden="true">04</span>결과·임팩트</dt>
       <dd>이상 응답이 사용자에게 도달하기 전에 걸러지는 구조를 완성했습니다. 예측 정확도 <strong>+12%</strong>, 데이터 가용성 <strong>95%+</strong>, 형식 오류 10%를 조기 필터링해 검수 <strong>−30%</strong>, 개발 기간 <strong>−20%</strong>.</dd>
     </dl>
     <p class="pm-note"><b>기획자로서의 한 수:</b> 개인 투자 중 공시 수치와 컨센서스가 다른 이유를 추적한 경험이 출발점 — "신뢰할 수 있는 정보는 누가 어떤 기준으로 검증했는가에서 갈린다."</p>
@@ -749,19 +746,19 @@ footer p{margin:0}
       <span class="chip">일 <b>20만 건</b> 자동 수집</span>
     </div>
     <dl class="pa">
-      <dt><span class="step-n">01</span>문제 정의</dt>
+      <dt><span class="step-n" aria-hidden="true">01</span>문제 정의</dt>
       <dd>일평균 <strong>20만 건</strong>씩 쌓이는 실시간 대여 데이터를 수작업으로 다루는 한, 과부하 대여소는 이미 과부하가 난 뒤에야 확인됩니다. <strong>대응이 늦는 게 아니라 관측이 늦는</strong> 문제였습니다.</dd>
 
-      <dt><span class="step-n">02</span>리서치·가설</dt>
-      <dd>팀의 초점은 예측 모델 정확도에 있었지만, 데이터가 분석 가능한 형태로 도달하는 데 걸리는 시간이 병목이라고 봤습니다. 모델을 다듬기 전에 수집·적재를 먼저 자동화해야 한다고 판단했습니다.
-        <p class="hyp"><span class="ev-k">가설</span>운영 개선을 좌우하는 것은 예측 정확도가 아니라 <b>데이터 도달 속도</b> — 파이프라인을 먼저 세우면 정확도 개선분도 그제서야 현장에서 쓸 수 있다.</p>
+      <dt><span class="step-n" aria-hidden="true">02</span>리서치·가설</dt>
+      <dd>수요 예측 모델을 다듬기 전에, 데이터가 분석 가능한 형태로 도달하는 시간부터 줄여야 한다고 판단했습니다. 일 20만 건을 수작업으로 다루는 한 모델을 아무리 개선해도 현장 대응 시점은 그대로이기 때문입니다.
+        <p class="hyp"><span class="ev-k">가설</span>운영 개선의 선행 조건은 <b>데이터 도달 속도</b> — 수집·적재를 먼저 자동화해야 예측 정확도 개선분이 실제 대응으로 이어진다.</p>
       </dd>
 
-      <dt><span class="step-n">03</span>기획 프로세스</dt>
+      <dt><span class="step-n" aria-hidden="true">03</span>기획 프로세스</dt>
       <dd>서울 열린데이터광장 API → Airflow ETL → MySQL 적재로 이어지는 자동화 파이프라인을 AWS EC2에 구축했습니다. 4인 팀 팀장으로 MVP를 먼저 구현해 기준점을 만들고, 인터페이스 명세서와 일일 스탠드업으로 협업 리듬을 설계했습니다.</dd>
 
-      <dt><span class="step-n">04</span>결과·임팩트</dt>
-      <dd>처리 시간 <strong>−85%</strong>, 수요 예측 오차 <strong>−18%</strong>, 일 20만 건 자동 수집. 과부하 대여소를 사전에 식별하는 운영 개선안까지 도출했습니다.</dd>
+      <dt><span class="step-n" aria-hidden="true">04</span>결과·임팩트</dt>
+      <dd>수작업 대비 처리 시간이 <strong>−85%</strong>로 줄면서, 과부하가 난 뒤가 아니라 나기 전에 대여소를 식별할 수 있게 됐습니다. 예측 오차 개선분(<strong>−18%</strong>)도 이 자동화 위에 올라간 뒤에야 운영 개선안으로 이어졌습니다.</dd>
     </dl>
   </article>
 </section>
@@ -887,25 +884,24 @@ footer p{margin:0}
   /* theme toggle */
   var btn = document.getElementById('theme-toggle');
   if(btn){
-    function getPreferredTheme(){
-      var saved = localStorage.getItem('theme');
-      if(saved === 'dark' || saved === 'light') return saved;
-      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    var root = document.documentElement;
+    var mq = window.matchMedia('(prefers-color-scheme: dark)');
+    var saved = localStorage.getItem('theme');
+    saved = (saved === 'dark' || saved === 'light') ? saved : null;
+
+    function sync(){
+      /* 저장값이 없으면 data-theme 을 걸지 않는다 — 속성이 박히는 순간
+         @media (prefers-color-scheme) 가 무력화돼 OS 테마 변경이 무시된다 */
+      if(saved) root.setAttribute('data-theme', saved);
+      else root.removeAttribute('data-theme');
+      btn.setAttribute('aria-pressed', (saved ? saved === 'dark' : mq.matches) ? 'true' : 'false');
     }
-    function setTheme(theme, persist){
-      document.documentElement.setAttribute('data-theme', theme);
-      /* 최초 적용 시엔 저장하지 않는다 — 저장하면 이후 OS 테마 변경이 무시된다 */
-      if(persist) localStorage.setItem('theme', theme);
-      var isDark = theme === 'dark';
-      btn.setAttribute('aria-pressed', isDark ? 'true' : 'false');
-      var label = btn.querySelector('.theme-toggle-text');
-      if(label) label.textContent = isDark ? 'LIGHT' : 'DARK';
-    }
-    var current = getPreferredTheme();
-    setTheme(current, false);
+    sync();
+    mq.addEventListener('change', sync);          /* 저장값 없을 때 OS 변경 추종 */
     btn.addEventListener('click', function(){
-      var now = document.documentElement.getAttribute('data-theme') || current;
-      setTheme(now === 'dark' ? 'light' : 'dark', true);
+      saved = (saved ? saved === 'dark' : mq.matches) ? 'light' : 'dark';
+      localStorage.setItem('theme', saved);
+      sync();
     });
   }
 
