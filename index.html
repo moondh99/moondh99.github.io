@@ -5,14 +5,29 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="description" content="문대한 — 데이터를 이해하는 서비스 기획자. 문제 정의·지표 설계·이해관계자 정렬로 일하는 기획자의 포트폴리오.">
 <meta property="og:title" content="문대한 — 서비스 기획 포트폴리오">
-<meta property="og:description" content="데이터를 이해하는 서비스 기획자. 대상 수상 2회, 실배포 서비스 Dear Log 기획·개발.">
+<meta property="og:description" content="문제 정의부터 지표 설계까지. 서비스 기획·데이터 프로젝트와 공개 설계 산출물을 소개합니다.">
 <meta property="og:type" content="website">
-<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🧭</text></svg>">
+<meta property="og:url" content="https://moondh99.github.io/">
+<meta property="og:image" content="https://moondh99.github.io/assets/og-portfolio.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="문대한 서비스 기획 포트폴리오와 Dear Log 사용자 여정 설계 시안">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="문대한 — 서비스 기획 포트폴리오">
+<meta name="twitter:description" content="문제 정의·지표 설계·공개 산출물로 보는 서비스 기획 프로젝트">
+<meta name="twitter:image" content="https://moondh99.github.io/assets/og-portfolio.jpg">
+<link rel="canonical" href="https://moondh99.github.io/">
+<link rel="preload" href="assets/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <title>문대한 — 서비스 기획 포트폴리오</title>
 </head>
 <body>
 <a href="#main" class="skip-link">본문으로 건너뛰기</a>
 <style>
+@font-face{
+  font-family:"Pretendard Variable";font-style:normal;font-weight:45 920;
+  font-display:swap;src:url("assets/PretendardVariable.woff2") format("woff2");
+}
 .skip-link{
   position:absolute;top:-9999px;left:50%;transform:translateX(-50%);
   background:var(--accent);color:var(--card);
@@ -348,139 +363,349 @@ footer p{margin:0}
   .flow li:not(:last-child){margin-right:0;margin-bottom:14px}
   .flow li:not(:last-child)::after{content:"\2193" / "";right:auto;left:50%;top:auto;bottom:-14px;transform:translateX(-50%)}
 }
+
+/* 2026-10-06: 승인된 콘텐츠·증거·반응형 수정 */
+.hero{padding-top:48px}
+.hero-top{gap:12px}
+.hero-top .eyebrow{flex:1;min-width:0}
+.theme-toggle{flex-shrink:0;white-space:nowrap}
+.hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin:0 0 26px}
+.primary-cta{background:var(--accent);color:var(--card)}
+.section-nav{display:flex;flex-wrap:wrap;gap:4px 16px;padding:14px 0;border-bottom:1px solid var(--line)}
+.section-nav a{font-size:14px;min-height:44px;display:inline-flex;align-items:center;text-decoration:underline}
+.selected-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.selected-grid .proj{margin:0;min-width:0;padding:22px}
+.selected-grid .proj:has(details[open]){grid-column:1/-1}
+.project-detail>summary{list-style:none;cursor:pointer}
+.project-detail>summary::-webkit-details-marker{display:none}
+.project-detail>summary .proj-top{display:block}
+.project-detail>summary h3{font-size:17px;line-height:1.55;margin-bottom:6px}
+.project-detail>summary .badge{display:inline-block;white-space:normal}
+.project-detail>summary .meta{margin:10px 0 14px}
+.project-problem{font-size:15px;font-weight:700;margin:0 0 6px}
+.project-decision{font-size:14px;color:var(--sub);margin:0 0 10px}
+.project-scope{font-size:13px;color:var(--accent);font-weight:700;margin:0 0 10px}
+.detail-hint{font-size:13px;color:var(--accent);text-decoration:underline;min-height:44px;display:inline-flex;align-items:center}
+.when-open{display:none}
+details[open]>summary .when-open{display:inline}
+details[open]>summary .when-closed{display:none}
+summary{font-size:15px;font-weight:700;cursor:pointer;min-height:44px;padding:8px 0}
+summary:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:8px}
+.detail-body{padding-top:18px}
+.background-detail{margin-top:24px}
+.service-status{padding:16px;background:var(--accent-soft);border-left:2px solid var(--accent);border-radius:8px;margin:16px 0}
+.service-status p{font-size:14px}
+.artifact-links{list-style:none;margin:0;padding:0}
+.artifact-links a{display:inline-flex;align-items:center;min-height:44px;font-size:14px;text-decoration:underline}
+.artifact-preview{margin:18px 0}
+.artifact-preview img{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:8px;background:var(--card)}
+.artifact-preview figcaption{font-size:12px;color:var(--sub);margin-top:8px}
+.metric-block{margin:18px 0 24px}
+.metric-block .impact{box-shadow:none;border:1px solid var(--line)}
+.i-row{grid-template-columns:34px minmax(0,1fr) auto}
+.i-val{font-size:12px}
+.flow{display:grid;grid-template-columns:1fr 1fr;gap:20px 24px}
+.flow li{position:relative;min-width:0;width:auto}
+.flow li:not(:last-child){margin:0}
+.flow li::after{content:none!important}
+.flow li:nth-child(odd)::after{content:"→" / ""!important;right:-18px;left:auto;top:50%;bottom:auto;transform:translateY(-50%)}
+.flow li:nth-child(even):not(:last-child)::after{content:"↓" / ""!important;right:auto;left:50%;top:auto;bottom:-18px;transform:translateX(-50%)}
+.flow li:nth-child(2){grid-column:2;grid-row:1}
+.flow li:nth-child(3),.flow li:nth-child(4){grid-row:2}
+.flow li:nth-child(5),.flow li:nth-child(6){grid-row:3}
+.flow li:nth-child(5){grid-column:1}
+.flow li:nth-child(6){grid-column:2}
+.flow li:nth-child(4n+3){grid-column:2}
+.flow li:nth-child(4n+4){grid-column:1;grid-row:auto}
+.flow li:nth-child(4n+3)::after{content:"←" / ""!important;left:-18px;right:auto}
+.flow li:nth-child(4n+4):not(:last-child)::after{left:50%}
+.flow li:last-child::after{content:none!important}
+.print-button{border:0;font-family:inherit;cursor:pointer}
+@media(max-width:600px){
+  .hero{padding-top:34px}
+  .hero .eyebrow{font-size:12px;letter-spacing:.02em}
+  .selected-grid{grid-template-columns:1fr}
+  .selected-grid .proj{padding:22px 18px}
+  .flow{grid-template-columns:1fr;gap:20px}
+  .flow li{grid-column:1!important;grid-row:auto!important;width:100%}
+  .flow li:not(:last-child){margin:0}
+  .flow li:not(:last-child)::after{content:"↓" / ""!important;left:50%;right:auto;top:auto;bottom:-18px;transform:translateX(-50%)}
+  .stats{grid-template-columns:1fr 1fr}
+  .stat b{white-space:normal}
+  .i-row{grid-template-columns:34px minmax(0,1fr) auto;gap:8px}
+}
+@media print{
+  :root,:root[data-theme]{--paper:#ffffff;--card:#ffffff;--ink:#1d2320;--sub:#5b645f;--faint:#67706a;--line:#e3e6e2;--accent:#0e6e5c;--accent-soft:#e3f0ec;--chip-bg:#eef1ee;--quote:#3d4642}
+  @page{size:A4;margin:16mm}
+  html{scroll-behavior:auto}
+  body{font-size:14px}
+  .wrap{max-width:none;padding:0}
+  .hero{padding:0 0 24px}
+  .theme-toggle,.section-nav,.hero-actions,.skip-link,.detail-hint,.print-button{display:none!important}
+  section{padding:24px 0}
+  .selected-grid,.two-col,.mini-grid,.xp,.pa{display:block}
+  .pa dt{padding-top:10px;break-inside:avoid;break-after:avoid}
+  .pa dd{padding:6px 0 12px;border-top:0}
+  .xp-item{display:block;break-inside:avoid;margin-bottom:20px}
+  .case-head{break-inside:avoid;break-after:avoid}
+  .service-status{break-inside:avoid}
+  .step,.awards,.story,.tl-col{break-inside:avoid}
+  details:not(.project-detail)>summary{display:none}
+  footer{display:none}
+  .proj,.case,.impact,.mini,.contact-panel{box-shadow:none;border:1px solid var(--line);margin-bottom:16px}
+  .proj,.case{break-inside:auto}
+  .project-detail>summary{break-inside:avoid;break-after:avoid}
+  h2,h3,h4,.phase,dt,.case-head{break-after:avoid}
+  .sec-lead{break-after:avoid}
+  p,li{orphans:3;widows:3}
+  .case-step,.chips,.metric-block,.mini,.flow,.artifact-preview{break-inside:avoid}
+  .case-step{padding-bottom:18px}
+  .artifact-preview img{max-height:44mm;object-fit:contain}
+  .i-bar.after,.stat{opacity:1!important;transform:none!important;animation:none!important}
+  .i-bar{print-color-adjust:exact;-webkit-print-color-adjust:exact}
+  details:not([open])>.detail-body{display:block!important}
+  a[href^="https"]::after{content:" (" attr(href) ")";font-size:12px;font-weight:400;overflow-wrap:anywhere}
+  .artifact-preview>a::after{display:none}
+}
+
 </style>
 
 <div class="wrap">
 
 <header class="hero">
   <div class="hero-top">
-    <p class="eyebrow">Portfolio · Service Planning / PM</p>
+    <p class="eyebrow">SERVICE PLANNING / PM</p>
     <button type="button" id="theme-toggle" class="theme-toggle" aria-pressed="false">다크 테마</button>
   </div>
   <h1>문대한</h1>
   <p class="role">데이터를 이해하는 서비스 기획자</p>
-  <p class="thesis">"어떻게 만들 것인가"보다 <strong>"왜 기존 방식이 실패하는가"</strong>를 먼저 묻습니다. 문제를 유형으로 구조화하고, 이견은 데이터로 좁히고, 성과는 지표로 증명해 온 10여 개 프로젝트의 기록입니다.</p>
-  <ul class="contact">
-    <li><a href="mailto:mdh0204@naver.com">mdh0204@naver.com</a></li>
-    <li><a href="tel:+821086979227">010-8697-9227</a></li>
-  </ul>
+  <p class="thesis">"어떻게 만들 것인가"보다 <strong>"왜 기존 방식이 실패하는가"</strong>를 먼저 묻습니다. 사용자의 반복되는 문제를 구조화하고, 판단 기준을 데이터로 맞춥니다.</p>
+  <div class="hero-actions">
+    <a class="contact-link primary-cta" href="#projects">대표 프로젝트 보기</a>
+    <a class="contact-link" href="#contact">연락하기</a>
+  </div>
   <div class="stats">
-    <div class="stat"><b>10+</b><span>프로젝트 (팀장·PM 4건)</span></div>
+    <div class="stat"><b>기획 · 데이터</b><span>팀장·PM 및 기획·개발 경험</span></div>
     <div class="stat"><b>대상 2회</b><span>연구랩업 · 캡스톤 디자인</span></div>
     <div class="stat"><b>15% → 0.8%</b><span>LLM 데이터 오차율 개선</span></div>
     <div class="stat"><b>500,000+</b><span>공공데이터 통합 처리 건수</span></div>
   </div>
 </header>
+<nav class="section-nav" aria-label="포트폴리오 목차">
+  <a href="#projects">프로젝트</a><a href="#case">사례 연구</a><a href="#process">일하는 방식</a><a href="#experience">경력</a><a href="#about">학력</a><a href="#more">그 외 작업</a><a href="#contact">연락</a>
+</nav>
 
-<main id="main">
+<main id="main" tabindex="-1">
+<section id="projects" aria-labelledby="projects-title">
+  <h2 id="projects-title">Selected Projects</h2>
+  <p class="sec-lead">누구의 문제를, 어떤 결정으로 풀었는가</p>
+  <p class="muted">프로젝트를 선택하면 문제·가설·기획 과정과 검증 범위를 펼쳐 볼 수 있습니다.</p>
+  <div class="selected-grid">
 
-<section id="about" aria-labelledby="about-title">
-  <h2 id="about-title">About</h2>
-  <p class="sec-lead">현장의 반복을 데이터로 구조화하고, 실행 가능한 기획으로 연결합니다</p>
-  <div class="about-copy">
-    <p>전통시장 매장에서 하루 200명을 응대하던 5개월이 출발점이었습니다. 반복되는 클레임에 처리 기준이 없다는 걸 발견하고 유형을 나눠 응대 기준을 만든 경험이, 이후 데이터를 다루는 방식으로 그대로 이어졌습니다. 경영정보(MIS)와 AI·빅데이터를 복수전공하며 파이프라인·모델·인프라를 직접 만져본 것도 같은 이유입니다 — 문제를 정의하려면 데이터가 어디서 어떻게 오는지 알아야 했습니다.</p>
-    <p>그래서 분석과 기획 사이에 끼어 있는 일을 편하게 합니다. 데이터를 읽는 사람과 서비스를 만드는 사람이 서로 다른 언어를 쓸 때 그 사이를 번역하는 역할입니다. 앞으로는 이 역량을 실사용자가 매일 쓰는 서비스의 지표 설계와 개선 사이클에 쓰고 싶습니다.</p>
+
+
+  <article class="proj" id="p-dearlog">
+  <details class="project-detail"><summary><div class="proj-top">
+      <h3>Dear Log — AI 인터뷰 기반 가족 기억 아카이브</h3>
+      <span class="badge">캡스톤 대상 · 웹 배포 이력</span>
+    </div><p class="meta">졸업 캡스톤 디자인 · 2026.03 – 2026.05 · 6인 팀 · 기획·개발 참여 · dear-log.com 배포</p>
+      <p class="project-problem">시니어의 기록 진입 장벽</p>
+      <p class="project-decision">보호자가 준비하고 시니어는 응답하도록 역할 분리</p>
+      <p class="project-scope">대상 · 공개 PRD/설계 · 현재 접속 오류</p>
+      <span class="detail-hint"><span class="when-closed">문제・과정·검증 범위 펼치기</span><span class="when-open">문제·과정·검증 범위 접기</span></span>
+    </summary>
+  <div class="detail-body">
+    <div class="chips">
+      <span class="chip"><b>대상</b> 수상</span>
+      <span class="chip">웹 배포 이력 · 현재 접속 오류</span>
+      <span class="chip">목적별 동의 <b>5종</b> 데이터 단위 집행</span>
+      <span class="chip">React·Express·LLM 프록시·iOS 패키징</span>
+    </div>
+
+    <div class="service-status">
+      <p><b>서비스 점검 중</b> · 2026.10.06 확인: dear-log.com은 Cloudflare 1033 오류로 열리지 않아 접속 상태를 점검 중입니다. 복구 전에는 아래 공개 자료에서 구현·설계 범위를 확인할 수 있습니다.</p>
+      <ul class="artifact-links">
+        <li><a href="https://github.com/moondh99/dearlog" target="_blank" rel="noopener">Dear Log 코드와 구현 현황 ↗</a></li>
+        <li><a href="https://github.com/moondh99/dearlog/blob/main/PRD_Dearlog.md" target="_blank" rel="noopener">PRD · 타깃, 흐름, 알려진 제약 ↗</a></li>
+        <li><a href="https://github.com/moondh99/dearlog/blob/main/design/README.md" target="_blank" rel="noopener">Journey·와이어프레임 출처 ↗</a></li>
+        <li><a href="assets/dearlog-mobile-journey-wireframes.html" target="_blank" rel="noopener">전체 설계 보드 보기 ↗</a></li>
+      </ul>
+    </div>
+    <figure class="artifact-preview">
+      <a href="assets/dearlog-mobile-journey-wireframes.html" target="_blank" rel="noopener"><img src="assets/dearlog-journey-preview.svg" alt="Dear Log 공개 설계 시안의 서비스 여정. 어르신과 보호자의 행동, 감정, 시스템 지원을 단계별로 나눈 보드" width="2600" height="800" loading="lazy"></a>
+      <figcaption>공개 저장소의 Journey 설계 시안 일부. 현재 서비스 화면 캡처나 사용자 검증 결과가 아닙니다. 전체 모바일·태블릿 보드는 링크에서 볼 수 있습니다.</figcaption>
+    </figure>
+    <dl class="pa">
+      <dt><span class="step-n" aria-hidden="true">01</span>문제 정의</dt>
+      <dd>시니어의 생애 기억은 가장 사라지기 쉬운 기록입니다. 기록 서비스는 이미 많지만, 정작 시니어에게는 회원가입·비밀번호·앱 설치가 진입 장벽으로 남아 있습니다. <strong>기존 서비스가 "기록하고 싶은 사람"과 "기록을 남길 사람"을 같은 한 명으로 가정한다는 점</strong>을 문제로 잡았습니다.</dd>
+
+      <dt><span class="step-n" aria-hidden="true">02</span>리서치·가설</dt>
+      <dd>두 역할을 분리하면 진입 장벽 자체가 사라진다고 가정했습니다. 기록을 원하는 쪽은 보호자이고, 실제 기억을 가진 쪽은 시니어입니다. 부담을 보호자에게 전부 옮기고 시니어에게는 응답만 남기는 구조로 뒤집었습니다.
+        <p class="hyp"><span class="ev-k">검증 기준</span>시니어 측에 남는 조작 수 — 가입 0회, 비밀번호 0개, 앱 설치 0회. 링크 클릭 한 번으로 인터뷰까지 도달하면 가설이 성립.</p>
+      </dd>
+
+      <dt><span class="step-n" aria-hidden="true">03</span>기획 프로세스</dt>
+      <dd>보호자가 1회용 토큰 링크(기본 14일 만료)로 초대하면 시니어는 클릭만으로 자동 로그인합니다. 질문은 공통 풀 + 사진 기반 자동 생성 + 보호자 직접 작성 3원으로 설계했고, 음성 자유 발화와 앱 내 예약 인터뷰를 지원하도록 구현했습니다. STT로 텍스트화하되 원문 음성 조각을 함께 보관해 자서전 문장의 근거를 되짚을 수 있게 했습니다.
+        <ul class="flow">
+          <li><span class="f-role">보호자</span><span class="f-name">가입 · 초대</span><span class="f-desc">1회용 토큰 링크 (14일)</span></li>
+          <li><span class="f-role">시니어</span><span class="f-name">링크 클릭 한 번</span><span class="f-desc">비밀번호 없는 자동 로그인</span></li>
+          <li><span class="f-role">인터뷰</span><span class="f-name">음성 응답</span><span class="f-desc">자유 발화 · 앱 내 예약</span></li>
+          <li><span class="f-role">기록</span><span class="f-name">STT + 원문 보관</span><span class="f-desc">문장 근거 추적</span></li>
+          <li><span class="f-role">편집</span><span class="f-name">검수 · 챕터 구성</span><span class="f-desc">보호자 태깅 · 문체 선택</span></li>
+          <li><span class="f-role">출간</span><span class="f-name">인쇄용 PDF</span><span class="f-desc">A5/B5 비동기 생성</span></li>
+        </ul>
+      </dd>
+      <dt><span class="step-n" aria-hidden="true">04</span>결과·임팩트</dt>
+      <dd>캡스톤 디자인 <strong>대상</strong> 수상, 웹 배포와 Capacitor iOS 패키징까지 진행했습니다. 현재 공개 서비스 접속은 오류 상태이며, iOS는 시뮬레이터 검증 범위입니다. TestFlight·App Store 정식 배포와 실제 이용자 성과는 확인되지 않았습니다. 저장된 기억 기반 AI 분신 대화·기념일 알림을 붙여, 자서전 제작 이후의 후속 대화·알림 흐름을 설계·구현했습니다. 재방문율 개선을 측정한 결과는 아닙니다.</dd>
+    </dl>
+    <p class="pm-note"><b>기획자로서의 한 수:</b> 동의를 기능으로 설계 — 5종 목적별 동의를 기억 데이터 자체에 붙이고 소비 지점에서 집행해, 철회한 기억이 자서전 초안을 우회해 책으로 되돌아오던 경로를 차단. 보안 감사로 인증 경계 허점을 찾아 회귀 테스트와 권한 매트릭스 문서로 고정 — 신뢰를 UX로 만든 판단.</p>
   </div>
-  <dl class="profile-facts">
-    <div class="profile-fact">
-      <dt>Education</dt>
-      <dd>국민대 AI빅데이터융합경영 · 경영정보(MIS) 복수전공, 2026.8 졸업예정</dd>
-    </div>
-    <div class="profile-fact">
-      <dt>Location</dt>
-      <dd>경기 의정부시</dd>
-    </div>
-  </dl>
-</section>
+  </details>
+</article>
 
-<section id="journey" aria-labelledby="journey-title">
-  <h2 id="journey-title">Journey</h2>
-  <p class="sec-lead">현장에서 데이터로, 데이터에서 기획으로</p>
-  <div class="tl">
-    <div class="tl-col">
-      <p class="tl-year">2022 – 23</p>
-      <ul>
-        <li><b>전통시장 매장 운영</b><span>일 200명 응대 · 클레임 유형화</span></li>
-      </ul>
+  <article class="proj" id="p-multiai">
+  <details class="project-detail"><summary><div class="proj-top">
+      <h3>멀티 AI 공약 이행 검증 파이프라인</h3>
+      <span class="badge">우수 참여자</span>
+    </div><p class="meta">경기청년 갭이어 · 2025.06 – 2025.11 · 기획 · 파이프라인 설계</p>
+      <p class="project-problem">공약 검증 담당자의 반복 검색</p>
+      <p class="project-decision">AI별 역할 분리와 교차 검증 구조 설계</p>
+      <p class="project-scope">처리 시간 80% 단축 · 결과 보고 기준</p>
+      <span class="detail-hint"><span class="when-closed">문제・과정·검증 범위 펼치기</span><span class="when-open">문제·과정·검증 범위 접기</span></span>
+    </summary>
+  <div class="detail-body">
+    <div class="chips">
+      <span class="chip">처리 시간 <b>80% 단축</b></span>
+      <span class="chip">할루시네이션 <b>-15%</b></span>
+      <span class="chip">프로토타입으로 <b>48시간 내</b> 수집 구조 전환</span>
     </div>
-    <div class="tl-col">
-      <p class="tl-year">2024</p>
-      <ul>
-        <li><b>한국금융연수원</b><span>판매·송장 데이터 결합 분석 제안</span></li>
-        <li><b>따릉이 수요 예측</b><span>한이음 · 팀장</span></li>
-      </ul>
+    <div class="metric-block"><div class="impact">
+      <h3>공약 검증 처리 시간</h3>
+      <p class="i-src">갭이어 · 멀티 AI 역할 분리 (이전=100 기준)</p>
+      <div class="i-row"><span class="i-k">이전</span><div class="i-track" aria-hidden="true"><div class="i-bar before" style="width:86%"></div></div><span class="i-val prev">100 (지수)</span></div>
+      <div class="i-row"><span class="i-k">이후</span><div class="i-track" aria-hidden="true"><div class="i-bar after" style="width:17.2%"></div></div><span class="i-val">20 (지수)</span></div>
+      <span class="i-delta">80% 단축</span>
+    </div><p class="i-note">프로젝트 결과 보고 기준. 이전=100으로 둔 상대지수이며 실제 분·초를 뜻하지 않습니다. 원시 측정값과 측정 조건은 별도 확인이 필요합니다.</p></div>
+    <dl class="pa">
+      <dt><span class="step-n" aria-hidden="true">01</span>문제 정의</dt>
+      <dd>담당자가 뉴스·공문서를 일일이 검색해 공약 이행 여부를 판단하고 있었습니다. 대상이 늘수록 처리 시간이 선형으로 증가하는 구조인데, 그렇다고 단일 LLM에 맡기면 할루시네이션이 그대로 결과가 됩니다. <strong>속도와 신뢰도 중 하나를 포기해야 하는 상태</strong>였습니다.</dd>
+
+      <dt><span class="step-n" aria-hidden="true">02</span>리서치·가설</dt>
+      <dd>단일 모델의 정확도를 끌어올리는 대신, 역할을 나눠 서로를 검증하게 하면 할루시네이션을 구조적으로 줄일 수 있다고 봤습니다. 문제는 '할루시네이션'이 그대로는 측정 불가능한 말이라는 점이었습니다.
+        <p class="hyp"><span class="ev-k">조작적 정의</span>할루시네이션을 <b>'교차 검색 불일치율'</b>로 직접 정의 — 서로 다른 모델이 같은 사실에 대해 내놓은 결과가 어긋나는 비율. 측정 가능해진 뒤에야 개선을 주장할 수 있다고 판단.</p>
+      </dd>
+
+      <dt><span class="step-n" aria-hidden="true">03</span>기획 프로세스</dt>
+      <dd>AI별 강점을 기준으로 역할을 분리하고 각 단계 출력을 다음 AI가 교차 검증하는 다중 AI 구조를 MCP·LangChain으로 설계했습니다.
+        <ul class="flow">
+          <li><span class="f-role">수집</span><span class="f-name">Gemini</span><span class="f-desc">Grounding 실시간 검색</span></li>
+          <li><span class="f-role">보강</span><span class="f-name">Perplexity</span><span class="f-desc">보강 검색</span></li>
+          <li><span class="f-role">분석</span><span class="f-name">Claude</span><span class="f-desc">이행 여부 판단</span></li>
+          <li><span class="f-role">검증</span><span class="f-name">ChatGPT</span><span class="f-desc">팩트체크</span></li>
+        </ul>
+        <p class="flow-note">각 단계 출력을 다음 AI가 교차 검증 — 단일 모델 할루시네이션을 구조적으로 저감</p>
+      </dd>
+      <dt><span class="step-n" aria-hidden="true">04</span>결과·임팩트</dt>
+      <dd>처리 시간 <strong>80% 단축</strong>, 교차 검색 불일치율 기준 할루시네이션 <strong>−15%</strong>. 운영 중에는 정적 크롤링이 사이트 개편에 취약하다는 점이 드러났는데, 의견을 말로 밀지 않고 실패 빈도를 정량화해 팀을 설득했고 AI 에이전트 수집 구조로 <strong>48시간 내</strong> 전환했습니다.</dd>
+    </dl>
+    <p class="pm-note"><b>기획자로서의 한 수:</b> '기존 보완 vs 근본 재설계' 갈등에서 말 대신 작동하는 프로토타입과 재작업 최소화 지점을 제시해 일정 우려까지 해소.</p>
+  </div>
+  </details>
+</article>
+
+  <article class="proj" id="p-analyst">
+  <details class="project-detail"><summary><div class="proj-top">
+      <h3>유가증권 투자 애널리스트 AI</h3>
+      <span class="badge">한이음 · 팀장</span>
+    </div><p class="meta">과학기술정보통신부 한이음 · 2025.04 – 2025.10 · 5인 팀 팀장 / PM</p>
+      <p class="project-problem">투자 정보의 형식·시점 불일치</p>
+      <p class="project-decision">수집·정제·출력에 12개 품질 검증 기준 배치</p>
+      <p class="project-scope">정확도 +12% · 검수 −30% · 결과 보고 기준</p>
+      <span class="detail-hint"><span class="when-closed">문제・과정·검증 범위 펼치기</span><span class="when-open">문제·과정·검증 범위 접기</span></span>
+    </summary>
+  <div class="detail-body">
+    <div class="chips">
+      <span class="chip">예측 정확도 <b>+12%</b></span>
+      <span class="chip">데이터 가용성 <b>95%+</b></span>
+      <span class="chip">형식 오류 <b>10%</b> 조기 필터링 · 검수 <b>-30%</b></span>
+      <span class="chip">개발 기간 <b>-20%</b></span>
     </div>
-    <div class="tl-col">
-      <p class="tl-year">2025</p>
-      <ul>
-        <li><b>셀렉트스타 인턴</b><span>LLM 데이터 품질 · 오차율 0.8%</span></li>
-        <li><b>연구랩업 대상</b><span>문화시설 접근성 분석</span></li>
-        <li><b>멀티 AI 파이프라인</b><span>갭이어 우수 참여자</span></li>
-      </ul>
+    <div class="metric-block"><div class="impact">
+      <h3>컨센서스 데이터 검수 시간</h3>
+      <p class="i-src">한이음 투자 AI · 교차 검증 로직 (이전=100 기준)</p>
+      <div class="i-row"><span class="i-k">이전</span><div class="i-track" aria-hidden="true"><div class="i-bar before" style="width:86%"></div></div><span class="i-val prev">100 (지수)</span></div>
+      <div class="i-row"><span class="i-k">이후</span><div class="i-track" aria-hidden="true"><div class="i-bar after" style="width:60.2%"></div></div><span class="i-val">70 (지수)</span></div>
+      <span class="i-delta">−30%</span>
+    </div><p class="i-note">프로젝트 결과 보고 기준. 이전=100으로 둔 상대지수이며 실제 분·초를 뜻하지 않습니다. 원시 측정값과 측정 조건은 별도 확인이 필요합니다.</p></div>
+    <dl class="pa">
+      <dt><span class="step-n" aria-hidden="true">01</span>문제 정의</dt>
+      <dd>증권사별 컨센서스 데이터는 티커 체계·형식·시점이 전부 제각각입니다. 개인 투자 중 공시 수치와 컨센서스가 어긋나는 이유를 추적하다 출발한 문제로, 수치 오인식과 최신성 미반영이 곧바로 <strong>리포트 신뢰도 붕괴</strong>로 이어지는 구조였습니다.</dd>
+
+      <dt><span class="step-n" aria-hidden="true">02</span>리서치·가설</dt>
+      <dd>네이버 증권과 FnGuide를 <b>"누구의 의사결정 속도를 높이는 설계인가"</b> 관점으로 비교 분석했습니다. 두 서비스는 같은 데이터를 다루면서도 갱신 주기·노출 순서·상세 수준이 달랐고, 그 차이는 타깃 사용자가 다르기 때문이었습니다.
+        <p class="hyp"><span class="ev-k">가설</span>신뢰도는 모델 성능이 아니라 <b>데이터가 통과하는 검증 게이트의 수</b>에서 갈린다 — 이상값을 사후에 잡는 대신 파이프라인 단계마다 미리 거른다.</p>
+      </dd>
+
+      <dt><span class="step-n" aria-hidden="true">03</span>기획 프로세스</dt>
+      <dd>수치 정합성 7개·최신성 5개, 총 <strong>12개 테스트 케이스</strong>를 설계해 수집·정제·출력 각 단계에 품질 게이트로 배치했습니다. 5인 팀 팀장으로 WBS를 수립해 업무를 배분하고 애자일로 일정을 관리했습니다.</dd>
+
+      <dt><span class="step-n" aria-hidden="true">04</span>결과·임팩트</dt>
+      <dd>이상 응답이 사용자에게 도달하기 전에 걸러지는 구조를 완성했습니다. 예측 정확도 <strong>+12%</strong>, 데이터 가용성 <strong>95%+</strong>, 형식 오류 10%를 조기 필터링해 검수 <strong>−30%</strong>, 개발 기간 <strong>−20%</strong>.</dd>
+    </dl>
+    <p class="pm-note"><b>기획자로서의 한 수:</b> 개인 투자 중 공시 수치와 컨센서스가 다른 이유를 추적한 경험이 출발점 — "신뢰할 수 있는 정보는 누가 어떤 기준으로 검증했는가에서 갈린다."</p>
+  </div>
+  </details>
+</article>
+
+  <article class="proj" id="p-bike">
+  <details class="project-detail"><summary><div class="proj-top">
+      <h3>따릉이 수요 예측 · 운영 최적화</h3>
+      <span class="badge">한이음 · 팀장</span>
+    </div><p class="meta">과학기술정보통신부 한이음 · 2024.04 – 2024.10 · 4인 팀 팀장 / 데이터 엔지니어</p>
+      <p class="project-problem">운영 판단보다 늦게 도착하는 대여 데이터</p>
+      <p class="project-decision">수집·적재 자동화를 먼저 구축</p>
+      <p class="project-scope">일 20만 건 · 처리 시간 −85% · 결과 보고 기준</p>
+      <span class="detail-hint"><span class="when-closed">문제・과정·검증 범위 펼치기</span><span class="when-open">문제·과정·검증 범위 접기</span></span>
+    </summary>
+  <div class="detail-body">
+    <div class="chips">
+      <span class="chip">처리 시간 <b>-85%</b></span>
+      <span class="chip">수요 예측 오차 <b>-18%</b></span>
+      <span class="chip">일 <b>20만 건</b> 자동 수집</span>
     </div>
-    <div class="tl-col">
-      <p class="tl-year">2026</p>
-      <ul>
-        <li><b>Dear Log 실배포</b><span>캡스톤 대상 · dear-log.com</span></li>
-        <li><b>졸업 예정 (8월)</b><span>국민대 AI빅데이터융합경영 · MIS</span></li>
-      </ul>
-    </div>
+    <div class="metric-block"><div class="impact">
+      <h3>실시간 데이터 처리 시간</h3>
+      <p class="i-src">따릉이 · Airflow ETL 자동화 (이전=100 기준)</p>
+      <div class="i-row"><span class="i-k">이전</span><div class="i-track" aria-hidden="true"><div class="i-bar before" style="width:86%"></div></div><span class="i-val prev">100 (지수)</span></div>
+      <div class="i-row"><span class="i-k">이후</span><div class="i-track" aria-hidden="true"><div class="i-bar after" style="width:12.9%"></div></div><span class="i-val">15 (지수)</span></div>
+      <span class="i-delta">−85%</span>
+    </div><p class="i-note">프로젝트 결과 보고 기준. 이전=100으로 둔 상대지수이며 실제 분·초를 뜻하지 않습니다. 원시 측정값과 측정 조건은 별도 확인이 필요합니다.</p></div>
+    <dl class="pa">
+      <dt><span class="step-n" aria-hidden="true">01</span>문제 정의</dt>
+      <dd>일평균 <strong>20만 건</strong>씩 쌓이는 실시간 대여 데이터를 수작업으로 다루는 한, 과부하 대여소는 이미 과부하가 난 뒤에야 확인됩니다. <strong>대응이 늦는 게 아니라 관측이 늦는</strong> 문제였습니다.</dd>
+
+      <dt><span class="step-n" aria-hidden="true">02</span>리서치·가설</dt>
+      <dd>수요 예측 모델을 다듬기 전에, 데이터가 분석 가능한 형태로 도달하는 시간부터 줄여야 한다고 판단했습니다. 일 20만 건을 수작업으로 다루는 한 모델을 아무리 개선해도 현장 대응 시점은 그대로이기 때문입니다.
+        <p class="hyp"><span class="ev-k">가설</span>운영 개선의 선행 조건은 <b>데이터 도달 속도</b> — 수집·적재를 먼저 자동화해야 예측 정확도 개선분이 실제 대응으로 이어진다.</p>
+      </dd>
+
+      <dt><span class="step-n" aria-hidden="true">03</span>기획 프로세스</dt>
+      <dd>서울 열린데이터광장 API → Airflow ETL → MySQL 적재로 이어지는 자동화 파이프라인을 AWS EC2에 구축했습니다. 4인 팀 팀장으로 MVP를 먼저 구현해 기준점을 만들고, 인터페이스 명세서와 일일 스탠드업으로 협업 리듬을 설계했습니다.</dd>
+
+      <dt><span class="step-n" aria-hidden="true">04</span>결과·임팩트</dt>
+      <dd>수작업 대비 처리 시간이 <strong>−85%</strong>로 줄면서, 과부하가 난 뒤가 아니라 나기 전에 대여소를 식별할 수 있게 됐습니다. 예측 오차 개선분(<strong>−18%</strong>)도 이 자동화 위에 올라간 뒤에야 운영 개선안으로 이어졌습니다.</dd>
+    </dl>
+  </div>
+  </details>
+</article>
   </div>
 </section>
-
-<section id="process" aria-labelledby="process-title">
-  <h2 id="process-title">Process</h2>
-  <p class="sec-lead">서비스 기획자로서, 이렇게 일합니다</p>
-  <ol class="steps">
-    <li class="step">
-      <div class="num" aria-hidden="true"></div>
-      <div>
-        <h3>질문을 다시 세운다</h3>
-        <p class="what">요구사항을 그대로 받지 않습니다. "어디에 지을 것인가"라는 질문 앞에서 "기존 거리 기반 배치는 왜 실패하는가"를 먼저 물었습니다. 문제 정의가 틀리면 그 뒤의 모든 실행이 틀리기 때문입니다.</p>
-        <p class="evidence"><span class="ev-k">근거</span>연구랩업 — 팀이 채택한 거리 기반 방법론의 허점을 먼저 제기, 2SFCA 접근성 지표로 재설계해 대상 수상</p>
-      </div>
-    </li>
-    <li class="step">
-      <div class="num" aria-hidden="true"></div>
-      <div>
-        <h3>사용자의 맥락에서 문제를 확인한다</h3>
-        <p class="what">데스크 리서치로 끝내지 않고 "이 설계는 누구의 의사결정 속도를 높이는가"를 기준으로 서비스를 뜯어봅니다. 현장에서 반복되는 패턴이 곧 요구사항입니다.</p>
-        <p class="evidence"><span class="ev-k">근거</span>네이버 증권 vs FnGuide를 타깃 사용자별 갱신 주기·노출 순서·상세 수준 차이로 비교 분석 / 전통시장 일 200명 응대에서 클레임 3유형 패턴 발견</p>
-      </div>
-    </li>
-    <li class="step">
-      <div class="num" aria-hidden="true"></div>
-      <div>
-        <h3>성공을 지표로 먼저 정의한다</h3>
-        <p class="what">"좋아졌다"는 말 대신 측정 가능한 숫자로 목표를 세웁니다. 지표가 모호하면 직접 조작적 정의를 만듭니다.</p>
-        <p class="evidence"><span class="ev-k">근거</span>할루시네이션을 '교차 검색 불일치율'로 직접 정의해 15% 감소 측정 / 오차율 15%→0.8%, 검수 -5분, 처리 속도 -80% — 모든 프로젝트를 지표로 관리</p>
-      </div>
-    </li>
-    <li class="step">
-      <div class="num" aria-hidden="true"></div>
-      <div>
-        <h3>이해관계자는 데이터로 정렬한다</h3>
-        <p class="what">이견이 갈리면 말로 설득하지 않습니다. 양쪽 안을 같은 기준으로 시각화하거나, 작동하는 프로토타입을 만들어 판단 기준 자체를 맞춥니다. 합의는 공유에서 나옵니다.</p>
-        <p class="evidence"><span class="ev-k">근거</span>이틀 평행선이던 분석 방향 갈등을 비교 시각화로 30분 내 합의 / 크롤러 전환 논쟁을 실패 빈도 정량화 + 프로토타입 시연으로 해소</p>
-      </div>
-    </li>
-    <li class="step">
-      <div class="num" aria-hidden="true"></div>
-      <div>
-        <h3>결과를 체계로 남긴다</h3>
-        <p class="what">한 번의 해결로 끝내지 않고 가이드라인·체크리스트·검증 로그로 만들어 팀의 표준으로 남깁니다. 산출물은 받는 사람이 바로 쓸 수 있는 형태 — 실행 로드맵으로 번역해 전달합니다.</p>
-        <p class="evidence"><span class="ev-k">근거</span>품질 교정 가이드라인이 팀 표준으로 정착 / 전처리 검증 로그 의무화로 동일 오류 재발 0건 / 분석 결과를 실행 로드맵으로 재구성해 경기도 정책 검토 도달</p>
-      </div>
-    </li>
-  </ol>
-</section>
-
 <section id="case" aria-labelledby="case-title">
   <h2 id="case-title">Case Study</h2>
   <p class="sec-lead">프로세스가 실제로 작동한 기록 — 경기도 문화시설 접근성 분석</p>
   <div class="case">
     <div class="case-head">
-      <h3>"어디에 지을 것인가"를 "왜 기존 배치는 실패하는가"로 바꾸자, 정책이 움직였다</h3>
+      <h3>거리보다 실제 이동 여건을 반영한 문화시설 접근성 분석</h3>
       <p class="meta">경기청년 연구랩업 (경기도미래세대재단) · 2025.05 – 2025.10 · 3인 팀 팀장</p>
     </div>
     <div class="chips">
@@ -490,6 +715,9 @@ footer p{margin:0}
       <span class="chip">취약 지역 <b>5곳</b> 도출</span>
       <span class="chip">경기도 정책 <b>실무 검토</b></span>
     </div>
+    <p>경기도 청년의 문화시설 접근성 격차를 다룬 3인 팀 프로젝트입니다. 팀장으로서 거리 중심의 질문을 배차·도보 시간을 포함한 접근성 문제로 다시 정의하고, 데이터 표준화와 분석 방향 조정을 맡았습니다.</p>
+    <p class="i-note">수치는 원 프로젝트 결과 보고 기준입니다. 정책 반영은 실무 검토 단계이며 실제 집행 효과를 측정한 성과는 아닙니다.</p>
+    <details><summary>문제 재정의부터 실행 로드맵까지 · 5단계 상세</summary><div class="detail-body">
     <div class="case-steps">
       <div class="case-step">
         <p class="phase">01 · 문제 재정의</p>
@@ -524,48 +752,68 @@ footer p{margin:0}
         <p>수치 나열 대신 시설 1개소당 예산 대비 사회적 가치까지 산출해, 담당자가 즉시 판단 근거로 쓸 수 있는 실행 로드맵으로 재구성했습니다. 결과는 대상 수상, 그리고 경기도 정책 반영 실무 검토 — 분석이 "무엇이 문제인가"를 밝히는 일이라면, 기획은 "왜 이 해법이며 어떻게 실행할 것인가"를 설계하는 일임을 확인한 프로젝트입니다.</p>
       </div>
     </div>
+    </div></details>
   </div>
 </section>
-
-<section id="numbers" aria-labelledby="numbers-title">
-  <h2 id="numbers-title">Numbers</h2>
-  <p class="sec-lead">숫자로 보는 개선</p>
-  <div class="impact-grid">
-    <div class="impact">
+<section id="process" aria-labelledby="process-title">
+  <h2 id="process-title">Process</h2>
+  <p class="sec-lead">서비스 기획자로서, 이렇게 일합니다</p>
+  <p>질문을 다시 세우고, 사용자의 맥락을 확인합니다. 성공 기준을 먼저 정한 뒤 이해관계자를 같은 데이터로 정렬하고, 결과를 팀이 다시 쓸 수 있는 체계로 남깁니다.</p>
+  <details><summary>다섯 가지 방식과 경험 근거 읽기</summary><div class="detail-body">
+  <ol class="steps">
+    <li class="step">
+      <div class="num" aria-hidden="true"></div>
+      <div>
+        <h3>질문을 다시 세운다</h3>
+        <p class="what">요구사항을 그대로 받지 않습니다. "어디에 지을 것인가"라는 질문 앞에서 "기존 거리 기반 배치는 왜 실패하는가"를 먼저 물었습니다. 문제 정의가 틀리면 그 뒤의 모든 실행이 틀리기 때문입니다.</p>
+        <p class="evidence"><span class="ev-k">근거</span>연구랩업 — 팀이 채택한 거리 기반 방법론의 허점을 먼저 제기, 2SFCA 접근성 지표로 재설계해 대상 수상</p>
+      </div>
+    </li>
+    <li class="step">
+      <div class="num" aria-hidden="true"></div>
+      <div>
+        <h3>사용자의 맥락에서 문제를 확인한다</h3>
+        <p class="what">데스크 리서치로 끝내지 않고 "이 설계는 누구의 의사결정 속도를 높이는가"를 기준으로 서비스를 뜯어봅니다. 현장에서 반복되는 패턴이 곧 요구사항입니다.</p>
+        <p class="evidence"><span class="ev-k">근거</span>네이버 증권 vs FnGuide를 타깃 사용자별 갱신 주기·노출 순서·상세 수준 차이로 비교 분석 / 전통시장 일 200명 응대에서 클레임 3유형 패턴 발견</p>
+      </div>
+    </li>
+    <li class="step">
+      <div class="num" aria-hidden="true"></div>
+      <div>
+        <h3>성공을 지표로 먼저 정의한다</h3>
+        <p class="what">"좋아졌다"는 말 대신 측정 가능한 숫자로 목표를 세웁니다. 지표가 모호하면 직접 조작적 정의를 만듭니다.</p>
+        <p class="evidence"><span class="ev-k">근거</span>할루시네이션을 '교차 검색 불일치율'로 직접 정의해 15% 감소 측정 / 오차율 15%→0.8%, 검수 -5분, 처리 시간 80% 단축 — 모든 프로젝트를 지표로 관리</p>
+      </div>
+    </li>
+    <li class="step">
+      <div class="num" aria-hidden="true"></div>
+      <div>
+        <h3>이해관계자는 데이터로 정렬한다</h3>
+        <p class="what">이견이 갈리면 말로 설득하지 않습니다. 양쪽 안을 같은 기준으로 시각화하거나, 작동하는 프로토타입을 만들어 판단 기준 자체를 맞춥니다. 합의는 공유에서 나옵니다.</p>
+        <p class="evidence"><span class="ev-k">근거</span>이틀 평행선이던 분석 방향 갈등을 비교 시각화로 30분 내 합의 / 크롤러 전환 논쟁을 실패 빈도 정량화 + 프로토타입 시연으로 해소</p>
+      </div>
+    </li>
+    <li class="step">
+      <div class="num" aria-hidden="true"></div>
+      <div>
+        <h3>결과를 체계로 남긴다</h3>
+        <p class="what">한 번의 해결로 끝내지 않고 가이드라인·체크리스트·검증 로그로 만들어 팀의 표준으로 남깁니다. 산출물은 받는 사람이 바로 쓸 수 있는 형태 — 실행 로드맵으로 번역해 전달합니다.</p>
+        <p class="evidence"><span class="ev-k">근거</span>품질 교정 가이드라인이 팀 표준으로 정착 / 전처리 검증 로그 의무화로 동일 오류 재발 0건 / 분석 결과를 실행 로드맵으로 재구성해 경기도 정책 검토 도달</p>
+      </div>
+    </li>
+  </ol>
+  </div></details>
+</section>
+<section id="experience" aria-labelledby="experience-title">
+  <h2 id="experience-title">Experience</h2>
+  <p class="sec-lead">경력</p>
+  <div class="metric-block"><div class="impact">
       <h3>LLM 데이터 오차율</h3>
       <p class="i-src">셀렉트스타 · 사전 필터링 체계 구축</p>
       <div class="i-row"><span class="i-k">이전</span><div class="i-track" aria-hidden="true"><div class="i-bar before" style="width:86%"></div></div><span class="i-val prev">15%</span></div>
       <div class="i-row"><span class="i-k">이후</span><div class="i-track" aria-hidden="true"><div class="i-bar after" style="width:4.6%"></div></div><span class="i-val">0.8%</span></div>
-      <span class="i-delta">−94.7%</span>
-    </div>
-    <div class="impact">
-      <h3>공약 검증 처리 시간</h3>
-      <p class="i-src">갭이어 · 멀티 AI 역할 분리 (이전=100 기준)</p>
-      <div class="i-row"><span class="i-k">이전</span><div class="i-track" aria-hidden="true"><div class="i-bar before" style="width:86%"></div></div><span class="i-val prev">100</span></div>
-      <div class="i-row"><span class="i-k">이후</span><div class="i-track" aria-hidden="true"><div class="i-bar after" style="width:17.2%"></div></div><span class="i-val">20</span></div>
-      <span class="i-delta">−80%</span>
-    </div>
-    <div class="impact">
-      <h3>실시간 데이터 처리 시간</h3>
-      <p class="i-src">따릉이 · Airflow ETL 자동화 (이전=100 기준)</p>
-      <div class="i-row"><span class="i-k">이전</span><div class="i-track" aria-hidden="true"><div class="i-bar before" style="width:86%"></div></div><span class="i-val prev">100</span></div>
-      <div class="i-row"><span class="i-k">이후</span><div class="i-track" aria-hidden="true"><div class="i-bar after" style="width:12.9%"></div></div><span class="i-val">15</span></div>
-      <span class="i-delta">−85%</span>
-    </div>
-    <div class="impact">
-      <h3>컨센서스 데이터 검수 시간</h3>
-      <p class="i-src">한이음 투자 AI · 교차 검증 로직 (이전=100 기준)</p>
-      <div class="i-row"><span class="i-k">이전</span><div class="i-track" aria-hidden="true"><div class="i-bar before" style="width:86%"></div></div><span class="i-val prev">100</span></div>
-      <div class="i-row"><span class="i-k">이후</span><div class="i-track" aria-hidden="true"><div class="i-bar after" style="width:60.2%"></div></div><span class="i-val">70</span></div>
-      <span class="i-delta">−30%</span>
-    </div>
-  </div>
-  <p class="i-note">상대값 막대는 개선 전을 100으로 둔 지수 기준. 모든 수치는 각 프로젝트 결과 보고 기준.</p>
-</section>
-
-<section id="experience" aria-labelledby="experience-title">
-  <h2 id="experience-title">Experience</h2>
-  <p class="sec-lead">경력</p>
+      <span class="i-delta">상대 오차율 94.7% 감소</span>
+    </div><p class="i-note">기존 경력 결과 보고 기준의 오차율입니다. 상대 감소율은 (15−0.8)÷15로 계산한 값이며 14.2%p 감소와 구분합니다.</p></div>
   <div class="xp">
     <div class="xp-item">
       <div class="xp-when">2025.09 – 2025.12</div>
@@ -602,167 +850,51 @@ footer p{margin:0}
     </div>
   </div>
 </section>
-
-<section id="projects" aria-labelledby="projects-title">
-  <h2 id="projects-title">Featured Projects</h2>
-  <p class="sec-lead">대표 프로젝트</p>
-
-  <nav class="project-index" aria-label="대표 프로젝트 목록">
-    <a class="project-index-card" href="#p-dearlog">
-      <span class="project-index-title">Dear Log — AI 인터뷰 기반 가족 기억 아카이브</span>
-      <span class="project-index-role">캡스톤 6인 팀 · 기획·개발</span>
-      <strong class="project-index-metric">대상 · 실서비스 배포</strong>
-    </a>
-    <a class="project-index-card" href="#p-multiai">
-      <span class="project-index-title">멀티 AI 공약 이행 검증 파이프라인</span>
-      <span class="project-index-role">갭이어 · 기획·파이프라인 설계</span>
-      <strong class="project-index-metric">처리 속도 −80%</strong>
-    </a>
-    <a class="project-index-card" href="#p-analyst">
-      <span class="project-index-title">유가증권 투자 애널리스트 AI</span>
-      <span class="project-index-role">한이음 5인 팀 · 팀장/PM</span>
-      <strong class="project-index-metric">예측 정확도 +12%</strong>
-    </a>
-    <a class="project-index-card" href="#p-bike">
-      <span class="project-index-title">따릉이 수요 예측 · 운영 최적화</span>
-      <span class="project-index-role">한이음 4인 팀 · 팀장</span>
-      <strong class="project-index-metric">일 20만 건 자동 수집</strong>
-    </a>
-  </nav>
-
-  <article class="proj" id="p-dearlog">
-    <div class="proj-top">
-      <h3>Dear Log — AI 인터뷰 기반 가족 기억 아카이브</h3>
-      <span class="badge">캡스톤 대상 · 실서비스</span>
+<section id="about" aria-labelledby="about-title">
+  <h2 id="about-title">Education &amp; Background</h2>
+  <p class="sec-lead">현장 경험에서 데이터와 기획으로</p>
+  <div class="about-copy"><p>전통시장 매장에서 반복 클레임을 유형화한 경험이 출발점이었습니다. 경영정보(MIS)와 AI·빅데이터를 복수전공하며 데이터가 만들어지는 과정과 서비스를 설계하는 일을 함께 익혔습니다.</p></div>
+  <dl class="profile-facts">
+    <div class="profile-fact">
+      <dt>Education</dt>
+      <dd>국민대 AI빅데이터융합경영 · 경영정보(MIS) 복수전공, 2026.08 졸업</dd>
     </div>
-    <p class="meta">졸업 캡스톤 디자인 · 2026.03 – 2026.05 · 6인 팀 · 기획·개발 참여 · dear-log.com 배포</p>
-    <div class="chips">
-      <span class="chip"><b>대상</b> 수상</span>
-      <span class="chip"><b>dear-log.com</b> 실배포</span>
-      <span class="chip">목적별 동의 <b>5종</b> 데이터 단위 집행</span>
-      <span class="chip">React·Express·LLM 프록시·iOS</span>
+    <div class="profile-fact">
+      <dt>Location</dt>
+      <dd>경기 의정부시</dd>
     </div>
-    <dl class="pa">
-      <dt><span class="step-n" aria-hidden="true">01</span>문제 정의</dt>
-      <dd>시니어의 생애 기억은 가장 사라지기 쉬운 기록입니다. 기록 서비스는 이미 많지만, 정작 시니어에게는 회원가입·비밀번호·앱 설치가 진입 장벽으로 남아 있습니다. <strong>기존 서비스가 "기록하고 싶은 사람"과 "기록을 남길 사람"을 같은 한 명으로 가정한다는 점</strong>을 문제로 잡았습니다.</dd>
-
-      <dt><span class="step-n" aria-hidden="true">02</span>리서치·가설</dt>
-      <dd>두 역할을 분리하면 진입 장벽 자체가 사라진다고 가정했습니다. 기록을 원하는 쪽은 보호자이고, 실제 기억을 가진 쪽은 시니어입니다. 부담을 보호자에게 전부 옮기고 시니어에게는 응답만 남기는 구조로 뒤집었습니다.
-        <p class="hyp"><span class="ev-k">검증 기준</span>시니어 측에 남는 조작 수 — 가입 0회, 비밀번호 0개, 앱 설치 0회. 링크 클릭 한 번으로 인터뷰까지 도달하면 가설이 성립.</p>
-      </dd>
-
-      <dt><span class="step-n" aria-hidden="true">03</span>기획 프로세스</dt>
-      <dd>보호자가 1회용 토큰 링크(기본 14일 만료)로 초대하면 시니어는 클릭만으로 자동 로그인합니다. 질문은 공통 풀 + 사진 기반 자동 생성 + 보호자 직접 작성 3원으로 설계했고, 음성 자유 발화와 통화형 예약 인터뷰를 모두 지원합니다. STT로 텍스트화하되 원문 음성 조각을 함께 보관해 자서전 문장의 근거를 되짚을 수 있게 했습니다.
-        <ul class="flow">
-          <li><span class="f-role">보호자</span><span class="f-name">가입 · 초대</span><span class="f-desc">1회용 토큰 링크 (14일)</span></li>
-          <li><span class="f-role">시니어</span><span class="f-name">링크 클릭 한 번</span><span class="f-desc">비밀번호 없는 자동 로그인</span></li>
-          <li><span class="f-role">인터뷰</span><span class="f-name">음성 응답</span><span class="f-desc">자유 발화 · 통화형 예약</span></li>
-          <li><span class="f-role">기록</span><span class="f-name">STT + 원문 보관</span><span class="f-desc">문장 근거 추적</span></li>
-          <li><span class="f-role">편집</span><span class="f-name">검수 · 챕터 구성</span><span class="f-desc">보호자 태깅 · 문체 선택</span></li>
-          <li><span class="f-role">출간</span><span class="f-name">인쇄용 PDF</span><span class="f-desc">A5/B5 비동기 생성</span></li>
-        </ul>
-      </dd>
-      <dt><span class="step-n" aria-hidden="true">04</span>결과·임팩트</dt>
-      <dd>캡스톤 디자인 <strong>대상</strong> 수상, <a href="https://dear-log.com" target="_blank" rel="noopener">dear-log.com</a> 실배포(웹 + Capacitor iOS 앱)로 6인 팀 프로젝트를 실사용 가능한 서비스까지 완결했습니다. 저장된 기억 기반 AI 분신 대화·기념일 알림을 붙여, 1회성 자서전 제작에서 끝나던 흐름을 구독형 재방문 루프로 확장했습니다.</dd>
-    </dl>
-    <p class="pm-note"><b>기획자로서의 한 수:</b> 동의를 기능으로 설계 — 5종 목적별 동의를 기억 데이터 자체에 붙이고 소비 지점에서 집행해, 철회한 기억이 자서전 초안을 우회해 책으로 되돌아오던 경로를 차단. 보안 감사로 인증 경계 허점을 찾아 회귀 테스트와 권한 매트릭스 문서로 고정 — 신뢰를 UX로 만든 판단.</p>
-  </article>
-
-  <article class="proj" id="p-multiai">
-    <div class="proj-top">
-      <h3>멀티 AI 공약 이행 검증 파이프라인</h3>
-      <span class="badge">우수 참여자</span>
+  </dl>
+<details class="background-detail"><summary>현장·경력·프로젝트 여정 보기</summary><div class="detail-body">  <div class="tl">
+    <div class="tl-col">
+      <p class="tl-year">2022 – 23</p>
+      <ul>
+        <li><b>전통시장 매장 운영</b><span>일 200명 응대 · 클레임 유형화</span></li>
+      </ul>
     </div>
-    <p class="meta">경기청년 갭이어 · 2025.06 – 2025.11 · 기획 · 파이프라인 설계</p>
-    <div class="chips">
-      <span class="chip">처리 속도 <b>-80%</b></span>
-      <span class="chip">할루시네이션 <b>-15%</b></span>
-      <span class="chip">프로토타입으로 <b>48시간 내</b> 팀 합의</span>
+    <div class="tl-col">
+      <p class="tl-year">2024</p>
+      <ul>
+        <li><b>한국금융연수원</b><span>판매·송장 데이터 결합 분석 제안</span></li>
+        <li><b>따릉이 수요 예측</b><span>한이음 · 팀장</span></li>
+      </ul>
     </div>
-    <dl class="pa">
-      <dt><span class="step-n" aria-hidden="true">01</span>문제 정의</dt>
-      <dd>담당자가 뉴스·공문서를 일일이 검색해 공약 이행 여부를 판단하고 있었습니다. 대상이 늘수록 처리 시간이 선형으로 증가하는 구조인데, 그렇다고 단일 LLM에 맡기면 할루시네이션이 그대로 결과가 됩니다. <strong>속도와 신뢰도 중 하나를 포기해야 하는 상태</strong>였습니다.</dd>
-
-      <dt><span class="step-n" aria-hidden="true">02</span>리서치·가설</dt>
-      <dd>단일 모델의 정확도를 끌어올리는 대신, 역할을 나눠 서로를 검증하게 하면 할루시네이션을 구조적으로 줄일 수 있다고 봤습니다. 문제는 '할루시네이션'이 그대로는 측정 불가능한 말이라는 점이었습니다.
-        <p class="hyp"><span class="ev-k">조작적 정의</span>할루시네이션을 <b>'교차 검색 불일치율'</b>로 직접 정의 — 서로 다른 모델이 같은 사실에 대해 내놓은 결과가 어긋나는 비율. 측정 가능해진 뒤에야 개선을 주장할 수 있다고 판단.</p>
-      </dd>
-
-      <dt><span class="step-n" aria-hidden="true">03</span>기획 프로세스</dt>
-      <dd>AI별 강점을 기준으로 역할을 분리하고 각 단계 출력을 다음 AI가 교차 검증하는 다중 AI 구조를 MCP·LangChain으로 설계했습니다.
-        <ul class="flow">
-          <li><span class="f-role">수집</span><span class="f-name">Gemini</span><span class="f-desc">Grounding 실시간 검색</span></li>
-          <li><span class="f-role">보강</span><span class="f-name">Perplexity</span><span class="f-desc">보강 검색</span></li>
-          <li><span class="f-role">분석</span><span class="f-name">Claude</span><span class="f-desc">이행 여부 판단</span></li>
-          <li><span class="f-role">검증</span><span class="f-name">ChatGPT</span><span class="f-desc">팩트체크</span></li>
-        </ul>
-        <p class="flow-note">각 단계 출력을 다음 AI가 교차 검증 — 단일 모델 할루시네이션을 구조적으로 저감</p>
-      </dd>
-      <dt><span class="step-n" aria-hidden="true">04</span>결과·임팩트</dt>
-      <dd>처리 속도 <strong>−80%</strong>, 교차 검색 불일치율 기준 할루시네이션 <strong>−15%</strong>. 운영 중에는 정적 크롤링이 사이트 개편에 취약하다는 점이 드러났는데, 의견을 말로 밀지 않고 실패 빈도를 정량화해 팀을 설득했고 AI 에이전트 수집 구조로 <strong>48시간 내</strong> 전환했습니다.</dd>
-    </dl>
-    <p class="pm-note"><b>기획자로서의 한 수:</b> '기존 보완 vs 근본 재설계' 갈등에서 말 대신 작동하는 프로토타입과 재작업 최소화 지점을 제시해 일정 우려까지 해소.</p>
-  </article>
-
-  <article class="proj" id="p-analyst">
-    <div class="proj-top">
-      <h3>유가증권 투자 애널리스트 AI</h3>
-      <span class="badge">한이음 · 팀장</span>
+    <div class="tl-col">
+      <p class="tl-year">2025</p>
+      <ul>
+        <li><b>셀렉트스타 인턴</b><span>LLM 데이터 품질 · 오차율 0.8%</span></li>
+        <li><b>연구랩업 대상</b><span>문화시설 접근성 분석</span></li>
+        <li><b>멀티 AI 파이프라인</b><span>갭이어 우수 참여자</span></li>
+      </ul>
     </div>
-    <p class="meta">과학기술정보통신부 한이음 · 2025.04 – 2025.10 · 5인 팀 팀장 / PM</p>
-    <div class="chips">
-      <span class="chip">예측 정확도 <b>+12%</b></span>
-      <span class="chip">데이터 가용성 <b>95%+</b></span>
-      <span class="chip">형식 오류 <b>10%</b> 조기 필터링 · 검수 <b>-30%</b></span>
-      <span class="chip">개발 기간 <b>-20%</b></span>
+    <div class="tl-col">
+      <p class="tl-year">2026</p>
+      <ul>
+        <li><b>Dear Log 웹 배포 이력</b><span>캡스톤 대상 · 현재 접속 오류</span></li>
+        <li><b>2026.08 졸업</b><span>국민대 AI빅데이터융합경영 · MIS</span></li>
+      </ul>
     </div>
-    <dl class="pa">
-      <dt><span class="step-n" aria-hidden="true">01</span>문제 정의</dt>
-      <dd>증권사별 컨센서스 데이터는 티커 체계·형식·시점이 전부 제각각입니다. 개인 투자 중 공시 수치와 컨센서스가 어긋나는 이유를 추적하다 출발한 문제로, 수치 오인식과 최신성 미반영이 곧바로 <strong>리포트 신뢰도 붕괴</strong>로 이어지는 구조였습니다.</dd>
-
-      <dt><span class="step-n" aria-hidden="true">02</span>리서치·가설</dt>
-      <dd>네이버 증권과 FnGuide를 <b>"누구의 의사결정 속도를 높이는 설계인가"</b> 관점으로 비교 분석했습니다. 두 서비스는 같은 데이터를 다루면서도 갱신 주기·노출 순서·상세 수준이 달랐고, 그 차이는 타깃 사용자가 다르기 때문이었습니다.
-        <p class="hyp"><span class="ev-k">가설</span>신뢰도는 모델 성능이 아니라 <b>데이터가 통과하는 검증 게이트의 수</b>에서 갈린다 — 이상값을 사후에 잡는 대신 파이프라인 단계마다 미리 거른다.</p>
-      </dd>
-
-      <dt><span class="step-n" aria-hidden="true">03</span>기획 프로세스</dt>
-      <dd>수치 정합성 7개·최신성 5개, 총 <strong>12개 테스트 케이스</strong>를 설계해 수집·정제·출력 각 단계에 품질 게이트로 배치했습니다. 5인 팀 팀장으로 WBS를 수립해 업무를 배분하고 애자일로 일정을 관리했습니다.</dd>
-
-      <dt><span class="step-n" aria-hidden="true">04</span>결과·임팩트</dt>
-      <dd>이상 응답이 사용자에게 도달하기 전에 걸러지는 구조를 완성했습니다. 예측 정확도 <strong>+12%</strong>, 데이터 가용성 <strong>95%+</strong>, 형식 오류 10%를 조기 필터링해 검수 <strong>−30%</strong>, 개발 기간 <strong>−20%</strong>.</dd>
-    </dl>
-    <p class="pm-note"><b>기획자로서의 한 수:</b> 개인 투자 중 공시 수치와 컨센서스가 다른 이유를 추적한 경험이 출발점 — "신뢰할 수 있는 정보는 누가 어떤 기준으로 검증했는가에서 갈린다."</p>
-  </article>
-
-  <article class="proj" id="p-bike">
-    <div class="proj-top">
-      <h3>따릉이 수요 예측 · 운영 최적화</h3>
-      <span class="badge">한이음 · 팀장</span>
-    </div>
-    <p class="meta">과학기술정보통신부 한이음 · 2024.04 – 2024.10 · 4인 팀 팀장 / 데이터 엔지니어</p>
-    <div class="chips">
-      <span class="chip">처리 시간 <b>-85%</b></span>
-      <span class="chip">수요 예측 오차 <b>-18%</b></span>
-      <span class="chip">일 <b>20만 건</b> 자동 수집</span>
-    </div>
-    <dl class="pa">
-      <dt><span class="step-n" aria-hidden="true">01</span>문제 정의</dt>
-      <dd>일평균 <strong>20만 건</strong>씩 쌓이는 실시간 대여 데이터를 수작업으로 다루는 한, 과부하 대여소는 이미 과부하가 난 뒤에야 확인됩니다. <strong>대응이 늦는 게 아니라 관측이 늦는</strong> 문제였습니다.</dd>
-
-      <dt><span class="step-n" aria-hidden="true">02</span>리서치·가설</dt>
-      <dd>수요 예측 모델을 다듬기 전에, 데이터가 분석 가능한 형태로 도달하는 시간부터 줄여야 한다고 판단했습니다. 일 20만 건을 수작업으로 다루는 한 모델을 아무리 개선해도 현장 대응 시점은 그대로이기 때문입니다.
-        <p class="hyp"><span class="ev-k">가설</span>운영 개선의 선행 조건은 <b>데이터 도달 속도</b> — 수집·적재를 먼저 자동화해야 예측 정확도 개선분이 실제 대응으로 이어진다.</p>
-      </dd>
-
-      <dt><span class="step-n" aria-hidden="true">03</span>기획 프로세스</dt>
-      <dd>서울 열린데이터광장 API → Airflow ETL → MySQL 적재로 이어지는 자동화 파이프라인을 AWS EC2에 구축했습니다. 4인 팀 팀장으로 MVP를 먼저 구현해 기준점을 만들고, 인터페이스 명세서와 일일 스탠드업으로 협업 리듬을 설계했습니다.</dd>
-
-      <dt><span class="step-n" aria-hidden="true">04</span>결과·임팩트</dt>
-      <dd>수작업 대비 처리 시간이 <strong>−85%</strong>로 줄면서, 과부하가 난 뒤가 아니라 나기 전에 대여소를 식별할 수 있게 됐습니다. 예측 오차 개선분(<strong>−18%</strong>)도 이 자동화 위에 올라간 뒤에야 운영 개선안으로 이어졌습니다.</dd>
-    </dl>
-  </article>
+  </div></div></details>
 </section>
-
 <section id="more" aria-labelledby="more-title">
   <h2 id="more-title">More Work</h2>
   <p class="sec-lead">그 외 프로젝트 · 기획</p>
@@ -789,17 +921,11 @@ footer p{margin:0}
     </div>
     <div class="mini">
       <h3>금융 AI 리터러시 카드뉴스</h3>
-      <p class="m-meta">KBI 공모전 인기상 · 한국금융연수원</p>
+      <p class="m-meta">KBI 공모전 인기상 · 2026</p>
       <p>'금융문맹 탈출기 RPG' — 금융 AI 개념을 레벨업·전직에 비유한 5장 카드뉴스. 생성형 AI 프롬프트 구조화로 제작.</p>
     </div>
   </div>
-</section>
-
-<section id="stories" aria-labelledby="stories-title">
-  <h2 id="stories-title">How I Work</h2>
-  <p class="sec-lead">두 가지 장면</p>
-
-  <div class="story">
+<details class="background-detail"><summary>두 가지 현장 경험 읽기</summary><div class="detail-body">  <div class="story">
     <h3>① 위기를 버티게 하는 것 — 평소의 구조화</h3>
     <p>셀렉트스타 납품 하루 전, 거래처 데이터 규격이 예고 없이 전면 변경돼 1,000건이 처리 불가 상태가 됐습니다. 주니어였지만 긴급 회의를 먼저 제안했고, 평소 학습해 둔 데이터 구조·매핑 지식으로 신·구 형식 차이를 자동 식별·재매핑하는 방식을 설계했습니다. 역할을 나눠 이중 검증하며 당일 전량 납품 — 평소의 오류 유형화와 파이프라인 투자가 위기 대응력이 된 순간이었습니다.</p>
     <blockquote>빠른 수정으로 오류를 가리는 것과, 재발하지 않는 체계를 설계하는 것은 전혀 다른 방향의 일입니다.</blockquote>
@@ -809,9 +935,8 @@ footer p{margin:0}
     <h3>② 반복을 데이터로 바꾸는 습관 — 현장에서 배운 것</h3>
     <p>전통시장 매장에서 5개월간 일평균 200명을 응대하며, 월 15건씩 반복되는 클레임에 처리 기준이 없다는 문제를 발견했습니다. 클레임을 상품 불량·가격 오해·서비스 불만 3유형으로 분류해 응대 기준을 만들고, 클레임이 잦은 상품군의 진열 위치 조정까지 제안해 문의 자체를 줄였습니다. 이 습관은 셀렉트스타의 오류 3유형 구조화로 그대로 이어졌습니다.</p>
     <blockquote>반복은 처리 대상이 아니라, 발견하고 정의해야 구조가 보입니다. 이 사실을 저는 이론이 아닌 현장에서 익혔습니다.</blockquote>
-  </div>
+  </div></div></details>
 </section>
-
 <section id="skills" aria-labelledby="skills-title">
   <h2 id="skills-title">Skills &amp; Awards</h2>
   <div class="two-col">
@@ -859,18 +984,17 @@ footer p{margin:0}
     </div>
   </div>
 </section>
-
 <section id="contact" aria-labelledby="contact-title">
   <h2 id="contact-title">Contact</h2>
   <div class="contact-panel">
     <p class="cta">데이터로 문제를 정의하는 기획자를 찾고 계신다면, 대화하고 싶습니다.</p>
     <div class="contact-actions">
       <a class="contact-link" href="mailto:mdh0204@naver.com">이메일: mdh0204@naver.com</a>
-      <a class="contact-link" href="tel:+821086979227">전화: 010-8697-9227</a>
+      <a class="contact-link" href="https://github.com/moondh99" target="_blank" rel="noopener">GitHub 프로필 ↗</a>
+      <button type="button" class="contact-link print-button" id="print-portfolio">인쇄 / PDF 저장</button>
     </div>
   </div>
 </section>
-
 </main>
 
 <footer>
@@ -886,7 +1010,8 @@ footer p{margin:0}
   if(btn){
     var root = document.documentElement;
     var mq = window.matchMedia('(prefers-color-scheme: dark)');
-    var saved = localStorage.getItem('theme');
+    var saved = null;
+    try { saved = localStorage.getItem('theme'); } catch(e) {}
     saved = (saved === 'dark' || saved === 'light') ? saved : null;
 
     function sync(){
@@ -900,10 +1025,30 @@ footer p{margin:0}
     mq.addEventListener('change', sync);          /* 저장값 없을 때 OS 변경 추종 */
     btn.addEventListener('click', function(){
       saved = (saved ? saved === 'dark' : mq.matches) ? 'light' : 'dark';
-      localStorage.setItem('theme', saved);
+      try { localStorage.setItem('theme', saved); } catch(e) {}
       sync();
     });
   }
+
+
+  /* Native details preserve keyboard access. Expand only the hash target. */
+  function revealHash(){
+    var id;
+    try { id = decodeURIComponent(location.hash.slice(1)); } catch(e) { return; }
+    var target = id && document.getElementById(id);
+    if(!target) return;
+    var detail = target.matches('.proj') ? target.querySelector('.project-detail') : target.closest('details');
+    if(detail) detail.open = true;
+  }
+  window.addEventListener('hashchange', revealHash);
+  revealHash();
+  var printButton = document.getElementById('print-portfolio');
+  if(printButton) printButton.addEventListener('click', function(){ window.print(); });
+  var printState = [];
+  window.addEventListener('beforeprint', function(){
+    printState = Array.from(document.querySelectorAll('details')).map(function(d){ var wasOpen=d.open; d.open=true; return [d,wasOpen]; });
+  });
+  window.addEventListener('afterprint', function(){ printState.forEach(function(pair){pair[0].open=pair[1];}); printState=[]; });
 
   /* impact bars observer */
   var bars = document.querySelectorAll('.i-bar.after');
