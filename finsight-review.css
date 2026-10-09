@@ -1,0 +1,26 @@
+/* Finsight 전용. 모든 선택자는 .finsight-card(요약 카드) 또는 .finsight-case(상세) 안으로 한정한다. */
+.finsight-card .fs-points{margin:12px 0 0;display:grid;gap:8px}
+.finsight-card .fs-points div{display:grid;grid-template-columns:44px minmax(0,1fr);gap:8px;align-items:baseline}
+.finsight-card .fs-points dt{font-size:11px;font-weight:700;color:#194acb}
+.finsight-card .fs-points dd{margin:0;font-size:13px;line-height:1.55;color:#33485e;overflow-wrap:anywhere}
+
+.finsight-case .fs-glance-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px 22px;margin:16px 0 0}
+.finsight-case .fs-glance-list dt{font-size:12px;font-weight:700;color:#194acb;margin-bottom:3px}
+.finsight-case .fs-glance-list dd{margin:0;font-size:14px;line-height:1.6;color:#33485e;overflow-wrap:anywhere}
+.finsight-case .fs-owner{display:inline-block;align-self:flex-start;font-size:11px;font-weight:700;color:#194acb;background:#fff;border:1px solid #cdd7e3;border-radius:3px;padding:1px 6px}
+.finsight-case .fs-flow{grid-template-columns:repeat(3,minmax(0,1fr))}
+.finsight-case .fs-list{padding-left:20px;margin:0 0 16px}
+.finsight-case .fs-list li{margin-bottom:8px;line-height:1.7}
+.finsight-case .project-section h3{font-size:17px;margin:22px 0 10px}
+
+@media(max-width:640px){
+  .finsight-case .fs-glance-list{grid-template-columns:1fr}
+  .finsight-case .fs-flow{grid-template-columns:1fr}
+}
+@media print{
+  .finsight-case .fs-flow{grid-template-columns:repeat(3,1fr)}
+  .finsight-case .fs-glance-list dd,.finsight-card .fs-points dd{font-size:8.5pt}
+}
+.finsight-card h3,.finsight-card .fs-points dd,.finsight-case .decision-flow strong{word-break:keep-all}
+
+.finsight-case .fs-anchor{display:block;height:0;scroll-margin-top:110px}
