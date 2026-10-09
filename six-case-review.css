@@ -1,0 +1,12 @@
+/* Styles scoped to the reviewed cards and case content. */
+.review-points{display:grid;gap:8px;margin:12px 0 0}
+.review-points>div{display:grid;grid-template-columns:38px minmax(0,1fr);gap:8px}
+.review-points dt{font-size:11px;font-weight:700;color:#194acb}
+.review-points dd{font-size:13px;line-height:1.55;color:#33485e;margin:0;word-break:keep-all;overflow-wrap:anywhere}
+.review-card h3{word-break:keep-all}
+.review-glance{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:18px 0 0}
+.review-glance dt{font-size:12px;font-weight:700;color:#194acb;margin-bottom:5px}
+.review-glance dd{font-size:14px;line-height:1.65;color:#33485e;margin:0;word-break:keep-all}
+.review-response{padding:18px;background:#edf2fc;border:1px solid #cdd7e3;border-radius:4px;font:12px/1.7 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere}
+@media(max-width:640px){.review-glance{grid-template-columns:1fr;gap:12px}.review-response{font-size:10.5px;padding:12px}}
+@media print{.review-glance{gap:9pt;margin-top:9pt}.review-glance dd{font-size:8.5pt}.review-glance dt{font-size:8pt}.review-points dd{font-size:8pt}.review-points dt{font-size:7.5pt}.review-response{font-size:7pt;padding:8pt;break-inside:avoid}}
