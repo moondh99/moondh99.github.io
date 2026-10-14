@@ -1,0 +1,377 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<title>문대한 데이터 기반 PM 포트폴리오</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+@page{size:1280px 720px;margin:0}
+:root{--ink:#111418;--bg:#f6f6f3;--muted:#5a6270;--body:#3d4450;--faint:#8a919c;--line:#dfe2e6;--accent:#1f3fd1}
+*{box-sizing:border-box}
+html,body{margin:0;background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+body{font-family:'IBM Plex Sans KR',sans-serif;color:var(--ink);word-break:keep-all}
+a{color:var(--accent);text-decoration:none}
+h1,h2,h3,p,figure,ul{margin:0}
+.slide{width:1280px;height:720px;overflow:hidden;background:var(--bg);padding:64px 88px;break-after:page;position:relative}
+.slide:last-child{break-after:auto}
+.mono{font-family:'IBM Plex Mono',monospace}
+.kicker{font-family:'IBM Plex Mono',monospace;font-size:15px;letter-spacing:.04em;color:var(--accent)}
+.meta{display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:15px;letter-spacing:.04em;color:var(--muted)}
+.foot{position:absolute;left:88px;right:88px;bottom:28px;display:flex;justify-content:space-between;font-size:12px;color:var(--faint)}
+.foot .mono{font-size:12px}
+h2{font-size:46px;line-height:1.2;letter-spacing:-.02em;font-weight:700}
+.lead{font-size:20px;line-height:1.65;color:var(--body)}
+.col{display:flex;flex-direction:column}
+img.shot{width:100%;border:1px solid var(--line);background:#fff;display:block}
+/* title slides */
+.title{display:flex;flex-direction:column;justify-content:space-between}
+.title h1{font-size:72px;line-height:1.14;font-weight:700;letter-spacing:-.02em}
+.title .lead{font-size:23px;line-height:1.55;max-width:900px;margin-top:24px}
+.nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;border-top:2px solid var(--ink);padding-top:22px}
+.nums div{display:flex;flex-direction:column;gap:6px}
+.nums b{font-family:'IBM Plex Mono',monospace;font-size:38px;font-weight:600}
+.nums b.hi{color:var(--accent)}
+.nums span{font-size:16px;color:var(--muted);line-height:1.45}
+/* stat boxes */
+.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.stats>div{background:#fff;border:1px solid var(--line);padding:16px 18px;display:flex;flex-direction:column;gap:4px}
+.stats b{font-family:'IBM Plex Mono',monospace;font-size:28px;font-weight:600}
+.stats span{font-size:14px;color:var(--muted);line-height:1.4}
+.quote{border-left:3px solid var(--accent);padding:4px 0 4px 18px;font-size:19px;line-height:1.5;font-weight:600}
+.quote small{display:block;font-size:13px;font-weight:400;color:var(--muted);margin-top:4px}
+/* decision cards */
+.opts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.opt{background:#fff;border:1px solid var(--line);padding:24px;display:flex;flex-direction:column;gap:10px}
+.opt .tag{font-family:'IBM Plex Mono',monospace;font-size:14px;color:var(--faint)}
+.opt .name{font-size:22px;font-weight:600;line-height:1.35}
+.opt p{font-size:16px;line-height:1.6;color:var(--body)}
+.opt.pick{background:var(--ink);border-color:var(--ink);color:#fff}
+.opt.pick .tag{color:#9fb4ff}
+.opt.pick p{color:#d5d9e0}
+.tradeoff{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:40px;border-top:2px solid var(--ink);padding-top:20px}
+.tradeoff .lbl{font-size:14px;font-weight:600;color:var(--muted);display:block;margin-bottom:6px}
+.tradeoff p{font-size:17px;line-height:1.6}
+/* result */
+.res{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:52px}
+.rnum{display:flex;flex-direction:column;gap:3px;border-bottom:1px solid var(--line);padding-bottom:14px}
+.rnum b{font-family:'IBM Plex Mono',monospace;font-size:32px;font-weight:600}
+.rnum b.hi{color:var(--accent)}
+.rnum span{font-size:14px;color:var(--muted);line-height:1.45}
+.role .lbl{font-size:14px;font-weight:600;color:var(--muted)}
+.role p{font-size:15px;line-height:1.6}
+.note{font-size:13px;color:var(--faint);line-height:1.5}
+/* one-pager */
+.op{background:#fff;padding:44px 56px}
+.op-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:22px}
+.case{display:flex;flex-direction:column;gap:16px;background:#f5f6f8;padding:24px}
+.case .tag{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;color:var(--accent)}
+.case h3{font-size:26px;line-height:1.3;letter-spacing:-.01em}
+.case .ctx{font-size:15.5px;line-height:1.6;color:var(--body)}
+.row{display:grid;grid-template-columns:48px minmax(0,1fr);gap:10px;align-items:start;background:#fff;border:1px solid var(--line);padding:11px 12px;font-size:14.5px;line-height:1.5;color:var(--faint)}
+.row .mono{font-size:12px;padding-top:1px}
+.row.pick{background:var(--ink);border-color:var(--ink);color:#fff}
+.row.pick .mono{color:#9fb4ff}
+.kn{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.kn div{display:flex;flex-direction:column;gap:2px}
+.kn b{font-family:'IBM Plex Mono',monospace;font-size:26px;font-weight:600}
+.kn b.hi{color:var(--accent)}
+.kn span{font-size:13px;color:var(--muted);line-height:1.4}
+.case .rl{margin-top:auto;border-top:1px solid var(--line);padding-top:12px;font-size:13.5px;line-height:1.55;color:var(--muted)}
+/* closing */
+.exp{list-style:none;padding:0;border-top:2px solid var(--ink)}
+.exp li{display:grid;grid-template-columns:80px 260px minmax(0,1fr);gap:16px;padding:11px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.45}
+.exp .y{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);padding-top:2px}
+.exp .t{font-weight:600}
+.exp .d{color:var(--body)}
+</style>
+</head>
+<body>
+
+<!-- 1 Cover -->
+<section class="slide title" aria-label="표지">
+  <div class="meta"><span>PORTFOLIO · 2026</span><span>문대한 · 데이터 기반 PM</span></div>
+  <div style="display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:56px;align-items:end">
+    <div class="col" style="gap:26px">
+      <span class="kicker">문대한 · 데이터 기반 PM</span>
+      <h1 style="font-size:60px">데이터가 말할 수 있는 것만<br>보여 주도록 서비스 범위를<br>정합니다.</h1>
+    </div>
+    <img src="/assets/portrait.jpg" alt="문대한 프로필 사진" style="width:220px;height:275px;object-fit:cover;border:1px solid var(--line)">
+  </div>
+  <div class="nums" style="grid-template-columns:repeat(3,minmax(0,1fr))">
+    <div><span>이메일</span><b style="font-size:20px"><a href="mailto:mdh0204@naver.com">mdh0204@naver.com</a></b></div>
+    <div><span>포트폴리오</span><b style="font-size:20px"><a href="https://moondh99.github.io/">moondh99.github.io</a></b></div>
+    <div><span>GitHub</span><b style="font-size:20px"><a href="https://github.com/moondh99">github.com/moondh99</a></b></div>
+  </div>
+</section>
+
+<!-- 2 Summary one-pager -->
+<section class="slide op" aria-label="세 사례 요약">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:16px">
+    <div class="col" style="gap:8px">
+      <span class="mono" style="font-size:13px;letter-spacing:.06em;color:var(--muted)">SUMMARY · 대표 사례 3</span>
+      <h2 style="font-size:32px">세 사례 모두, 데이터가 보증하지 못하는 값은 내보내지 않았습니다</h2>
+    </div>
+  </div>
+  <div class="op-grid">
+    <div class="case">
+      <span class="tag">01 · NCA 공약·공식자료 대조 · 2025–2026</span>
+      <h3>점수를 내리고, 근거를 남기다</h3>
+      <p class="ctx">1인 운영으로 사람 검수가 끊긴 공약 이행 평가 서비스.</p>
+      <div class="col" style="gap:6px">
+        <div class="row"><span class="mono">기각</span><span>평가 수치 공개 유지 · 공식 식별자 일치만 공개</span></div>
+        <div class="row pick"><span class="mono">채택</span><span>최소 검수: 매처 버전을 낼 때만 표본 검증</span></div>
+      </div>
+      <div class="kn">
+        <div><b class="hi">33→89%</b><span>공약·예산 매칭 정밀도<br>(표본 18건 중 16건)</span></div>
+        <div><b>2.1%</b><span>AI 매처 오탐률<br>(상한 4.1%)</span></div>
+      </div>
+      <p class="rl">2025 데이터 엔지니어 · 2026 전환 제안·검토·승인. 설계 초안·코드·테스트는 AI 협업.</p>
+    </div>
+    <div class="case">
+      <span class="tag">02 · 양주 광역버스 좌석 정보 · 2026</span>
+      <h3>0석과 ‘모름’을 나누다</h3>
+      <p class="ctx">양주→서울 광역버스 승객용 좌석 정보. 빈 슬롯도 0으로 들어왔습니다.</p>
+      <div class="col" style="gap:6px">
+        <div class="row"><span class="mono">기각</span><span>모두 0으로 처리</span></div>
+        <div class="row pick"><span class="mono">채택</span><span>0석·정보 없음·빈 슬롯 분리, 예측 확률은 null</span></div>
+      </div>
+      <div class="kn">
+        <div><b class="hi">183</b><span>API 테스트 passed<br>(AI 작성)</span></div>
+        <div><b>4곳·6건</b><span>검증한 정류장·<br>노선 방향 매핑</span></div>
+      </div>
+      <p class="rl">5인 팀 · 개발·AI 서비스 설계, 범위 결정·검토. 명세 초안·코드·테스트는 AI 협업.</p>
+    </div>
+    <div class="case">
+      <span class="tag">03 · Finsight 증권사 리포트 · 2025–2026</span>
+      <h3>리포트를 세지 않고, 증권사를 세다</h3>
+      <p class="ctx">증권사 리포트를 매일 수집·파싱하는 서비스를 2026년에 혼자 다시 만들었습니다.</p>
+      <div class="col" style="gap:6px">
+        <div class="row"><span class="mono">기각</span><span>전체 리포트 평균 목표가</span></div>
+        <div class="row pick"><span class="mono">채택</span><span>증권사별 최신 목표가로만 평균</span></div>
+      </div>
+      <div class="kn">
+        <div><b class="hi">29→15</b><span>삼성전자 평균에 들어간<br>리포트 → 증권사</span></div>
+        <div><b>2,536</b><span>수집·파싱한 리포트<br>(2026-10-13)</span></div>
+      </div>
+      <p class="rl">2025 5인 팀 팀장·PM · 2026 혼자 재구축, 결정·검토. 2026 코드·대안 조사는 AI 협업.</p>
+    </div>
+  </div>
+  <div class="foot" style="left:56px;right:56px;bottom:22px"><span>수치는 데이터·연결 품질 지표입니다. 사용자 지표는 포함하지 않았습니다.</span><span class="mono">moondh99.github.io</span></div>
+</section>
+
+<!-- NCA -->
+<section class="slide title" aria-label="NCA 표지">
+  <div class="meta"><span>CASE 01 · NCA 공약·공식자료 대조</span><span>2025 – 2026</span></div>
+  <div>
+    <h1>점수를 내리고,<br>근거를 남기다</h1>
+    <p class="lead">사람 검수가 끊긴 공약 이행 평가 서비스. 저는 평가 수치 공개를 멈추고, 공약과 공식자료를 나란히 보여 주는 서비스로 바꾸자고 제안했습니다.</p>
+  </div>
+  <div class="nums">
+    <div><b class="hi">33% → 89%</b><span>공약·예산 매칭 정밀도 (검증 표본 18건)</span></div>
+    <div><b>349 → 49</b><span>관계 재구축 후 오매칭 건수</span></div>
+    <div><b>2.1%</b><span>AI 매처 오탐률 · 상한 4.1% 통과</span></div>
+  </div>
+</section>
+
+<section class="slide" aria-label="NCA 문제" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center">
+  <div class="col" style="gap:24px">
+    <span class="kicker">01 · 문제</span>
+    <h2>병목은 수집이 아니라<br>검수였습니다</h2>
+    <p class="lead" style="font-size:19px">1인 운영으로는 판정을 뒷받침할 사람 검수를 이어갈 수 없었습니다. 자료는 계속 쌓이는데, 그 자료로 내린 판정을 아무도 확인하지 못했습니다. 화면에는 점수가 계속 공개되고 있었습니다.</p>
+    <div class="stats">
+      <div><b>468</b><span>평가 대상 공약</span></div>
+      <div><b>120</b><span>공개된 이행 라벨</span></div>
+      <div><b>48.25</b><span>공개 중이던 점수</span></div>
+    </div>
+  </div>
+  <div class="col" style="gap:20px">
+    <img class="shot" src="/assets/cases/nca-home-original.png" alt="서비스 홈 화면. 이행 평가 수치를 검수 병목으로 철수했다는 공지가 있다." style="height:330px;object-fit:cover;object-position:top">
+    <p class="quote">“자료에 대한 진술은 한다. 공약 이행에 대한 진술은 하지 않는다.”<small>전환 설계의 판정선</small></p>
+  </div>
+  <div class="foot"><span>2025년에 저는 뉴스 크롤러와 Gemini API 공약 PDF 파서를 만들었습니다.</span><span class="mono">NCA · 2/4</span></div>
+</section>
+
+<section class="slide col" aria-label="NCA 결정" style="gap:30px">
+  <div class="col" style="gap:14px">
+    <span class="kicker">02 · 결정</span>
+    <h2>세 가지 안을 놓고 ‘최소 검수’를 골랐습니다</h2>
+  </div>
+  <div class="opts">
+    <div class="opt"><span class="tag">A · 기각</span><span class="name">평가 수치 공개 유지</span><p>검수 없는 판정이 계속 시민에게 노출됩니다.</p></div>
+    <div class="opt"><span class="tag">B · 기각</span><span class="name">공식 식별자 일치만 공개</span><p>연결량이 급감하고, 계약 대장에는 공약 번호가 없습니다.</p></div>
+    <div class="opt pick"><span class="tag">C · 채택</span><span class="name">최소 검수</span><p>건별 검수 없이 매처 버전을 낼 때만 표본으로 검증합니다. 1인 운영으로 유지할 수 있는 단위입니다.</p></div>
+  </div>
+  <div class="tradeoff">
+    <div><span class="lbl">감수한 것</span><p>‘이행률 48점’ 같은 눈에 띄는 헤드라인을 포기했습니다.</p></div>
+    <div><span class="lbl">승인 조건 4가지 · 철수 방식</span><p>① ‘검수 없음’의 정확한 정의 ② 자료원별 상태 모델 ③ 완전 오탐률 게이트 ④ 연결 건수를 성과 지표로 쓰지 않기.<br>값은 지우지 않고 null과 사유로 남겼고, 공지를 먼저 띄운 뒤 한 번에 전환했습니다.</p></div>
+  </div>
+  <div class="foot"><span></span><span class="mono">NCA · 3/4</span></div>
+</section>
+
+<section class="slide res" aria-label="NCA 결과">
+  <div class="col" style="gap:18px">
+    <span class="kicker">03 · 결과</span>
+    <h2 style="font-size:40px">점수 대신, 검증된 연결</h2>
+    <img class="shot" src="/assets/cases/nca-uijeongbu-comparison.png" alt="전환 후 의정부시장 공약 172건 화면. 카드마다 자료 대조 배지가 있다." style="height:400px;object-fit:cover;object-position:top">
+  </div>
+  <div class="col" style="gap:16px;padding-top:40px">
+    <div class="rnum"><b class="hi">33% → 89%</b><span>공약·예산 매칭 정밀도 · 검증 표본 18건 중 16건</span></div>
+    <div class="rnum"><b>349 → 49</b><span>관계 재구축 후 오매칭 · 정밀도 17.3% → 34.7%</span></div>
+    <div class="rnum"><b>2.1%</b><span>AI 매처 오탐률(상한 4.1%) · 통과한 대조 카드 375쌍 정본 DB 적재</span></div>
+    <div class="role col" style="gap:4px"><span class="lbl">역할</span><p>2025 데이터 엔지니어 · 2026 전환 제안·검토·승인. 설계 초안·코드·테스트는 AI 협업.</p></div>
+    <p class="note">수치는 연결 품질 지표입니다. 사용자 지표는 포함하지 않았습니다.</p>
+  </div>
+  <div class="foot"><span></span><span class="mono">NCA · 4/4</span></div>
+</section>
+
+<!-- Yangju -->
+<section class="slide title" aria-label="양주 표지">
+  <div class="meta"><span>CASE 02 · 양주 광역버스 좌석 정보</span><span>2026</span></div>
+  <div>
+    <h1>0석과 ‘모름’을<br>나누다</h1>
+    <p class="lead">양주에서 서울로 출퇴근하는 광역버스 승객에게 좌석 정보를 주는 서비스. 저는 모르는 값을 0으로 채우지 않고, 근거 없는 확률은 보여 주지 않는 API 기준을 세웠습니다.</p>
+  </div>
+  <div class="nums">
+    <div><b class="hi">2 / 56</b><span>첫 조회에서 쓸 수 있던 좌석 값 (슬롯 56개 중)</span></div>
+    <div><b>4곳 · 6건</b><span>공식 자료와 대조해 남긴 정류장 · 매핑</span></div>
+    <div><b>183</b><span>API 테스트 passed (AI 작성)</span></div>
+  </div>
+</section>
+
+<section class="slide col" aria-label="양주 문제" style="gap:26px">
+  <span class="kicker">01 · 문제</span>
+  <div style="display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:56px">
+    <div class="col" style="gap:22px">
+      <h2>빈칸도 0으로<br>들어왔습니다</h2>
+      <p class="lead" style="font-size:19px">2026 양주시 미래인재 AI 공모전에 5인 팀으로 참가했습니다. 지금의 잔여석만으로는 내 정류장에 도착했을 때 만차인지 알기 어렵습니다. 10월 3일에 덕정역 도착 API를 한 번 조회했는데, 빈 슬롯이 기본값 0으로 들어왔습니다. 그대로 쓰면 ‘정보 없음’이 ‘만석’으로 보입니다.</p>
+      <p class="quote">“0으로 합치면, 정보 없음이 만석으로 읽힙니다.”<small>좌석 상태를 나눈 이유</small></p>
+    </div>
+    <div class="col" style="gap:14px;padding-top:6px">
+      <span style="font-size:14px;font-weight:600;color:var(--muted)">10월 3일 덕정역 1회 조회 · 슬롯 56개</span>
+      <div class="stats" style="grid-template-columns:1fr 1fr">
+        <div><b style="color:var(--accent)">2</b><span>쓸 수 있는 좌석 값</span></div>
+        <div><b>37</b><span>빈 슬롯</span></div>
+        <div><b>28</b><span>공란·해석 불가</span></div>
+        <div><b>8</b><span>음수·미제공</span></div>
+      </div>
+      <p class="note">플래그가 겹치므로 합산하지 않습니다.</p>
+      <p style="font-size:15px;line-height:1.6;color:var(--body)">저는 10월 7일 팀 회의용으로 API 명세·DB 설계 검토안 v0.1(22쪽)을 AI 협업으로 썼습니다. 첫 안건은 현재 좌석, 0석 확률, 근거 부족을 어떻게 나눌지였습니다.</p>
+    </div>
+  </div>
+  <div class="foot"><span></span><span class="mono">양주 · 2/4</span></div>
+</section>
+
+<section class="slide col" aria-label="양주 결정" style="gap:26px">
+  <div class="col" style="gap:14px">
+    <span class="kicker">02 · 결정</span>
+    <h2>모르는 값은 모른다고 보냈습니다</h2>
+  </div>
+  <div class="opts">
+    <div class="opt"><span class="tag">A · 기각</span><span class="name">모두 0으로 처리</span><p>빈 슬롯과 정보 없음이 만석 관측과 섞입니다.</p></div>
+    <div class="opt"><span class="tag">시각 · 기각</span><span class="name">요청 시각 기준 보정</span><p>옛 도착 예정 시간에 새 조회 시각이 붙으면 지금 본 값처럼 보입니다.</p></div>
+    <div class="opt pick"><span class="tag">B · 채택</span><span class="name">0석·정보 없음·빈 슬롯 분리</span><p>실제 차량이 보고한 0만 만석으로 봅니다. -1·공란·음수는 0으로 바꾸지 않고, 빈 슬롯은 후보에서 뺍니다.</p></div>
+  </div>
+  <div class="tradeoff">
+    <div><span class="lbl">감수한 것</span><p>범위를 정류장 4곳·매핑 6건으로 좁혀, 조회할 수 있는 곳이 줄었습니다. 반대편 정류장, 심야 G1300N, 다른 노선은 뺐습니다.</p></div>
+    <div><span class="lbl">함께 정한 기준</span><p>수집 시각은 로컬 수신 시각, 도착 예정 시각은 수신 시각+ETA로 고정. 수집 주기×2+60초가 지나면 stale.<br>예측 확률은 null로 공개하고, 대신 out_of_scope · unverified_direction · missing_label_pipeline 순으로 근거가 부족한 이유를 보냅니다.</p></div>
+  </div>
+  <div class="foot"><span></span><span class="mono">양주 · 3/4</span></div>
+</section>
+
+<section class="slide res" aria-label="양주 결과">
+  <div class="col" style="gap:18px">
+    <span class="kicker">03 · 결과</span>
+    <h2 style="font-size:40px">값과 상태를 함께 보내는 API</h2>
+    <img class="shot" src="/assets/cases/yangju-api-swagger.png" alt="로컬 좌석 조회 API의 Swagger 화면. 현재 좌석은 탑승 확률이 아니며, 오래된 관측은 stale, 예측 확률은 null이라는 설명이 있다." style="height:400px;object-fit:cover;object-position:top">
+  </div>
+  <div class="col" style="gap:16px;padding-top:40px">
+    <div class="rnum"><b class="hi">3회 · HTTP 200</b><span>실수집 첫 조회 3회 모두 응답</span></div>
+    <div class="rnum"><b>17행</b><span>슬롯 72행 중 유효 좌석 · API 보고 0석은 1행</span></div>
+    <div class="rnum"><b>183 · 92</b><span>API 테스트 passed(SQLite 통합 50개 포함) · 수집기 합성·로컬 테스트, 모두 AI 작성</span></div>
+    <div class="role col" style="gap:4px"><span class="lbl">역할</span><p>5인 팀 · 개발·AI 서비스 설계, 범위 결정·검토. 명세 초안·코드·테스트는 AI 협업.</p></div>
+    <p class="note">SQLite 로컬 구현입니다. 팀 저장소와 통합하기 전이고, 배포하지 않았습니다.</p>
+  </div>
+  <div class="foot"><span></span><span class="mono">양주 · 4/4</span></div>
+</section>
+
+<!-- Finsight -->
+<section class="slide title" aria-label="Finsight 표지">
+  <div class="meta"><span>CASE 03 · Finsight 증권사 리포트 수집</span><span>2025 – 2026</span></div>
+  <div>
+    <h1>리포트를 세지 않고,<br>증권사를 세다</h1>
+    <p class="lead">증권사 리포트를 매일 수집·파싱해 종목별 투자의견과 목표가 변화를 보여 주는 서비스. 2025년 팀 프로젝트를 2026년에 혼자 다시 만들며, 저는 평균 목표가를 증권사별 최신값으로만 계산하기로 정했습니다.</p>
+  </div>
+  <div class="nums">
+    <div><b class="hi">29건 → 15개</b><span>삼성전자 평균 목표가에 들어간 리포트 → 증권사</span></div>
+    <div><b>2,536</b><span>수집·파싱한 리포트 · 종목 591개 (2026-10-13)</span></div>
+    <div><b>55%</b><span>MD5 중복 게이트로 걸러 낸 재다운로드</span></div>
+  </div>
+</section>
+
+<section class="slide col" aria-label="Finsight 문제" style="gap:26px">
+  <span class="kicker">01 · 문제 · 2025 팀 → 2026 재구축</span>
+  <h2>PDF는 증권사마다 달랐고,<br>평균은 중복을 셌습니다</h2>
+  <p class="lead" style="font-size:19px;max-width:1000px">2025년에 저는 5인 팀에서 팀장·PM을 맡아, 팀원의 경험과 강점에 맞춰 수집과 파싱의 역할을 나눴습니다. 제 커밋에는 증권사별 규칙 파서를 먼저 쓰고 2주 뒤 LLM 파서로 바꾼 기록이 남아 있습니다. 2026년에 같은 서비스를 혼자 다시 만들며 보니 문제가 셋이었습니다.</p>
+  <div class="opts">
+    <div class="opt"><span class="tag">문제 1 · 파싱</span><p style="font-size:18px;color:var(--ink)">PyPDF로 1쪽 텍스트만 뽑아 LLM에 넘기고 있었습니다.</p></div>
+    <div class="opt"><span class="tag">문제 2 · 스케줄러</span><p style="font-size:18px;color:var(--ink)">Airflow DAG는 실제로 돈 적이 없었습니다.</p></div>
+    <div class="opt"><span class="tag" style="color:var(--accent)">문제 3 · 집계</span><p style="font-size:18px;color:var(--ink)">평균 목표가에 같은 증권사의 리포트가 여러 건 들어가 있었습니다.</p></div>
+  </div>
+  <div class="foot"><span></span><span class="mono">Finsight · 2/4</span></div>
+</section>
+
+<section class="slide col" aria-label="Finsight 결정" style="gap:24px">
+  <div class="col" style="gap:14px">
+    <span class="kicker">02 · 결정 · 2026 재구축</span>
+    <h2>파서는 라이선스와 장비로 걸렀습니다</h2>
+  </div>
+  <div class="opts">
+    <div class="opt"><span class="tag">A · 기각</span><span class="name">PyMuPDF</span><p>AGPL 라이선스 때문에 뺐습니다.</p></div>
+    <div class="opt"><span class="tag">B · 기각</span><span class="name">Marker/Surya · Chandra</span><p>매출 제한이 있거나 GPU가 필요합니다.</p></div>
+    <div class="opt pick"><span class="tag">C · 채택</span><span class="name">docling + 로컬 Ollama</span><p>로컬 모델로 파싱합니다. 대신 결과를 그대로 믿지 않도록 가드를 붙였습니다.</p></div>
+  </div>
+  <div class="tradeoff">
+    <div><span class="lbl">감수한 것</span><p>LLM의 과잉 응답. 68자 페이지에서도 모든 필드가 채워졌습니다. 150자 미만 페이지는 검토 대기로 보내고, 증권사 이름(5번 중 2번만 맞힘)은 정규식으로 읽습니다.</p></div>
+    <div><span class="lbl">함께 정한 것</span><p>스케줄러: Airflow 대신 launchd와 일일 ETL 스크립트 하나. “하루 1회, 노트북 1대 작업에 컨테이너 7개는 필요 없다.”<br>집계: 전체 리포트 평균 대신 증권사별 최신 목표가. 산업 리포트는 뺐습니다. 평균에 들어가는 값은 29건에서 15개로 줄었지만, 리포트를 자주 내는 증권사 쪽으로 쏠리지 않습니다.</p></div>
+  </div>
+  <div class="foot"><span></span><span class="mono">Finsight · 3/4</span></div>
+</section>
+
+<section class="slide res" aria-label="Finsight 결과">
+  <div class="col" style="gap:18px">
+    <span class="kicker">03 · 결과 · 2026 재구축</span>
+    <h2 style="font-size:40px">같은 증권사는 한 번만</h2>
+    <img class="shot" src="/assets/cases/finsight-2026-reports.png" alt="2026 재구축 Finsight 메인 화면. 목표가 변화, 목표가 대비 현재가, 투자의견·목표가 변경 목록." style="height:400px;object-fit:cover;object-position:top">
+  </div>
+  <div class="col" style="gap:16px;padding-top:40px">
+    <div class="rnum"><b class="hi">453,793 → 487,333원</b><span>삼성전자 평균 목표가 · 29건 → 15개 증권사 최신값</span></div>
+    <div class="rnum"><b>2,536건</b><span>수집·파싱한 리포트 · 종목 591개 (2026-10-13)</span></div>
+    <div class="rnum"><b>55% · 20곳</b><span>MD5 중복 게이트로 걸러 낸 재다운로드 · 수집 증권사(2026-08-26)</span></div>
+    <div class="role col" style="gap:4px"><span class="lbl">역할</span><p>2025 5인 팀 팀장·PM · 2026 혼자 재구축, 결정·검토. 2026 코드·대안 조사는 AI 협업.</p></div>
+    <p class="note">수치는 데이터 처리 지표입니다. 사용자 지표는 포함하지 않았습니다.</p>
+  </div>
+  <div class="foot"><span></span><span class="mono">Finsight · 4/4</span></div>
+</section>
+
+<!-- Closing -->
+<section class="slide col" aria-label="추가 경험과 연락처" style="gap:22px">
+  <div class="meta"><span>추가 경험</span><span>서비스 기획·설계</span></div>
+  <ul class="exp">
+    <li><span class="y">2025</span><span class="t">온통청년 문화·여가 접근성</span><span class="d">3인 팀장. 시설 범위·우선 검토 지역 조정, 보고서·제언 초안. 2025 연구 랩업 대상</span></li>
+    <li><span class="y">2026</span><span class="t">Dear Log</span><span class="d">데모 화면 문제를 위치와 수정 방향이 담긴 요청 10건으로 정리해 팀에 전달</span></li>
+    <li><span class="y">2026</span><span class="t">Tomorrow SOL</span><span class="d">퇴사·독립·자동차 구매를 비교하는 화면 7개. 계산과 AI 설명의 역할을 나눈 설계</span></li>
+    <li><span class="y">2026.05</span><span class="t">국민대 특화 행정 서비스 AI</span><span class="d">공식 학사 자료 확인 후 문의문과 체크리스트를 작성하는 React·FastAPI 프로토타입</span></li>
+    <li><span class="y">2024</span><span class="t">투자 교육 훈련 플랫폼</span><span class="d">초보 투자자의 이해도·리스크 성향을 고려한 교육과 모의투자 흐름</span></li>
+    <li><span class="y">2025</span><span class="t">수강신청 시스템 개편</span><span class="d">수강 계획과 마일리지 우선권을 요구사항·DFD·ERD·HTML 프로토타입으로 정리</span></li>
+    <li><span class="y">2026</span><span class="t">첫걸음 동네산책</span><span class="d">3인 팀 대표. 이주민의 동네 정보 공유를 위한 핵심 화면 4개와 예시 데이터 MVP</span></li>
+    <li><span class="y">2026</span><span class="t">금융문맹 탈출기 RPG</span><span class="d">개인 5장 기획·편집·AI 제작. 공식 표지·카드뉴스 인기상</span></li>
+  </ul>
+  <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;border-top:2px solid var(--ink);padding-top:18px">
+    <span style="font-size:24px;font-weight:700">문대한 · 데이터 기반 PM</span>
+    <span class="mono" style="font-size:16px;color:var(--muted)"><a href="mailto:mdh0204@naver.com">mdh0204@naver.com</a> · <a href="https://moondh99.github.io/">moondh99.github.io</a> · <a href="https://github.com/moondh99">github.com/moondh99</a></span>
+  </div>
+</section>
+
+</body>
+</html>

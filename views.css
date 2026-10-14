@@ -24,3 +24,4 @@
 @media(pointer:coarse){.brand,.breadcrumbs a,.row-action a,.project-return a,.view-sectionhead>a{min-height:44px;display:inline-flex;align-items:center}}
 @media(prefers-reduced-motion:reduce){.summary-card{transition:none}}
 @media print{.detail-row h3 a::after{content:none}.summary-card{box-shadow:none}.case-detail{display:inline!important;font-size:8pt;color:#526375;text-decoration:none;min-height:0}.summary-card .case-detail::after{content:" moondh99.github.io" attr(href);position:static}.case-capture img{border:1px solid #d7dfe8}}
+@media screen and (min-width:1100px){.summary-cards{grid-template-columns:repeat(3,minmax(0,1fr))}.summary-card .card-bottom{flex-direction:column;align-items:flex-start;gap:6px}}

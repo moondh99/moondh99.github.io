@@ -1,0 +1,53 @@
+/* Story layout for featured case pages (long-form, magazine style) */
+.story-view{background:#fbfaf7}
+.story-view .bar{background:#fbfaf7}
+.story{--paper:#fbfaf7;--ink:#1c1a17;--body:#3a362f;--muted:#6b655c;--rule:#e4dfd6;--tint:#f3efe7;--accent:#9a3412;
+  color:var(--ink);word-break:keep-all;overflow-wrap:anywhere;padding-bottom:96px}
+.story .serif{font-family:"Nanum Myeongjo",serif;font-weight:800;letter-spacing:-.02em}
+.story .kicker{display:block;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13px;letter-spacing:.08em;color:var(--accent);font-weight:500}
+.story-wide{max-width:1120px;width:100%;box-sizing:border-box;margin:0 auto;padding:0 24px}
+.story-col{max-width:720px;width:100%;box-sizing:border-box;margin:0 auto;padding:0 24px}
+.story-hero{padding-top:72px;padding-bottom:48px;display:flex;flex-direction:column;gap:24px}
+.story-hero h1{margin:0;font-size:clamp(38px,6vw,76px);line-height:1.18}
+.story-hero .lede{margin:0;font-size:clamp(18px,2vw,21px);line-height:1.75;color:#4a453e;max-width:720px}
+.story-meta{display:flex;flex-wrap:wrap;gap:6px 28px;margin:0;padding-top:18px;border-top:1px solid var(--rule);font-size:15px;color:var(--muted)}
+.story-meta div{display:flex;gap:8px}.story-meta dt{font-weight:700;color:var(--ink);white-space:nowrap;flex:none}.story-meta dd{margin:0}
+.story-figure{margin:0 auto;display:flex;flex-direction:column;gap:12px}
+.story-figure img{display:block;width:100%;height:auto;border-radius:4px;box-shadow:0 0 0 1px var(--rule)}
+.story-figure figcaption{font-size:14px;color:var(--muted)}
+.story-sec{padding-top:88px;display:flex;flex-direction:column;gap:22px}
+.story-sec h2{margin:0;font-size:clamp(27px,3.4vw,40px);line-height:1.3}
+.story-sec p{margin:0;font-size:18px;line-height:1.9;color:var(--body)}
+.story-quote{margin:80px auto 0;max-width:960px;padding:0 24px;font-family:"Nanum Myeongjo",serif;font-weight:700;font-size:clamp(23px,3vw,34px);line-height:1.55;color:var(--ink)}
+.story-quote p{margin:0}.story-quote footer{margin-top:14px;font-family:inherit;font-family:Pretendard,"Pretendard Variable",sans-serif;font-weight:400;font-size:15px;color:var(--muted)}
+.options{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));border-top:1px solid var(--ink)}
+.options li{padding:26px 22px;display:flex;flex-direction:column;gap:10px;color:var(--muted)}
+.options li+li{border-left:1px solid var(--rule)}
+.options .tag{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:13px}
+.options b{font-size:20px;color:var(--muted)}
+.options .rejected b{text-decoration:line-through;text-decoration-thickness:1px}
+.options span:last-child{font-size:16px;line-height:1.7}
+.options .chosen{background:var(--tint);color:var(--body)}
+.options .chosen .tag{color:var(--accent)}.options .chosen b{color:var(--ink)}
+.stats{margin:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:36px 32px}
+.stats div{display:flex;flex-direction:column-reverse;gap:8px}
+.stats dt{font-size:15px;line-height:1.6;color:var(--muted)}
+.stats dd{margin:0;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:clamp(34px,4vw,44px);font-weight:500;font-variant-numeric:tabular-nums;color:var(--ink)}
+.stats div:first-child dd{color:var(--accent)}
+.story-note{font-size:15px!important;color:var(--muted)!important;border-top:1px solid var(--rule);padding-top:16px}
+.story-next{max-width:1120px;margin:96px auto 0;padding:24px 24px 0;border-top:1px solid var(--rule);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px 24px;font-size:15px}
+.story-next a{min-height:44px;display:inline-flex;align-items:center}
+.story a{color:var(--accent)}
+@media(max-width:640px){
+  .story-hero{padding-top:40px}
+  .story-sec{padding-top:64px}
+  .options li+li{border-left:0;border-top:1px solid var(--rule)}
+  .story-sec p{font-size:17px}
+}
+@media print{
+  .story-view,.story-view .bar{background:#fff}
+  .story{padding-bottom:0}
+  .story-sec{padding-top:28px;break-inside:auto}
+  .story-figure,.options,.stats,.story-quote{break-inside:avoid}
+  .story-next{display:none}
+}
