@@ -84,6 +84,13 @@ img.shot{width:100%;border:1px solid var(--line);background:#fff;display:block}
 .exp .y{font-family:'IBM Plex Mono',monospace;font-size:13px;color:var(--muted);padding-top:2px}
 .exp .t{font-weight:600}
 .exp .d{color:var(--body)}
+/* artifacts */
+.fig{display:flex;flex-direction:column;gap:6px;min-width:0}
+.fig img{border:1px solid var(--line);background:#fff;display:block;object-fit:cover;object-position:top}
+.cap{font-size:12.5px;line-height:1.45;color:var(--muted)}
+.cap b{color:var(--ink);font-weight:600}
+.blab{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;color:var(--faint)}
+.blab.on{color:var(--accent)}
 </style>
 </head>
 <body>
@@ -94,9 +101,9 @@ img.shot{width:100%;border:1px solid var(--line);background:#fff;display:block}
   <div style="display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:56px;align-items:end">
     <div class="col" style="gap:26px">
       <span class="kicker">문대한 · 데이터 기반 PM</span>
-      <h1 style="font-size:60px">데이터가 말할 수 있는 것만<br>보여 주도록 서비스 범위를<br>정합니다.</h1>
+      <h1 style="font-size:60px">데이터가 말할 수 있는 것만,<br>사용자가 이해할 수 있게<br>보여 줍니다.</h1>
     </div>
-    <img src="/assets/portrait.jpg" alt="문대한 프로필 사진" style="width:220px;height:275px;object-fit:cover;border:1px solid var(--line)">
+    <img src="/assets/portrait.jpg" width="600" height="771" alt="문대한 프로필 사진" style="width:220px;height:275px;object-fit:cover;border:1px solid var(--line)">
   </div>
   <div class="nums" style="grid-template-columns:repeat(3,minmax(0,1fr))">
     <div><span>이메일</span><b style="font-size:20px"><a href="mailto:mdh0204@naver.com">mdh0204@naver.com</a></b></div>
@@ -110,12 +117,26 @@ img.shot{width:100%;border:1px solid var(--line);background:#fff;display:block}
   <div style="display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:16px">
     <div class="col" style="gap:8px">
       <span class="mono" style="font-size:13px;letter-spacing:.06em;color:var(--muted)">SUMMARY · 대표 사례 3</span>
-      <h2 style="font-size:32px">세 사례 모두, 데이터가 보증하지 못하는 값은 내보내지 않았습니다</h2>
+      <h2 style="font-size:32px">세 사례 모두, 무엇을 보여 줄지 범위부터 정했습니다</h2>
     </div>
   </div>
   <div class="op-grid">
     <div class="case">
-      <span class="tag">01 · NCA 공약·공식자료 대조 · 2025–2026</span>
+      <span class="tag">01 · 온통청년 문화·여가 접근성 · 2025</span>
+      <h3>무엇을 ‘청년 시설’로 셀지부터 정하다</h3>
+      <p class="ctx">경기도 31개 시군의 청년 문화·여가시설 접근성 격차를 살핀 3인 공동 연구.</p>
+      <div class="col" style="gap:6px">
+        <div class="row"><span class="mono">기각</span><span>공공 문화시설만 · 상업 여가시설까지</span></div>
+        <div class="row pick"><span class="mono">제안</span><span>청소년·민간 문화시설까지, 청년이 실제로 쓸 수 있는지로 판단</span></div>
+      </div>
+      <div class="kn">
+        <div><b class="hi">대상</b><span>2025 경기청년 연구 랩업<br>(23팀 발표 · 팀 수상)</span></div>
+        <div><b>57쪽</b><span>공동 보고서<br>(19주 3단계)</span></div>
+      </div>
+      <p class="rl">3인 팀 팀장 · 시설 범위 제안, 교통 데이터 수집, 보고서·정책 제언 초안.</p>
+    </div>
+    <div class="case">
+      <span class="tag">02 · NCA 공약·공식자료 대조 · 2025–2026</span>
       <h3>점수를 내리고, 근거를 남기다</h3>
       <p class="ctx">1인 운영으로 사람 검수가 끊긴 공약 이행 평가 서비스.</p>
       <div class="col" style="gap:6px">
@@ -129,40 +150,104 @@ img.shot{width:100%;border:1px solid var(--line);background:#fff;display:block}
       <p class="rl">2025 데이터 엔지니어 · 2026 전환 제안·검토·승인. 설계 초안·코드·테스트는 AI 협업.</p>
     </div>
     <div class="case">
-      <span class="tag">02 · 양주 광역버스 좌석 정보 · 2026</span>
-      <h3>0석과 ‘모름’을 나누다</h3>
-      <p class="ctx">양주→서울 광역버스 승객용 좌석 정보. 빈 슬롯도 0으로 들어왔습니다.</p>
+      <span class="tag">03 · Dear Log · 2026</span>
+      <h3>팀 데모에서, 공개 운영까지</h3>
+      <p class="ctx">부모님이 음성으로 답한 이야기를 가족이 검토해 자서전 PDF로 남기는 서비스.</p>
       <div class="col" style="gap:6px">
-        <div class="row"><span class="mono">기각</span><span>모두 0으로 처리</span></div>
-        <div class="row pick"><span class="mono">채택</span><span>0석·정보 없음·빈 슬롯 분리, 예측 확률은 null</span></div>
+        <div class="row"><span class="mono">닫음</span><span>신규 가입 · 데모와 운영 데이터 섞임</span></div>
+        <div class="row pick"><span class="mono">공개</span><span>샘플 보기와 문의만 연 dear-log.com</span></div>
       </div>
       <div class="kn">
-        <div><b class="hi">183</b><span>API 테스트 passed<br>(AI 작성)</span></div>
-        <div><b>4곳·6건</b><span>검증한 정류장·<br>노선 방향 매핑</span></div>
+        <div><b class="hi">10건</b><span>데모를 써 보고 정리한<br>수정 요청 (학기 중)</span></div>
+        <div><b>5종</b><span>답변별 동의를<br>실제로 적용 (학기 후)</span></div>
       </div>
-      <p class="rl">5인 팀 · 개발·AI 서비스 설계, 범위 결정·검토. 명세 초안·코드·테스트는 AI 협업.</p>
-    </div>
-    <div class="case">
-      <span class="tag">03 · Finsight 증권사 리포트 · 2025–2026</span>
-      <h3>리포트를 세지 않고, 증권사를 세다</h3>
-      <p class="ctx">증권사 리포트를 매일 수집·파싱하는 서비스를 2026년에 혼자 다시 만들었습니다.</p>
-      <div class="col" style="gap:6px">
-        <div class="row"><span class="mono">기각</span><span>전체 리포트 평균 목표가</span></div>
-        <div class="row pick"><span class="mono">채택</span><span>증권사별 최신 목표가로만 평균</span></div>
-      </div>
-      <div class="kn">
-        <div><b class="hi">29→15</b><span>삼성전자 평균에 들어간<br>리포트 → 증권사</span></div>
-        <div><b>2,536</b><span>수집·파싱한 리포트<br>(2026-10-13)</span></div>
-      </div>
-      <p class="rl">2025 5인 팀 팀장·PM · 2026 혼자 재구축, 결정·검토. 2026 코드·대안 조사는 AI 협업.</p>
+      <p class="rl">학기 중 캡스톤 팀 백엔드·AI 흐름 · 2026.07–10 후속 개인 운영, 구현은 AI 협업.</p>
     </div>
   </div>
-  <div class="foot" style="left:56px;right:56px;bottom:22px"><span>수치는 데이터·연결 품질 지표입니다. 사용자 지표는 포함하지 않았습니다.</span><span class="mono">moondh99.github.io</span></div>
+  <div class="foot" style="left:56px;right:56px;bottom:22px"><span>사용자 지표는 포함하지 않았습니다.</span><span class="mono">moondh99.github.io</span></div>
+</section>
+
+<!-- Ontong -->
+<section class="slide title" aria-label="온통청년 표지">
+  <div class="meta"><span>CASE 01 · 온통청년 문화·여가 접근성</span><span>2025.06 – 10</span></div>
+  <div>
+    <h1>무엇을 ‘청년 시설’로<br>셀지부터 정하다</h1>
+    <p class="lead">경기도 31개 시군의 청년 문화·여가시설 접근성 격차를 살핀 3인 공동 연구. 저는 팀장으로 일정을 잡고, 시설을 어디까지 셀지 기준을 제안했습니다.</p>
+  </div>
+  <div class="nums">
+    <div><b class="hi">대상</b><span>2025 경기청년 연구 랩업 · 23팀 발표 중 6팀 수상, 팀 수상</span></div>
+    <div><b>57쪽</b><span>범위 기준부터 정책 제언까지 담은 공동 보고서</span></div>
+    <div><b>31개</b><span>경기도 시군 · 19주 3단계 · 데이터 구축 → 접근성 진단 → 입지·제언</span></div>
+  </div>
+</section>
+
+<section class="slide" aria-label="온통청년 문제" style="display:grid;grid-template-columns:minmax(0,1fr) 440px;gap:56px;align-items:center">
+  <div class="col" style="gap:24px">
+    <span class="kicker">01 · 문제</span>
+    <h2>‘청년 문화·여가시설’의<br>범위가 없었습니다</h2>
+    <p class="lead" style="font-size:19px">경기도 청년의 문화·여가시설 접근성 격차가 어디서 나는지, 어디에 먼저 투자해야 하는지가 질문이었습니다. 그런데 무엇을 시설로 셀지에서 팀 의견이 갈렸습니다. 청소년시설과 민간시설을 넣을지가 쟁점이었습니다.</p>
+    <p class="lead" style="font-size:19px">범위를 정하지 않으면 시설 데이터를 모을 수도, 격차를 잴 수도 없었습니다.</p>
+    <p class="quote">“시설 이름이 아니라, 청년이 실제로 쓸 수 있는지로 본다.”<small>시설 범위를 정한 기준</small></p>
+  </div>
+  <figure class="fig">
+    <img src="/assets/cases/ontong/report-p08-team-wbs.jpg" width="700" height="595" alt="보고서 8쪽. 기획·문서, 데이터 분석, 데이터 수집 세 역할과 19주 3단계 작업 일정표." style="width:440px;height:374px">
+    <figcaption class="cap"><b>역할 분담과 19주 WBS (보고서 p8)</b> · 2025-06~10 계획 · 팀 공동 작성</figcaption>
+  </figure>
+  <div class="foot"><span>저는 팀장으로 일정·공유자료, 범위 기획, 교통 데이터 수집, 보고서·제언 초안을 맡았습니다.</span><span class="mono">온통청년 · 2/4</span></div>
+</section>
+
+<section class="slide col" aria-label="온통청년 결정" style="gap:28px">
+  <div class="col" style="gap:14px">
+    <span class="kicker">02 · 결정</span>
+    <h2>세 가지 범위 중 ‘청소년·민간 문화시설까지’를<br>제안했습니다</h2>
+  </div>
+  <div class="opts">
+    <div class="opt"><span class="tag">① · 기각</span><span class="name">공공 문화시설만</span><p>청년 여가는 공공시설에 한정되지 않습니다.</p></div>
+    <div class="opt pick"><span class="tag">② · 제안</span><span class="name">청소년·민간 문화시설까지</span><p>이용 가능 연령과 프로그램으로 판단합니다. 청년이 쓸 수 있는 청소년시설과 공연장·전시장·영화관을 넣습니다.</p></div>
+    <div class="opt"><span class="tag">③ · 기각</span><span class="name">상업 여가시설까지</span><p>노래방·PC방·볼링장 같은 순수 상업시설은 공공정책이 직접 개입할 대상이 아닙니다.</p></div>
+  </div>
+  <div class="tradeoff">
+    <div><span class="lbl">확정된 범위</span><p>공공·민간 문화시설, 청년 특화시설, 체육·공원·복합시설. 종교시설·정규교육기관은 대상 연령과 목적이 달라 뺐고, 이유를 보고서 7쪽에 적었습니다.</p></div>
+    <div><span class="lbl">일정이 밀리자 우선 지역부터</span><p>중간공유회 준비가 늦어졌을 때, 현장과 지역 정보를 확인하기 쉬운 의정부·과천부터 검토하자고 범위를 좁혔습니다. 의정부 격자 분석은 2025-07-19에 직접 커밋했고, 확보한 데이터와 남은 계획은 공유자료로 정리했습니다.</p></div>
+  </div>
+  <div class="foot"><span>시설 데이터 정제는 팀원이 맡았습니다.</span><span class="mono">온통청년 · 3/4</span></div>
+</section>
+
+<section class="slide col" aria-label="온통청년 결과물과 결과" style="gap:20px">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end">
+    <div class="col" style="gap:12px">
+      <span class="kicker">03 · 결과물 · 결과</span>
+      <h2 style="font-size:38px">57쪽 공동 보고서와 지도, 그리고 대상</h2>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:270px 270px 270px minmax(0,1fr);gap:18px;align-items:start">
+    <figure class="fig">
+      <img src="/assets/cases/ontong/report-p01-cover.jpg" width="760" height="1120" alt="경기청년 연구랩업 보고서 표지. 팀명 온통청년과 저자 세 명의 이름이 적혀 있다." style="width:100%;height:440px">
+      <figcaption class="cap"><b>보고서 표지 (p1)</b><br>2025-10 · 3인 팀 공동 작성</figcaption>
+    </figure>
+    <figure class="fig">
+      <img src="/assets/cases/ontong/report-p07-facility-scope.jpg" width="680" height="320" alt="보고서 7쪽 1.3.3절. 포함하는 시설 유형과 제외하는 시설 유형, 그리고 제외 이유." style="width:100%;height:auto;object-fit:contain">
+      <figcaption class="cap"><b>시설 포함·제외 기준 (p7)</b><br>2025-10 · 팀 공동 작성, 범위는 본인 제안</figcaption>
+      <img src="/assets/cases/ontong/report-p52-policy.jpg" width="700" height="1050" alt="보고서 52쪽 8.2절 정책 제언. 시군 규모별 시설 등급, 북부 순환 셔틀 노선, 청년 요금, 운영시간 제안." style="width:100%;height:205px;margin-top:8px">
+      <figcaption class="cap"><b>정책 제언 (p52)</b><br>2025-10 · 팀 공동 작성, 초안은 본인</figcaption>
+    </figure>
+    <figure class="fig">
+      <img src="/assets/cases/ontong/fig-youth-facilities-per-10k.jpg" width="1085" height="1100" alt="경기도 31개 시군 지도. 청년 인구 1만 명당 청년시설 수를 시군별 색 농도로 나타낸 단계구분도." style="width:100%;height:274px;object-fit:contain">
+      <figcaption class="cap"><b>청년 인구 1만 명당 청년시설 분포도</b><br>2025-11 · 팀 분석 산출물</figcaption>
+    </figure>
+    <div class="col" style="gap:14px">
+      <div class="rnum"><b class="hi">대상</b><span>2025 경기청년 연구 랩업 · 팀 수상</span></div>
+      <div class="rnum"><b>6 / 23팀</b><span>수상 팀 / 2025-11-01 결과공유회 발표 팀</span></div>
+      <div class="role col" style="gap:4px"><span class="lbl">역할</span><p>3인 팀 팀장 · 시설 범위 제안, 교통 데이터 수집(2025-08-12 커밋), 보고서·정책 제언 초안.</p></div>
+      <p class="note">출처: 경기도 보도자료(2025-11-04), 「청년 주도 연구 성과 공유, ‘경기청년 연구 랩업(Lab Up!)’ 결과공유회 개최」</p>
+    </div>
+  </div>
+  <div class="foot"><span></span><span class="mono">온통청년 · 4/4</span></div>
 </section>
 
 <!-- NCA -->
 <section class="slide title" aria-label="NCA 표지">
-  <div class="meta"><span>CASE 01 · NCA 공약·공식자료 대조</span><span>2025 – 2026</span></div>
+  <div class="meta"><span>CASE 02 · NCA 공약·공식자료 대조</span><span>2025 – 2026</span></div>
   <div>
     <h1>점수를 내리고,<br>근거를 남기다</h1>
     <p class="lead">사람 검수가 끊긴 공약 이행 평가 서비스. 저는 평가 수치 공개를 멈추고, 공약과 공식자료를 나란히 보여 주는 서비스로 바꾸자고 제안했습니다.</p>
@@ -174,22 +259,22 @@ img.shot{width:100%;border:1px solid var(--line);background:#fff;display:block}
   </div>
 </section>
 
-<section class="slide" aria-label="NCA 문제" style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:56px;align-items:center">
+<section class="slide" aria-label="NCA 문제" style="display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:64px;align-items:center">
   <div class="col" style="gap:24px">
     <span class="kicker">01 · 문제</span>
     <h2>병목은 수집이 아니라<br>검수였습니다</h2>
-    <p class="lead" style="font-size:19px">1인 운영으로는 판정을 뒷받침할 사람 검수를 이어갈 수 없었습니다. 자료는 계속 쌓이는데, 그 자료로 내린 판정을 아무도 확인하지 못했습니다. 화면에는 점수가 계속 공개되고 있었습니다.</p>
-    <div class="stats">
+    <p class="lead" style="font-size:19px">서비스는 공약을 평가해 이행 라벨과 점수를 공개하고 있었습니다. 하지만 1인 운영으로는 판정을 뒷받침할 사람 검수를 이어갈 수 없었습니다. 자료는 계속 쌓이는데, 그 자료로 내린 판정을 아무도 확인하지 못했습니다.</p>
+    <p class="lead" style="font-size:19px">2026년에는 이 판정을 계속 공개해도 되는지부터 다시 따졌습니다.</p>
+  </div>
+  <div class="col" style="gap:28px">
+    <div class="stats" style="grid-template-columns:1fr">
       <div><b>468</b><span>평가 대상 공약</span></div>
       <div><b>120</b><span>공개된 이행 라벨</span></div>
       <div><b>48.25</b><span>공개 중이던 점수</span></div>
     </div>
-  </div>
-  <div class="col" style="gap:20px">
-    <img class="shot" src="/assets/cases/nca-home-original.png" alt="서비스 홈 화면. 이행 평가 수치를 검수 병목으로 철수했다는 공지가 있다." style="height:330px;object-fit:cover;object-position:top">
     <p class="quote">“자료에 대한 진술은 한다. 공약 이행에 대한 진술은 하지 않는다.”<small>전환 설계의 판정선</small></p>
   </div>
-  <div class="foot"><span>2025년에 저는 뉴스 크롤러와 Gemini API 공약 PDF 파서를 만들었습니다.</span><span class="mono">NCA · 2/4</span></div>
+  <div class="foot"><span>2025년에 저는 데이터 엔지니어로 뉴스 크롤러와 Gemini API 공약 PDF 파서를 만들었습니다.</span><span class="mono">NCA · 2/4</span></div>
 </section>
 
 <section class="slide col" aria-label="NCA 결정" style="gap:30px">
@@ -206,165 +291,129 @@ img.shot{width:100%;border:1px solid var(--line);background:#fff;display:block}
     <div><span class="lbl">감수한 것</span><p>‘이행률 48점’ 같은 눈에 띄는 헤드라인을 포기했습니다.</p></div>
     <div><span class="lbl">승인 조건 4가지 · 철수 방식</span><p>① ‘검수 없음’의 정확한 정의 ② 자료원별 상태 모델 ③ 완전 오탐률 게이트 ④ 연결 건수를 성과 지표로 쓰지 않기.<br>값은 지우지 않고 null과 사유로 남겼고, 공지를 먼저 띄운 뒤 한 번에 전환했습니다.</p></div>
   </div>
-  <div class="foot"><span></span><span class="mono">NCA · 3/4</span></div>
+  <div class="foot"><span>문구 기준: “예산 항목이 이 공약과 자동 연결되었습니다”는 허용, “추진 중인 것으로 확인되었습니다”는 금지.</span><span class="mono">NCA · 3/4</span></div>
 </section>
 
-<section class="slide res" aria-label="NCA 결과">
-  <div class="col" style="gap:18px">
-    <span class="kicker">03 · 결과</span>
-    <h2 style="font-size:40px">점수 대신, 검증된 연결</h2>
-    <img class="shot" src="/assets/cases/nca-uijeongbu-comparison.png" alt="전환 후 의정부시장 공약 172건 화면. 카드마다 자료 대조 배지가 있다." style="height:400px;object-fit:cover;object-position:top">
+<section class="slide col" aria-label="NCA 결과물과 결과" style="gap:18px">
+  <div class="col" style="gap:12px">
+    <span class="kicker">03 · 결과물 · 결과</span>
+    <h2 style="font-size:38px">같은 공약, 판정 배지에서 자료 대조로</h2>
   </div>
-  <div class="col" style="gap:16px;padding-top:40px">
-    <div class="rnum"><b class="hi">33% → 89%</b><span>공약·예산 매칭 정밀도 · 검증 표본 18건 중 16건</span></div>
-    <div class="rnum"><b>349 → 49</b><span>관계 재구축 후 오매칭 · 정밀도 17.3% → 34.7%</span></div>
-    <div class="rnum"><b>2.1%</b><span>AI 매처 오탐률(상한 4.1%) · 통과한 대조 카드 375쌍 정본 DB 적재</span></div>
+  <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 300px;gap:20px;align-items:start">
+    <figure class="fig">
+      <span class="blab">BEFORE · 전환 전</span>
+      <img src="/assets/cases/nca/before-gyeonggi-cards-1280.jpg" width="1280" height="800" alt="전환 전 경기도지사 공약 카드 화면. 카드마다 정상 추진 또는 지연·보류 판정 배지가 있다." style="width:100%;height:248px">
+      <figcaption class="cap">판정 배지. 전환 직전 코드(f27cd04) 2026-10 재현 · 로컬 실행 화면</figcaption>
+    </figure>
+    <figure class="fig">
+      <span class="blab on">AFTER · 전환 후</span>
+      <img src="/assets/cases/nca/after-gyeonggi-2026-08.jpg" width="1414" height="939" alt="전환 후 경기도지사 공약 290건 화면. 같은 공약 카드에 판정 배지 대신 자료 대조 표시와 평가 수치 철수 공지가 있다." style="width:100%;height:248px">
+      <figcaption class="cap">‘자료 대조’ 표시와 철수 공지 · 2026-08 로컬 실행 화면</figcaption>
+    </figure>
+    <div class="col" style="gap:12px;padding-top:4px">
+      <div class="rnum"><b class="hi">33% → 89%</b><span>공약·예산 매칭 정밀도 · 검증 표본 18건 중 16건</span></div>
+      <div class="rnum"><b>349 → 49</b><span>관계 재구축 후 오매칭 · 정밀도 17.3% → 34.7%</span></div>
+      <div class="rnum"><b>2.1%</b><span>AI 매처 오탐률(상한 4.1%) · 대조 카드 375쌍 정본 DB 적재</span></div>
+    </div>
+  </div>
+  <div style="display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr) 300px;gap:20px;align-items:start">
+    <figure class="fig" style="grid-column:span 2;display:grid;grid-template-columns:420px minmax(0,1fr);gap:16px;align-items:end">
+      <img src="/assets/cases/nca/after-detail-comparison-1280.jpg" width="1280" height="800" alt="공약 상세 화면의 공식자료 대조 영역. 연결된 예산 항목 2건과 매처 버전, '게이트 통과 · AI 판정 · 사람 검수 없음' 표시, 고정 면책 문구가 보인다." style="width:420px;height:160px;object-position:center 35%">
+      <figcaption class="cap"><b>공약 상세의 공식자료 대조</b><br>연결된 예산 항목, 매처 버전, ‘게이트 통과 · AI 판정 · 사람 검수 없음’, 고정 면책 문구. 2026-10 로컬 실행 화면</figcaption>
+    </figure>
     <div class="role col" style="gap:4px"><span class="lbl">역할</span><p>2025 데이터 엔지니어 · 2026 전환 제안·검토·승인. 설계 초안·코드·테스트는 AI 협업.</p></div>
-    <p class="note">수치는 연결 품질 지표입니다. 사용자 지표는 포함하지 않았습니다.</p>
   </div>
-  <div class="foot"><span></span><span class="mono">NCA · 4/4</span></div>
+  <div class="foot"><span>공개 배포는 하지 않았습니다. 수치는 연결 품질 지표이며, 사용자 지표는 포함하지 않았습니다.</span><span class="mono">NCA · 4/4</span></div>
 </section>
 
-<!-- Yangju -->
-<section class="slide title" aria-label="양주 표지">
-  <div class="meta"><span>CASE 02 · 양주 광역버스 좌석 정보</span><span>2026</span></div>
+<!-- Dear Log -->
+<section class="slide title" aria-label="Dear Log 표지">
+  <div class="meta"><span>CASE 03 · Dear Log</span><span>2026</span></div>
   <div>
-    <h1>0석과 ‘모름’을<br>나누다</h1>
-    <p class="lead">양주에서 서울로 출퇴근하는 광역버스 승객에게 좌석 정보를 주는 서비스. 저는 모르는 값을 0으로 채우지 않고, 근거 없는 확률은 보여 주지 않는 API 기준을 세웠습니다.</p>
+    <h1>팀 데모에서,<br>공개 운영까지</h1>
+    <p class="lead">부모님이 음성으로 답한 이야기를 가족이 검토하고, 장별 자서전 PDF로 남기는 서비스. 학기에는 캡스톤 팀에서 백엔드와 AI 흐름을 맡았고, 학기가 끝난 뒤 혼자 이어서 dear-log.com을 공개 운영하고 있습니다.</p>
   </div>
   <div class="nums">
-    <div><b class="hi">2 / 56</b><span>첫 조회에서 쓸 수 있던 좌석 값 (슬롯 56개 중)</span></div>
-    <div><b>4곳 · 6건</b><span>공식 자료와 대조해 남긴 정류장 · 매핑</span></div>
-    <div><b>183</b><span>API 테스트 passed (AI 작성)</span></div>
+    <div><b class="hi">10건</b><span>데모를 직접 써 보고 팀에 낸 수정 요청 · 2026.06</span></div>
+    <div><b>5종</b><span>답변마다 고른 동의를 이미 만든 책까지 반영</span></div>
+    <div><b style="font-size:30px;line-height:1.45">dear-log.com</b><span>샘플 보기·문의만 공개 · 2026.07–10 후속 개인 운영</span></div>
   </div>
 </section>
 
-<section class="slide col" aria-label="양주 문제" style="gap:26px">
-  <span class="kicker">01 · 문제</span>
-  <div style="display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:56px">
-    <div class="col" style="gap:22px">
-      <h2>빈칸도 0으로<br>들어왔습니다</h2>
-      <p class="lead" style="font-size:19px">2026 양주시 미래인재 AI 공모전에 5인 팀으로 참가했습니다. 지금의 잔여석만으로는 내 정류장에 도착했을 때 만차인지 알기 어렵습니다. 10월 3일에 덕정역 도착 API를 한 번 조회했는데, 빈 슬롯이 기본값 0으로 들어왔습니다. 그대로 쓰면 ‘정보 없음’이 ‘만석’으로 보입니다.</p>
-      <p class="quote">“0으로 합치면, 정보 없음이 만석으로 읽힙니다.”<small>좌석 상태를 나눈 이유</small></p>
-    </div>
-    <div class="col" style="gap:14px;padding-top:6px">
-      <span style="font-size:14px;font-weight:600;color:var(--muted)">10월 3일 덕정역 1회 조회 · 슬롯 56개</span>
-      <div class="stats" style="grid-template-columns:1fr 1fr">
-        <div><b style="color:var(--accent)">2</b><span>쓸 수 있는 좌석 값</span></div>
-        <div><b>37</b><span>빈 슬롯</span></div>
-        <div><b>28</b><span>공란·해석 불가</span></div>
-        <div><b>8</b><span>음수·미제공</span></div>
-      </div>
-      <p class="note">플래그가 겹치므로 합산하지 않습니다.</p>
-      <p style="font-size:15px;line-height:1.6;color:var(--body)">저는 10월 7일 팀 회의용으로 API 명세·DB 설계 검토안 v0.1(22쪽)을 AI 협업으로 썼습니다. 첫 안건은 현재 좌석, 0석 확률, 근거 부족을 어떻게 나눌지였습니다.</p>
-    </div>
+<section class="slide" aria-label="Dear Log 문제" style="display:grid;grid-template-columns:minmax(0,1fr) 460px;gap:56px;align-items:center">
+  <div class="col" style="gap:22px">
+    <span class="kicker">01 · 문제</span>
+    <h2>물어보려던 이야기는<br>말로만 남습니다</h2>
+    <p class="lead" style="font-size:19px">부모님의 인생 이야기는 대부분 말로만 남아 있다가 사라집니다. 자녀는 언젠가 물어봐야지 하면서도, 마주 앉아 인터뷰하는 게 어색합니다.</p>
+    <p class="lead" style="font-size:19px">그래서 팀은 흐름을 나눴습니다. 자녀가 질문과 사진을 준비하고, 부모님은 음성이나 글로 답합니다. AI가 받아 적고 다듬은 내용을 가족이 원문과 대조해 장에 넣으면, A5 자서전 PDF가 나옵니다.</p>
   </div>
-  <div class="foot"><span></span><span class="mono">양주 · 2/4</span></div>
+  <figure class="fig">
+    <img src="/assets/cases/dearlog/doc-workflow-overview.jpg" width="1280" height="1369" alt="에이전트 워크플로 문서 개요. 3단계 파이프라인이 그려져 있다." style="width:460px;height:420px">
+    <figcaption class="cap"><b>에이전트 워크플로 문서 — 개요</b> · 3단계 파이프라인 · 팀 문서, 2026.05 저장소 첫 커밋</figcaption>
+  </figure>
+  <div class="foot"><span>학기 중 저는 프런트엔드와 로컬 API·SQLite 백엔드를 잇고, 사진·가족 질문·자서전 데이터를 DB에 연결했습니다.</span><span class="mono">Dear Log · 2/4</span></div>
 </section>
 
-<section class="slide col" aria-label="양주 결정" style="gap:26px">
+<section class="slide col" aria-label="Dear Log 결정" style="gap:24px">
   <div class="col" style="gap:14px">
-    <span class="kicker">02 · 결정</span>
-    <h2>모르는 값은 모른다고 보냈습니다</h2>
+    <span class="kicker">02 · 결정 · 2026.07–10 후속 개인 운영</span>
+    <h2>학기 후, 공개해도 되는 범위부터 정했습니다</h2>
   </div>
-  <div class="opts">
-    <div class="opt"><span class="tag">A · 기각</span><span class="name">모두 0으로 처리</span><p>빈 슬롯과 정보 없음이 만석 관측과 섞입니다.</p></div>
-    <div class="opt"><span class="tag">시각 · 기각</span><span class="name">요청 시각 기준 보정</span><p>옛 도착 예정 시간에 새 조회 시각이 붙으면 지금 본 값처럼 보입니다.</p></div>
-    <div class="opt pick"><span class="tag">B · 채택</span><span class="name">0석·정보 없음·빈 슬롯 분리</span><p>실제 차량이 보고한 0만 만석으로 봅니다. -1·공란·음수는 0으로 바꾸지 않고, 빈 슬롯은 후보에서 뺍니다.</p></div>
+  <div class="opts" style="grid-template-columns:repeat(4,minmax(0,1fr));gap:14px">
+    <div class="opt pick"><span class="tag">공개 범위</span><span class="name">샘플 보기와 문의만 연다</span><p>신규 가입은 닫고, 사이트 전체에 같은 가입 정책을 적용했습니다.</p></div>
+    <div class="opt"><span class="tag">서버</span><span class="name">데모와 운영 분리</span><p>가상 가족 데이터로 도는 데모가 실제 운영 데이터와 섞이지 않게 했습니다.</p></div>
+    <div class="opt"><span class="tag">동의</span><span class="name">동의 5종이 실제로 적용되게</span><p>답변마다 고른 동의가 이미 만든 책까지 반영되게 했고, 과하게 막던 부분은 다시 풀었습니다.</p></div>
+    <div class="opt"><span class="tag">로그인</span><span class="name">SMS 대신 이메일 코드</span><p>SMS 발송 업체를 아직 정하지 않았기 때문입니다.</p></div>
   </div>
   <div class="tradeoff">
-    <div><span class="lbl">감수한 것</span><p>범위를 정류장 4곳·매핑 6건으로 좁혀, 조회할 수 있는 곳이 줄었습니다. 반대편 정류장, 심야 G1300N, 다른 노선은 뺐습니다.</p></div>
-    <div><span class="lbl">함께 정한 기준</span><p>수집 시각은 로컬 수신 시각, 도착 예정 시각은 수신 시각+ETA로 고정. 수집 주기×2+60초가 지나면 stale.<br>예측 확률은 null로 공개하고, 대신 out_of_scope · unverified_direction · missing_label_pipeline 순으로 근거가 부족한 이유를 보냅니다.</p></div>
+    <div><span class="lbl">학기 중 · 2026.06 개발 총괄</span><p>데모를 부모님 화면과 자녀 화면 양쪽에서 직접 써 보고, 캡처와 바꿀 내용을 붙인 수정 요청 10건을 팀 문서에 적었습니다.</p></div>
+    <div><span class="lbl">요청 예시 · 팀이 10건 모두 완료 표시</span><p>글자 잘림과 줄바꿈 · 동의 설정 화면 수정과 개발자 설정 숨기기 · ‘사진 보고 이야기하기’와 ‘질문에 답하기’가 같은 화면으로 열리는 문제 · 인터뷰 캘린더 위치 · 부모님 화면 모바일 대응 · 실제 페이지 수 표시</p></div>
   </div>
-  <div class="foot"><span></span><span class="mono">양주 · 3/4</span></div>
+  <div class="foot"><span>7월부터는 팀 과제와 별개로 혼자 이어 갔습니다. 무엇을 열고 막을지는 제가 정했고, 구현은 AI와 함께 했습니다.</span><span class="mono">Dear Log · 3/4</span></div>
 </section>
 
-<section class="slide res" aria-label="양주 결과">
-  <div class="col" style="gap:18px">
-    <span class="kicker">03 · 결과</span>
-    <h2 style="font-size:40px">값과 상태를 함께 보내는 API</h2>
-    <img class="shot" src="/assets/cases/yangju-api-swagger.png" alt="로컬 좌석 조회 API의 Swagger 화면. 현재 좌석은 탑승 확률이 아니며, 오래된 관측은 stale, 예측 확률은 null이라는 설명이 있다." style="height:400px;object-fit:cover;object-position:top">
+<section class="slide col" aria-label="Dear Log 결과물과 결과" style="gap:20px">
+  <div class="col" style="gap:12px">
+    <span class="kicker">03 · 결과물 · 결과</span>
+    <h2 style="font-size:38px">질문에서 자서전까지, 지금 열려 있는 화면</h2>
   </div>
-  <div class="col" style="gap:16px;padding-top:40px">
-    <div class="rnum"><b class="hi">3회 · HTTP 200</b><span>실수집 첫 조회 3회 모두 응답</span></div>
-    <div class="rnum"><b>17행</b><span>슬롯 72행 중 유효 좌석 · API 보고 0석은 1행</span></div>
-    <div class="rnum"><b>183 · 92</b><span>API 테스트 passed(SQLite 통합 50개 포함) · 수집기 합성·로컬 테스트, 모두 AI 작성</span></div>
-    <div class="role col" style="gap:4px"><span class="lbl">역할</span><p>5인 팀 · 개발·AI 서비스 설계, 범위 결정·검토. 명세 초안·코드·테스트는 AI 협업.</p></div>
-    <p class="note">SQLite 로컬 구현입니다. 팀 저장소와 통합하기 전이고, 배포하지 않았습니다.</p>
+  <div style="display:grid;grid-template-columns:minmax(0,1fr) 168px 168px 168px;gap:16px;align-items:start">
+    <div class="col" style="gap:16px">
+      <figure class="fig">
+        <img src="/assets/cases/dearlog/site-01-company-hero-1280.jpg" width="1280" height="800" alt="dear-log.com 첫 화면. ‘부모님의 목소리를, 우리 가족의 자서전으로.’ 문구와 가상 자서전 읽어보기 버튼, 신규 가입은 받지 않는다는 안내가 있다." style="width:100%;height:auto">
+        <figcaption class="cap"><b>dear-log.com 첫 화면</b> · 2026-10 · 후속 개인 운영(AI 협업)</figcaption>
+      </figure>
+      <p style="font-size:15px;line-height:1.6;color:var(--body)">dear-log.com은 지금 열려 있습니다. 데모는 샘플 보기와 문의만 받고, 신규 가입은 닫혀 있습니다. 문의 담당자로 제 이름이 올라가 있습니다.</p>
+      <p class="note">앱 화면은 데모 계정의 가상 가족 데이터입니다. 학기 중 화면·문서는 팀 작업, 7월 이후 운영 결정은 본인. 사용자 지표는 포함하지 않았습니다.</p>
+    </div>
+    <figure class="fig">
+      <img src="/assets/cases/dearlog/app-02-parent-home.jpg" width="780" height="1688" alt="부모님 홈 화면. 인터뷰 캘린더, 사진 보고 이야기하기, 질문에 답하기, 통화 메뉴가 있다." style="width:168px;height:364px">
+      <figcaption class="cap"><b>부모님 홈</b><br>팀 앱 · 2026-10 데모 캡처 · 가상 가족 데이터</figcaption>
+    </figure>
+    <figure class="fig">
+      <img src="/assets/cases/dearlog/app-09-guardian-review-original.jpg" width="780" height="1688" alt="자녀 검토 화면. 답변 원문과 음성 파형, 장에 추가하기 버튼이 있다." style="width:168px;height:364px">
+      <figcaption class="cap"><b>가족 검토 — 원문</b><br>팀 앱 · 2026-10 데모 캡처 · 가상 가족 데이터</figcaption>
+    </figure>
+    <figure class="fig">
+      <img src="/assets/cases/dearlog/app-11-consent-settings.jpg" width="780" height="1688" alt="답변별 동의 설정 화면. 다섯 가지 목적별 동의 토글이 있다." style="width:168px;height:364px">
+      <figcaption class="cap"><b>답변별 동의 5종</b><br>팀 앱 · 2026-10 데모 캡처 · 가상 가족 데이터</figcaption>
+    </figure>
   </div>
-  <div class="foot"><span></span><span class="mono">양주 · 4/4</span></div>
-</section>
-
-<!-- Finsight -->
-<section class="slide title" aria-label="Finsight 표지">
-  <div class="meta"><span>CASE 03 · Finsight 증권사 리포트 수집</span><span>2025 – 2026</span></div>
-  <div>
-    <h1>리포트를 세지 않고,<br>증권사를 세다</h1>
-    <p class="lead">증권사 리포트를 매일 수집·파싱해 종목별 투자의견과 목표가 변화를 보여 주는 서비스. 2025년 팀 프로젝트를 2026년에 혼자 다시 만들며, 저는 평균 목표가를 증권사별 최신값으로만 계산하기로 정했습니다.</p>
-  </div>
-  <div class="nums">
-    <div><b class="hi">29건 → 15개</b><span>삼성전자 평균 목표가에 들어간 리포트 → 증권사</span></div>
-    <div><b>2,536</b><span>수집·파싱한 리포트 · 종목 591개 (2026-10-13)</span></div>
-    <div><b>55%</b><span>MD5 중복 게이트로 걸러 낸 재다운로드</span></div>
-  </div>
-</section>
-
-<section class="slide col" aria-label="Finsight 문제" style="gap:26px">
-  <span class="kicker">01 · 문제 · 2025 팀 → 2026 재구축</span>
-  <h2>PDF는 증권사마다 달랐고,<br>평균은 중복을 셌습니다</h2>
-  <p class="lead" style="font-size:19px;max-width:1000px">2025년에 저는 5인 팀에서 팀장·PM을 맡아, 팀원의 경험과 강점에 맞춰 수집과 파싱의 역할을 나눴습니다. 제 커밋에는 증권사별 규칙 파서를 먼저 쓰고 2주 뒤 LLM 파서로 바꾼 기록이 남아 있습니다. 2026년에 같은 서비스를 혼자 다시 만들며 보니 문제가 셋이었습니다.</p>
-  <div class="opts">
-    <div class="opt"><span class="tag">문제 1 · 파싱</span><p style="font-size:18px;color:var(--ink)">PyPDF로 1쪽 텍스트만 뽑아 LLM에 넘기고 있었습니다.</p></div>
-    <div class="opt"><span class="tag">문제 2 · 스케줄러</span><p style="font-size:18px;color:var(--ink)">Airflow DAG는 실제로 돈 적이 없었습니다.</p></div>
-    <div class="opt"><span class="tag" style="color:var(--accent)">문제 3 · 집계</span><p style="font-size:18px;color:var(--ink)">평균 목표가에 같은 증권사의 리포트가 여러 건 들어가 있었습니다.</p></div>
-  </div>
-  <div class="foot"><span></span><span class="mono">Finsight · 2/4</span></div>
-</section>
-
-<section class="slide col" aria-label="Finsight 결정" style="gap:24px">
-  <div class="col" style="gap:14px">
-    <span class="kicker">02 · 결정 · 2026 재구축</span>
-    <h2>파서는 라이선스와 장비로 걸렀습니다</h2>
-  </div>
-  <div class="opts">
-    <div class="opt"><span class="tag">A · 기각</span><span class="name">PyMuPDF</span><p>AGPL 라이선스 때문에 뺐습니다.</p></div>
-    <div class="opt"><span class="tag">B · 기각</span><span class="name">Marker/Surya · Chandra</span><p>매출 제한이 있거나 GPU가 필요합니다.</p></div>
-    <div class="opt pick"><span class="tag">C · 채택</span><span class="name">docling + 로컬 Ollama</span><p>로컬 모델로 파싱합니다. 대신 결과를 그대로 믿지 않도록 가드를 붙였습니다.</p></div>
-  </div>
-  <div class="tradeoff">
-    <div><span class="lbl">감수한 것</span><p>LLM의 과잉 응답. 68자 페이지에서도 모든 필드가 채워졌습니다. 150자 미만 페이지는 검토 대기로 보내고, 증권사 이름(5번 중 2번만 맞힘)은 정규식으로 읽습니다.</p></div>
-    <div><span class="lbl">함께 정한 것</span><p>스케줄러: Airflow 대신 launchd와 일일 ETL 스크립트 하나. “하루 1회, 노트북 1대 작업에 컨테이너 7개는 필요 없다.”<br>집계: 전체 리포트 평균 대신 증권사별 최신 목표가. 산업 리포트는 뺐습니다. 평균에 들어가는 값은 29건에서 15개로 줄었지만, 리포트를 자주 내는 증권사 쪽으로 쏠리지 않습니다.</p></div>
-  </div>
-  <div class="foot"><span></span><span class="mono">Finsight · 3/4</span></div>
-</section>
-
-<section class="slide res" aria-label="Finsight 결과">
-  <div class="col" style="gap:18px">
-    <span class="kicker">03 · 결과 · 2026 재구축</span>
-    <h2 style="font-size:40px">같은 증권사는 한 번만</h2>
-    <img class="shot" src="/assets/cases/finsight-2026-reports.png" alt="2026 재구축 Finsight 메인 화면. 목표가 변화, 목표가 대비 현재가, 투자의견·목표가 변경 목록." style="height:400px;object-fit:cover;object-position:top">
-  </div>
-  <div class="col" style="gap:16px;padding-top:40px">
-    <div class="rnum"><b class="hi">453,793 → 487,333원</b><span>삼성전자 평균 목표가 · 29건 → 15개 증권사 최신값</span></div>
-    <div class="rnum"><b>2,536건</b><span>수집·파싱한 리포트 · 종목 591개 (2026-10-13)</span></div>
-    <div class="rnum"><b>55% · 20곳</b><span>MD5 중복 게이트로 걸러 낸 재다운로드 · 수집 증권사(2026-08-26)</span></div>
-    <div class="role col" style="gap:4px"><span class="lbl">역할</span><p>2025 5인 팀 팀장·PM · 2026 혼자 재구축, 결정·검토. 2026 코드·대안 조사는 AI 협업.</p></div>
-    <p class="note">수치는 데이터 처리 지표입니다. 사용자 지표는 포함하지 않았습니다.</p>
-  </div>
-  <div class="foot"><span></span><span class="mono">Finsight · 4/4</span></div>
+  <div class="foot"><span></span><span class="mono">Dear Log · 4/4</span></div>
 </section>
 
 <!-- Closing -->
 <section class="slide col" aria-label="추가 경험과 연락처" style="gap:22px">
   <div class="meta"><span>추가 경험</span><span>서비스 기획·설계</span></div>
   <ul class="exp">
-    <li><span class="y">2025</span><span class="t">온통청년 문화·여가 접근성</span><span class="d">3인 팀장. 시설 범위·우선 검토 지역 조정, 보고서·제언 초안. 2025 연구 랩업 대상</span></li>
-    <li><span class="y">2026</span><span class="t">Dear Log</span><span class="d">데모 화면 문제를 위치와 수정 방향이 담긴 요청 10건으로 정리해 팀에 전달</span></li>
+    <li><span class="y">2026</span><span class="t">양주 광역버스 좌석 정보</span><span class="d">좌석·결측·시각의 응답 기준 작성. 정류장 4곳의 노선·방향 매핑 6건을 대조한 로컬 구현</span></li>
+    <li><span class="y">2025</span><span class="t">Finsight</span><span class="d">5인 PM·팀장. 수집·파싱 역할 조정, AI 요구사항 지시·실행 검토, 저장 파일 표본 대조</span></li>
     <li><span class="y">2026</span><span class="t">Tomorrow SOL</span><span class="d">퇴사·독립·자동차 구매를 비교하는 화면 7개. 계산과 AI 설명의 역할을 나눈 설계</span></li>
     <li><span class="y">2026.05</span><span class="t">국민대 특화 행정 서비스 AI</span><span class="d">공식 학사 자료 확인 후 문의문과 체크리스트를 작성하는 React·FastAPI 프로토타입</span></li>
-    <li><span class="y">2024</span><span class="t">투자 교육 훈련 플랫폼</span><span class="d">초보 투자자의 이해도·리스크 성향을 고려한 교육과 모의투자 흐름</span></li>
-    <li><span class="y">2025</span><span class="t">수강신청 시스템 개편</span><span class="d">수강 계획과 마일리지 우선권을 요구사항·DFD·ERD·HTML 프로토타입으로 정리</span></li>
     <li><span class="y">2026</span><span class="t">첫걸음 동네산책</span><span class="d">3인 팀 대표. 이주민의 동네 정보 공유를 위한 핵심 화면 4개와 예시 데이터 MVP</span></li>
+    <li><span class="y">2026</span><span class="t">운전 졸업식 BMW YIDP</span><span class="d">2인 팀 팀장. 면허 반납 이후의 이동계획표·졸업식·예약 및 동행 절차 설계</span></li>
+    <li><span class="y">2025</span><span class="t">수강신청 시스템 개편</span><span class="d">수강 계획과 마일리지 우선권을 요구사항·DFD·ERD·HTML 프로토타입으로 정리</span></li>
+    <li><span class="y">2024</span><span class="t">투자 교육 훈련 플랫폼</span><span class="d">초보 투자자의 이해도·리스크 성향을 고려한 교육과 모의투자 흐름</span></li>
     <li><span class="y">2026</span><span class="t">금융문맹 탈출기 RPG</span><span class="d">개인 5장 기획·편집·AI 제작. 공식 표지·카드뉴스 인기상</span></li>
   </ul>
   <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;border-top:2px solid var(--ink);padding-top:18px">
