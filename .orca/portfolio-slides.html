@@ -4,13 +4,14 @@
 <meta charset="utf-8">
 <title>문대한 서비스 기획 / PM 포트폴리오</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
 <style>
 @page{size:1280px 720px;margin:0}
-:root{--ink:#111418;--bg:#f6f6f3;--muted:#5a6270;--body:#3d4450;--faint:#8a919c;--line:#dfe2e6;--accent:#1f3fd1}
+@font-face{font-family:Pretendard;src:url(/assets/PretendardVariable.woff2) format("woff2");font-weight:100 900}
+:root{--ink:#1c1a17;--bg:#fbfaf7;--muted:#6b655c;--body:#3a362f;--faint:#9a9286;--line:#e4dfd6;--accent:#9a3412}
 *{box-sizing:border-box}
 html,body{margin:0;background:#fff;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-body{font-family:'IBM Plex Sans KR',sans-serif;color:var(--ink);word-break:keep-all}
+body{font-family:Pretendard,sans-serif;color:var(--ink);word-break:keep-all}
 a{color:var(--accent);text-decoration:none}
 h1,h2,h3,p,figure,ul{margin:0}
 .slide{width:1280px;height:720px;overflow:hidden;background:var(--bg);padding:64px 88px;break-after:page;position:relative}
@@ -20,13 +21,13 @@ h1,h2,h3,p,figure,ul{margin:0}
 .meta{display:flex;justify-content:space-between;font-family:'IBM Plex Mono',monospace;font-size:15px;letter-spacing:.04em;color:var(--muted)}
 .foot{position:absolute;left:88px;right:88px;bottom:28px;display:flex;justify-content:space-between;font-size:12px;color:var(--faint)}
 .foot .mono{font-size:12px}
-h2{font-size:46px;line-height:1.2;letter-spacing:-.02em;font-weight:700}
+h2{font-size:46px;line-height:1.25;letter-spacing:-.01em;font-weight:800;font-family:"Nanum Myeongjo",serif}
 .lead{font-size:20px;line-height:1.65;color:var(--body)}
 .col{display:flex;flex-direction:column}
 img.shot{width:100%;border:1px solid var(--line);background:#fff;display:block}
 /* title slides */
 .title{display:flex;flex-direction:column;justify-content:space-between}
-.title h1{font-size:72px;line-height:1.14;font-weight:700;letter-spacing:-.02em}
+.title h1{font-size:68px;line-height:1.22;font-weight:800;letter-spacing:-.01em;font-family:"Nanum Myeongjo",serif}
 .title .lead{font-size:23px;line-height:1.55;max-width:900px;margin-top:24px}
 .nums{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:32px;border-top:2px solid var(--ink);padding-top:22px}
 .nums div{display:flex;flex-direction:column;gap:6px}
@@ -47,8 +48,8 @@ img.shot{width:100%;border:1px solid var(--line);background:#fff;display:block}
 .opt .name{font-size:22px;font-weight:600;line-height:1.35}
 .opt p{font-size:16px;line-height:1.6;color:var(--body)}
 .opt.pick{background:var(--ink);border-color:var(--ink);color:#fff}
-.opt.pick .tag{color:#9fb4ff}
-.opt.pick p{color:#d5d9e0}
+.opt.pick .tag{color:#f0b89a}
+.opt.pick p{color:#e4dfd6}
 .tradeoff{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,2fr);gap:40px;border-top:2px solid var(--ink);padding-top:20px}
 .tradeoff .lbl{font-size:14px;font-weight:600;color:var(--muted);display:block;margin-bottom:6px}
 .tradeoff p{font-size:17px;line-height:1.6}
@@ -64,14 +65,14 @@ img.shot{width:100%;border:1px solid var(--line);background:#fff;display:block}
 /* one-pager */
 .op{background:#fff;padding:44px 56px}
 .op-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;margin-top:22px}
-.case{display:flex;flex-direction:column;gap:16px;background:#f5f6f8;padding:24px}
+.case{display:flex;flex-direction:column;gap:16px;background:#f3efe7;padding:24px}
 .case .tag{font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.06em;color:var(--accent)}
 .case h3{font-size:26px;line-height:1.3;letter-spacing:-.01em}
 .case .ctx{font-size:15.5px;line-height:1.6;color:var(--body)}
 .row{display:grid;grid-template-columns:48px minmax(0,1fr);gap:10px;align-items:start;background:#fff;border:1px solid var(--line);padding:11px 12px;font-size:14.5px;line-height:1.5;color:var(--faint)}
 .row .mono{font-size:12px;padding-top:1px}
 .row.pick{background:var(--ink);border-color:var(--ink);color:#fff}
-.row.pick .mono{color:#9fb4ff}
+.row.pick .mono{color:#f0b89a}
 .kn{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .kn div{display:flex;flex-direction:column;gap:2px}
 .kn b{font-family:'IBM Plex Mono',monospace;font-size:26px;font-weight:600}
