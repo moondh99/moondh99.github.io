@@ -84,6 +84,9 @@
   .h-list a{grid-template-columns:1fr}
   .h-list span.d{grid-column:1}
   .h-text p{font-size:16px}
+  .h-hero{gap:24px;padding-top:28px}
+  .h-portrait{max-width:none;flex-direction:row;align-items:center;gap:14px}
+  .h-portrait img{width:84px}
 }
 @media(prefers-reduced-motion:reduce){
   .h-media img,.h-btn{transition:none}
