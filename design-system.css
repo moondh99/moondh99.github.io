@@ -3,6 +3,10 @@
   --canvas:#f5f6f8; --surface:#fff; --ink:#17212b; --ink-2:#354252;
   --muted:#586574; --line:#d9dfe6; --line-strong:#b9c3cf;
   --accent:#2454e6; --accent-ink:#183db4; --tint:#edf1f7;
+  --stage-bg:#edf0f6;
+  --stage-accent-nca:#202a40;
+  --stage-accent-ontong:#586574;
+  --stage-accent-dearlog:#675f52;
   --font-sans:Pretendard,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
   --font-mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,monospace;
 }
@@ -107,7 +111,7 @@ body:not(.showcase-home) .story-next { max-width:1200px; margin-top:28px; paddin
 /* NCA: actual product surface alongside the decision, then evidence in sequence. */
 body.case-nca .nca-hero { display:grid; grid-template-columns:minmax(0,.94fr) minmax(0,1.06fr); gap:34px 40px; align-items:start; padding-top:44px; padding-bottom:24px; }
 body.case-nca .nca-hero-copy { padding-top:12px; }
-body.case-nca .nca-hero-copy .kicker { font-size:11px; letter-spacing:.025em; line-height:1.6; }
+body.case-nca .nca-hero-copy .kicker { font-size:12px; letter-spacing:.025em; line-height:1.6; }
 body.case-nca .nca-hero h1 { font-size:clamp(44px,5vw,70px); margin:22px 0 24px; line-height:1.09; font-weight:800; letter-spacing:-.055em; }
 body.case-nca .nca-hero .lede { font-size:18px; line-height:1.8; max-width:510px; }
 body.case-nca .nca-hero-visual { min-width:0; padding:20px; background:#e5eaf3; border-radius:6px; gap:14px; }
@@ -207,7 +211,7 @@ body.case-nca .stats dt { font-size:14px; }
   body:not(.showcase-home) .story-sec { padding-top:48px; gap:18px; }
   body:not(.showcase-home) .story-sec p { font-size:17px; line-height:1.85; }
   body:not(.showcase-home) .story-sec h2 { font-size:29px; }
-  body:not(.showcase-home) .story .kicker { font-size:11px; }
+  body:not(.showcase-home) .story .kicker { font-size:12px; }
   body:not(.showcase-home) .case-toc,body:not(.showcase-home) .story-next { margin-inline:20px; }
   body:not(.showcase-home) .case-toc :is(ol,ul) { display:flex; gap:0 20px; flex-wrap:wrap; }
   body:not(.showcase-home) .case-toc a { font-size:13px; }
@@ -227,7 +231,7 @@ body.case-nca .stats dt { font-size:14px; }
   body.case-nca .artifacts figcaption b { font-size:18px; }
 }
 @media (max-width:360px) {
-  body .navlinks { gap:12px; font-size:11px; }
+  body .navlinks { gap:12px; font-size:12px; }
   body .brand { font-size:17px; }
   body.case-nca .nca-hero h1 { font-size:38px; }
   body.case-nca .case-toc ol { gap:0 14px; }
