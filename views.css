@@ -28,3 +28,11 @@
 
 .detail-view h1,.detail-view h2,.resume-view h1,.resume-view h2{font-family:"Nanum Myeongjo",serif;font-weight:800;letter-spacing:-.01em}
 .eyebrow,.resume-role{letter-spacing:.02em}
+
+/* Supporting experience and awards retain the shared page hierarchy. */
+.detail-view .h-group-title{font-family:inherit;font-size:21px;line-height:1.4;margin:28px 0 4px;padding-top:20px;border-top:1px solid var(--line)}
+.resume-awards{list-style:none;padding:0;margin:0;display:grid;gap:0}
+.resume-awards li{padding:14px 0;border-bottom:1px solid var(--line);font-size:15px;line-height:1.75}
+.resume-awards li:first-child{padding-top:0}
+.resume-awards li:last-child{border-bottom:0}
+.resume-awards a{display:inline-block;min-height:44px;padding-block:8px;color:var(--accent)}
