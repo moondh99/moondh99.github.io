@@ -1,17 +1,105 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Dear Log | 문대한 서비스 기획 PM</title><meta name="description" content="부모님의 이야기를 음성 인터뷰로 받아 가족 검토를 거쳐 자서전 PDF로 만드는 서비스. 캡스톤 팀 개발 이후 공개 소개·샘플과 출시 준비를 이어 간 사례"><meta name="robots" content="index,follow"><meta name="theme-color" content="#ffffff"><link rel="canonical" href="https://moondh99.github.io/projects/dearlog/"><meta property="og:type" content="website"><meta property="og:locale" content="ko_KR"><meta property="og:title" content="Dear Log | 문대한 서비스 기획 PM"><meta property="og:description" content="부모님의 이야기를 음성 인터뷰로 받아 가족 검토를 거쳐 자서전 PDF로 만드는 서비스. 캡스톤 팀 개발 이후 공개 소개·샘플과 출시 준비를 이어 간 사례"><meta property="og:url" content="https://moondh99.github.io/projects/dearlog/"><meta property="og:image" content="https://moondh99.github.io/assets/og-pm.png"><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/views.css"><link rel="stylesheet" href="/story.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap"><link rel="icon" href="/assets/favicon.svg"><link rel="stylesheet" href="/design-system.css"><script src="/design-interactions.js" defer></script></head><body class="detail-view story-view"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="bar"><div class="wrap nav"><a href="/" class="brand">문대한</a><nav aria-label="포트폴리오 보기" class="navlinks"><a href="/">한눈에 보기</a><a href="/work/">자세히 보기</a><a href="/resume/">이력서</a></nav></div></header><main id="main" tabindex="-1"><article class="story">
-<header class="story-wide story-hero"><span class="kicker">CASE 03 · Dear Log · 2026</span><h1 class="serif">팀 데모를 점검하고,<br>공개 범위를 설계하다</h1><p class="lede">부모님이 음성으로 답한 이야기를 가족이 검토해 장별 자서전 PDF로 남기는 서비스. 학기 중에는 캡스톤 팀에서 백엔드와 AI 흐름을 담당했고, 이후 개인 작업으로 공개 소개·샘플과 출시 준비를 이어 갔다.</p><dl class="story-meta"><div><dt>2026 1학기 · 캡스톤 팀</dt><dd>백엔드 연결·AI 에이전트 흐름 담당, 6월 개발 총괄 배정</dd></div><div><dt>2026.07–10 · 후속 개인 작업</dt><dd>동의 적용·보안·공개 범위 결정, 구현은 AI 협업</dd></div></dl><a class="live-link" href="https://dear-log.com">dear-log.com 방문 →</a></header>
-<nav class="story-wide case-toc" aria-label="Dear Log 사례 목차"><ol><li><a href="#problem">문제와 역할</a></li><li><a href="#review">데모 점검</a></li><li><a href="#decision">공개 범위 결정</a></li><li><a href="#output">실제 화면 3컷</a></li><li><a href="#result">현재 확인 범위</a></li><li><a href="#lesson">배운 점</a></li></ol></nav>
-<section class="story-col story-sec" aria-labelledby="problem"><span class="kicker">01 — 무엇이 문제였나</span><h2 id="problem" class="serif">물어보려던 이야기는 말로만 남음</h2><p>부모님의 인생 이야기는 대부분 말로만 남아 있다가 사라짐. 자녀는 언젠가 물어봐야지 하면서도 막상 마주 앉아 정식으로 인터뷰하기는 어색함.</p><p>그래서 팀은 흐름을 역할별로 분리. 자녀(보호자)가 질문과 사진을 준비하고, 부모님은 음성이나 글로 답변. AI가 받아 적고 다듬은 내용을 가족이 원문과 대조해 검토한 뒤 장에 추가. 마지막 산출물은 A5 자서전 PDF.</p><p>학기 중 본인 담당은 이 흐름에서 프런트엔드를 로컬 API와 SQLite 백엔드에 잇고, 사진과 가족 질문, 자서전 데이터를 DB에 연결하는 일.</p></section>
-<section class="story-col story-sec" aria-labelledby="review"><span class="kicker">02 — 학기 중 한 일</span><h2 id="review" class="serif">데모를 직접 써 보고, 수정 요청 10건</h2><p>6월에 개발 총괄로 배정된 뒤, 데모를 부모님 화면과 자녀 화면 양쪽에서 직접 사용. 걸리는 곳마다 화면 캡처와 바꿀 내용을 붙여 요청 10건을 팀 문서에 작성(2026.06.07 기준).</p><ul><li>부모님 화면과 자녀 화면 모두의 글자 잘림, 줄바꿈</li><li>동의 설정 화면 수정, 개발자 설정 숨기기</li><li>부모님 화면의 ‘사진 보고 이야기하기’와 ‘질문에 답하기’가 같은 화면으로 열리는 문제</li><li>인터뷰 캘린더를 더 잘 보이는 곳으로</li><li>부모님 화면을 모바일에 맞게</li><li>고정된 책 표지, 실제 페이지 수 표시</li></ul><p>팀 문서에는 10건 모두 완료로 표시되어 있다. 이는 요청의 처리 상태이며, 10건 전부를 본인이 구현하거나 같은 버전에서 재검증했다는 뜻은 아니다. 아래 화면은 서비스 흐름을 보여 주는 후속 데모 캡처로, 수정 전후 비교 자료와 구분했다.</p></section>
-<section class="story-sec" aria-labelledby="decision"><div class="story-col story-sec" style="padding-top:0"><span class="kicker">03 — 무엇을 결정했나</span><h2 id="decision" class="serif">학기 후, 공개해도 되는 범위부터 결정</h2><p>7월부터는 팀 과제와 별개로 개인 작업을 이어 갔다. 공개 범위와 동의 적용, 운영 정책은 본인이 판단하고 구현은 AI와 협업했다.</p></div><div class="story-wide"><ul class="options"><li class="chosen"><span class="tag">공개 범위</span><b>10월 9일에는 샘플·문의부터</b><span>당시 신규 가입·기록 입력을 제한했다. 10월 22일 코드에는 별도 회원가입 진입이 추가되어, 이 결정을 현재 가입 상태로 일반화하지 않는다.</span></li><li class="chosen"><span class="tag">서버</span><b>데모 서버와 운영 서버를 분리</b><span>가상 가족 데이터로 도는 데모가 실제 운영 데이터와 섞이지 않도록 분리.</span></li><li class="chosen"><span class="tag">동의</span><b>동의 5종이 실제로 적용되게</b><span>답변마다 고른 동의가 이미 만든 책까지 반영되도록 처리하고, 과하게 막던 부분은 다시 해제.</span></li><li class="chosen"><span class="tag">로그인</span><b>로그인 코드는 SMS 대신 이메일</b><span>SMS 발송 업체를 아직 정하지 않았기 때문.</span></li></ul></div></section>
-<section class="story-sec" aria-labelledby="output"><div class="story-col story-sec" style="padding-top:0"><span class="kicker">04 — 결과물</span><h2 id="output" class="serif">질문에서 자서전까지, 실제 화면</h2><p>아래 앱 화면은 모두 데모 계정의 가상 가족 데이터. 실제 사용자 데이터는 넣지 않음.</p></div><div class="story-wide"><div class="artifacts real-shots">
-<figure><img src="/assets/cases/dearlog/app-04-parent-interview-recording.jpg" width="780" height="1688" loading="lazy" alt="실제 데모의 음성 인터뷰 화면. 어린 시절 놀이를 묻는 질문 아래 녹음 시작, 다시 시작, 질문 넘기기, 직접 입력이 있다."><figcaption><b>1. 부모님이 질문에 답한다</b><p>어린 시절을 묻는 질문 한 개와 녹음 버튼을 함께 보여 준다. 말하기 어려울 때는 직접 입력하거나 질문을 넘길 수 있다.</p><p>부모님의 입력 부담을 줄이고 답변을 남기는 단계. 녹음 시작 전 상태를 캡처했다.</p><p>팀 앱·후속 수정 반영 · 2026-10 데모 캡처 · 가상 가족 데이터</p><a class="original-link" href="/assets/cases/dearlog/app-04-parent-interview-recording.jpg">음성 인터뷰 원본 크게 보기 ↗</a></figcaption></figure>
-<figure><img src="/assets/cases/dearlog/app-09-guardian-review-original.jpg" width="780" height="1688" loading="lazy" alt="실제 데모의 가족 검토 화면. 정리본·원문·수정 요청 탭, 원본 음성, 원문 전체, 챕터에 반영하기 버튼이 있다."><figcaption><b>2. 가족이 원문을 확인한다</b><p>정리본과 원문을 탭으로 나누고, 원본 음성과 텍스트를 함께 제공한다. 가족은 내용을 대조한 뒤 챕터에 반영한다.</p><p>AI가 다듬은 문장을 곧바로 확정하지 않고, 가족 검토를 거치도록 한 흐름이다.</p><p>팀 앱·후속 수정 반영 · 2026-10 데모 캡처 · 가상 가족 데이터</p><a class="original-link" href="/assets/cases/dearlog/app-09-guardian-review-original.jpg">가족 검토 원본 크게 보기 ↗</a></figcaption></figure>
-<figure><img src="/assets/cases/dearlog/public-03-autobiography-chapter.jpg" width="780" height="1440" loading="lazy" alt="가상 자서전의 첫 월급을 나누던 저녁 장 화면. 정리된 이야기 아래 출처 기억 1개·확인됨 표시가 있다."><figcaption><b>3. 이야기를 한 장으로 읽는다</b><p>‘첫 월급을 나누던 저녁’이라는 제목 아래 이야기를 묶고, 연결된 기억과 확인 상태를 표시한다.</p><p>공개 샘플의 가상 이야기다. 실제 가족의 사용 사례나 완성된 고객 출판물을 뜻하지 않는다.</p><p>dear-log.com 샘플 · 2026-10 캡처 · 가상 가족 데이터</p><a class="original-link" href="/assets/cases/dearlog/public-03-autobiography-chapter.jpg">자서전 화면 원본 크게 보기 ↗</a></figcaption></figure>
-</div></div><div class="story-col story-sec"><details><summary>당시 공개 화면과 팀 설계 문서 보기</summary><div class="artifacts">
-<figure><img src="/assets/cases/dearlog/site-01-company-hero-1280.jpg" width="1280" height="800" loading="lazy" alt="가입 안내 변경 전에 저장한 Dear Log 소개 페이지. 가상 자서전 읽어보기와 당시 신규 가입 제한 안내가 있다."><figcaption><b>가입 안내 변경 전 공개 소개 화면</b>당시의 가입 제한 문구가 남은 과거 캡처다. 10월 22일 로컬 코드의 가입 안내와 구분해야 한다.<a class="original-link" href="/assets/cases/dearlog/site-01-company-hero-1280.jpg">소개 화면 원본 크게 보기 ↗</a></figcaption></figure>
-<figure><img src="/assets/cases/dearlog/doc-workflow-03-safety.jpg" width="1280" height="994" loading="lazy" alt="팀의 AI 워크플로 설계 문서. 원문, 구조화, 기억 검색, 안전 점검, A5 PDF로 이어지는 노드 흐름."><figcaption><b>팀 워크플로 설계 문서</b>2026.05 저장소 첫 커밋의 설계 자료. 현재 구현 전체의 완료 증빙으로 사용하지 않는다.<a class="original-link" href="/assets/cases/dearlog/doc-workflow-03-safety.jpg">설계 문서 이미지 원본 크게 보기 ↗</a></figcaption></figure>
-</div></details></div></section>
-<section class="story-col story-sec" aria-labelledby="result"><span class="kicker">05 — 무엇이 남았나</span><h2 id="result" class="serif">공개 소개와 고객 서비스 출시를 구분</h2><p>팀 데모의 수정 요청과 완료 기록, 음성 인터뷰부터 가족 검토·자서전까지의 화면, 후속 개인 작업으로 만든 공개 소개·샘플이 남았다.</p><dl class="evidence-dl"><div><dt>2026.10.22 로컬 코드</dt><dd>소개 페이지에 가상 예시·사전신청·회원가입·문의 진입을 제공한다. 회원가입은 별도 계정 페이지로 연결된다.</dd></div><div><dt>핵심 기능의 안내</dt><dd>같은 코드의 FAQ는 질문 보내기·음성 답변·자서전 기능이 아직 열리지 않았다고 안내한다. 가입 진입과 실제 서비스 이용 가능 여부를 구분했다.</dd></div><div><dt>성과로 주장하지 않은 것</dt><dd>이 상태는 로컬 코드 확인 결과다. 공개 사이트의 최신 배포·가입 완료와 실제 고객 운영, 이용자 수·매출은 이번에 검증하지 않았다.</dd></div></dl><p class="story-note">학기 중 화면·문서는 팀 작업. 이후 공개 범위와 운영 정책 결정은 본인, 구현은 AI 협업. 실제 화면에 보이는 가상 데이터를 고객 성과로 환산하지 않았다.</p></section>
-<section class="story-col story-sec" aria-labelledby="lesson"><span class="kicker">06 — 배운 점</span><h2 id="lesson" class="serif">이 사례에서 배운 것</h2><p>직접 써 봐야 고칠 곳이 보인다는 점 확인. 부모님 화면과 자녀 화면을 각각 써 보며 캡처와 바꿀 내용을 붙여 적으니 팀이 바로 처리할 수 있는 요청이 됨.</p><p>공개 범위는 개발 진척에 맞춰 다시 정해야 한다. 10월 초에는 샘플과 문의로 범위를 제한했고, 이후 코드에는 가입 진입을 추가했다. 두 시점의 결정을 구분해 기록해야 소개 페이지와 실제 이용 가능 기능이 어긋나지 않는다.</p></section>
-</article><nav class="story-next" aria-label="사례 이동"><a href="/">← 한눈에 보기</a><a href="/work/">전체 경험 보기 →</a></nav></main><footer class="wrap view-footer"><p>문대한 · 서비스 기획 / PM</p><p><a href="mailto:mdh0204@naver.com">mdh0204@naver.com</a> · <a href="/resume/">이력서 보기</a> · <a href="/resume.pdf">이력서 PDF</a> · <a href="/portfolio.pdf">포트폴리오 PDF</a></p><p class="small">최종 수정 2026.10.22</p></footer></body></html>
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Dear Log · 문대한 AI 서비스 기획</title>
+<meta name="description" content="부모님 음성 답변을 가족이 검토해 자서전으로 묶는 서비스. 6인 캡스톤 팀 개발 총괄, 데모 이슈 10건 정의와 답변별 동의 5종 적용. 캡스톤경진대회 대상.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#1D3A31">
+<link rel="canonical" href="https://moondh99.github.io/projects/dearlog/">
+<meta property="og:type" content="article"><meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="Dear Log · 문대한 AI 서비스 기획">
+<meta property="og:description" content="6인 캡스톤 팀 개발 총괄, 데모 이슈 10건 정의와 답변별 동의 5종 적용. 캡스톤경진대회 대상.">
+<meta property="og:url" content="https://moondh99.github.io/projects/dearlog/"><meta property="og:image" content="https://moondh99.github.io/assets/og-pm.png">
+<link rel="icon" href="/assets/favicon.svg">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@800&family=Courier+Prime:wght@400;700&display=swap">
+<link rel="stylesheet" href="/casefile.css">
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="wrap">
+<header class="site-head"><a class="brand" href="/">문대한</a>
+  <nav class="site-nav" aria-label="주요 메뉴"><a href="/#cases" aria-current="page">대표 사례</a><a href="/#more">보조 사례</a><a href="/#record">이력</a><a class="pdf" href="/portfolio.pdf" download="문대한_서비스기획_포트폴리오.pdf">PDF ↓</a></nav></header>
+
+<main id="main">
+<section class="cover" aria-labelledby="case-title">
+  <div><p class="crumb"><a href="/#cases">대표 사례</a> / FILE 01</p>
+    <h1 class="title" id="case-title">Dear Log</h1>
+    <p class="lede">부모님이 음성으로 답한 이야기를 가족이 원문과 대조해 검토하고, 장별 자서전 PDF로 묶는 서비스. 학기 중 캡스톤 팀에서 개발 총괄, 학기 후 개인 작업으로 공개 범위와 동의 적용을 이어 감.</p></div>
+  <div class="btns"><a class="btn" href="https://dear-log.com" rel="noopener">dear-log.com<span class="ic">↗</span></a><a class="btn ghost" href="/projects/yangju/">다음 서류 FILE 02<span class="ic">→</span></a></div>
+</section>
+
+<span class="cover-tab"><span>FILE 01</span>DEAR LOG · 2026.03–10</span>
+<div class="case-sheet"><span class="clip" aria-hidden="true"></span>
+  <dl class="summary" aria-label="30초 요약">
+    <div><dt>문제</dt><dd>데모를 써 보면 글자 잘림, 동의 설정, 모바일 화면에서 걸림. 답변을 어디까지 책에 써도 되는지 화면에서 정할 수 없음</dd></div>
+    <div><dt>본인 판단</dt><dd>직접 써 보고 이슈 10건 정의·대부분 직접 수정. 답변마다 동의 5종, 공개는 샘플과 문의부터</dd></div>
+    <div><dt>역할·기간</dt><dd>6인 캡스톤 팀, 6월부터 개발 총괄 · 결과보고서 대표 학생 · 2026.03–06, 후속 개인 07–10</dd></div>
+    <div><dt>인정</dt><dd>2026 국민대 경영정보학부 캡스톤경진대회 대상 (2026.06.30) · 후속 개인 작업 구현은 AI 협업</dd></div>
+  </dl>
+
+  <section class="page" aria-labelledby="s1"><p class="file">01 · 배경</p>
+    <h2 id="s1">질문에서 자서전 PDF까지, 역할별 흐름</h2>
+    <p>자녀가 질문과 사진을 준비하고 부모님은 음성이나 글로 답함. AI가 받아 적고 다듬은 내용을 가족이 원문과 대조해 검토한 뒤 장에 추가하고, 마지막 산출물은 A5 자서전 PDF.</p>
+    <p>학기 중 본인 담당은 프런트엔드를 로컬 API와 SQLite 백엔드에 연결하고 사진·가족 질문·자서전 데이터를 DB에 잇는 작업. 6월에 개발 총괄을 맡음.</p>
+    <div class="figs">
+      <figure class="fig"><div class="frame"><img src="/assets/cases/dearlog/app-04-parent-interview-recording.jpg" alt="부모님 화면, 질문 하나와 녹음 버튼"></div><figcaption><b>1. 부모님이 질문에 답함</b>말하기 어려우면 직접 입력하거나 넘기기 가능</figcaption></figure>
+      <figure class="fig"><div class="frame"><img src="/assets/cases/dearlog/app-09-guardian-review-original.jpg" alt="가족 화면, 정리본과 원문을 탭으로 나눠 대조"></div><figcaption><b>2. 가족이 원문을 확인함</b>AI가 다듬은 문장은 가족 검토를 거쳐야 장에 들어감</figcaption></figure>
+      <figure class="fig"><div class="frame"><img src="/assets/cases/dearlog/public-03-autobiography-chapter.jpg" alt="자서전 한 장 화면"></div><figcaption><b>3. 이야기를 한 장으로 읽음</b>공개 샘플용 가상 가족 이야기</figcaption></figure>
+    </div>
+    <p class="note">앱 화면은 모두 데모 계정의 가상 가족 데이터 · 2026.10 캡처</p>
+  </section>
+
+  <section class="page" aria-labelledby="s2"><p class="file">02 · 문제 정의와 실행</p>
+    <h2 id="s2">데모를 두 화면에서 직접 써 보고 이슈 10건으로 정리</h2>
+    <p>개발 총괄을 맡은 뒤 부모님 화면과 자녀 화면을 각각 직접 사용. 걸리는 곳마다 캡처와 바꿀 내용을 붙여 팀 문서에 이슈 10건을 정의하고(2026.06.07 기준), <b>대부분을 직접 수정</b>함.</p>
+    <ul>
+      <li>부모님·자녀 화면 모두의 글자 잘림과 줄바꿈</li>
+      <li>동의 설정 화면 수정, 개발자 설정 숨기기</li>
+      <li>'사진 보고 이야기하기'와 '질문에 답하기'가 같은 화면으로 열리는 문제</li>
+      <li>인터뷰 캘린더를 더 잘 보이는 곳으로 이동</li>
+      <li>부모님 화면 모바일 대응, 고정된 책 표지와 실제 페이지 수 표시</li>
+    </ul>
+  </section>
+
+  <section class="page" aria-labelledby="s3"><p class="file">03 · 선택지와 결정 · 후속 개인 작업</p>
+    <h2 id="s3">공개해도 되는 범위부터 정함</h2>
+    <p>학기 후 7월부터 팀 과제와 별개로 개인 작업. 공개 범위, 동의 적용, 운영 정책을 아래처럼 결정함.</p>
+    <div class="options">
+      <div class="opt drop"><span class="mark">기각</span><div><h3>10월 9일 신규 가입과 기록 입력 개방</h3><p>핵심 기능이 열리기 전이라 가입과 입력을 제한</p></div></div>
+      <div class="opt pick"><span class="mark">채택</span><div><h3>가상 가족 샘플과 문의 창구만 먼저 공개</h3><p>가입 진입과 실제 이용 가능 범위를 구분해 안내</p></div></div>
+      <div class="opt pick"><span class="mark">채택</span><div><h3>데모 서버와 운영 서버 분리</h3><p>가상 가족 데이터로 도는 데모가 운영 데이터와 섞이지 않게 함</p></div></div>
+      <div class="opt pick"><span class="mark">채택</span><div><h3>동의 5종이 실제로 적용되게</h3><p>답변마다 고른 동의가 이미 만든 책까지 반영, 과하게 막던 부분은 다시 해제</p></div></div>
+      <div class="opt drop"><span class="mark">기각</span><div><h3>SMS로 로그인 코드 발송</h3><p>발송 업체 미정이라 이메일 코드로 결정</p></div></div>
+    </div>
+  </section>
+
+  <section class="page" aria-labelledby="s4"><p class="file">04 · 결과물</p>
+    <h2 id="s4">동의 정책이 화면이 된 모습</h2>
+    <div class="two">
+      <figure class="fig"><div class="frame"><img src="/assets/cases/dearlog/app-11-consent-settings.jpg" alt="답변별 활용 동의 설정 화면"></div><figcaption><b>답변별 동의 설정</b>저장된 답변마다 이용 목적을 따로 정하고, 필요하면 모든 활용을 한 번에 중지</figcaption></figure>
+      <div>
+        <p><b>캡스톤경진대회 대상.</b> 2026년도 국민대학교 경영정보학부 캡스톤경진대회, 참가 기간 2026.03.02–06.30, 6인 팀 수상.</p>
+        <p><b>후속 개인 작업.</b> dear-log.com에 공개 소개와 가상 가족 샘플을 올리고, 롯데 공모전에는 단건 가격 가설과 90일 검증 계획을 담아 개인으로 제출.</p>
+        <p><b>AI 협업 범위.</b> 후속 개인 작업의 구현은 AI 협업. 동의 적용, 보안, 공개 범위 결정은 본인.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" aria-labelledby="s5"><p class="file">05 · 배운 점</p>
+    <h2 id="s5">직접 써 봐야 고칠 곳이 보임</h2>
+    <p class="quote">부모님 화면과 자녀 화면을 각각 써 보며 캡처와 바꿀 내용을 붙여 정리하니, 팀이 바로 처리할 수 있는 이슈가 됨.</p>
+    <p>공개 범위는 개발 진척에 맞춰 다시 정해야 함. 10월 초에는 샘플과 문의로 범위를 제한했고 이후 코드에 가입 진입을 추가. 두 시점의 결정을 나눠 기록해야 소개 페이지와 실제 기능이 어긋나지 않음.</p>
+  </section>
+</div>
+
+<nav class="next" aria-label="다른 서류"><a class="btn ghost" href="/#cases">← 서류철로 돌아가기<span class="ic">↺</span></a><a class="btn" href="/projects/yangju/">FILE 02 탈 수 있을까?<span class="ic">→</span></a></nav>
+</main>
+
+<footer class="site-foot"><span>문대한 · AI 서비스 기획 · PM</span><span><a href="mailto:mdh0204@naver.com">mdh0204@naver.com</a> · <a href="https://github.com/moondh99" rel="noopener">github.com/moondh99</a></span></footer>
+</div>
+</body>
+</html>

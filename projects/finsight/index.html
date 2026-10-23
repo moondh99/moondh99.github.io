@@ -1,8 +1,85 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Finsight | 문대한 서비스 기획 PM</title><meta name="description" content="2025 팀 프로젝트로 만든 증권사 리포트 서비스를 2026년에 AI와 다시 구축하며 파서·스케줄러·평균 목표가 규칙을 정한 사례"><meta name="robots" content="index,follow"><meta name="theme-color" content="#ffffff"><link rel="canonical" href="https://moondh99.github.io/projects/finsight/"><meta property="og:type" content="website"><meta property="og:locale" content="ko_KR"><meta property="og:title" content="Finsight | 문대한 서비스 기획 PM"><meta property="og:description" content="2025 팀 프로젝트로 만든 증권사 리포트 서비스를 2026년에 AI와 다시 구축하며 파서·스케줄러·평균 목표가 규칙을 정한 사례"><meta property="og:url" content="https://moondh99.github.io/projects/finsight/"><meta property="og:image" content="https://moondh99.github.io/assets/og-pm.png"><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/views.css"><link rel="stylesheet" href="/story.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap"><link rel="icon" href="/assets/favicon.svg"><link rel="stylesheet" href="/design-system.css"><script src="/design-interactions.js" defer></script></head><body class="detail-view story-view"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="bar"><div class="wrap nav"><a href="/" class="brand">문대한</a><nav aria-label="포트폴리오 보기" class="navlinks"><a href="/">한눈에 보기</a><a href="/work/">자세히 보기</a><a href="/resume/">이력서</a></nav></div></header><main id="main" tabindex="-1"><article class="story">
-<header class="story-wide story-hero"><span class="kicker">추가 사례 · Finsight 증권사 리포트 수집 · 2025–2026</span><h1 class="serif">리포트가 아닌,<br>증권사 단위 집계</h1><p class="lede">증권사 컨센서스 리포트를 매일 수집하고 파싱해 종목별 투자의견과 목표가 변화를 한 화면에 보여 주는 서비스. 2025년 팀 프로젝트를 2026년에 혼자 다시 만들면서 평균 목표가를 증권사별 최신값으로만 계산하기로 결정.</p><dl class="story-meta"><div><dt>역할</dt><dd>2025.04–10 5인 팀 팀장·PM (<a href="/assets/certs/hanium-finsight.jpg">한이음 드림업 수행확인서</a>) · 2026 혼자 재구축, 결정·검토</dd></div><div><dt>구현</dt><dd>2026 코드·대안 조사는 AI 협업</dd></div></dl></header>
-<figure class="story-wide story-figure"><img src="/assets/cases/finsight-2026-reports.png" width="1414" height="939" alt="2026 재구축 Finsight 메인 화면. 종목별 목표가 변화, 목표가 대비 현재가, 투자의견·목표가 변경 목록과 수집 개시 일자를 한 화면에 보여준다." fetchpriority="high"><figcaption>2026 재구축 메인 화면 — 목표가 변화, 목표가 대비 현재가, 의견·목표가 변경</figcaption></figure>
-<section class="story-col story-sec" aria-labelledby="problem"><span class="kicker">01 — 무엇이 문제였나 · 2025 팀 → 2026 재구축</span><h2 id="problem" class="serif">증권사마다 다른 PDF, 중복을 센 평균</h2><p>2025년 5인 팀에서 팀장·PM 담당. 증권사 PDF는 형식이 제각각이라 추출이 어려웠음. 팀원의 경험과 강점에 맞춰 수집과 파싱 역할을 나눴고, 본인도 일부 출처의 수집 담당. 본인 커밋에 증권사별 규칙 파서를 먼저 쓰고 2주 뒤 LLM 파서로 바꾼 기록이 남아 있음.</p><p>2026년에는 같은 서비스를 혼자 다시 구축. 다시 보니 문제는 세 가지. 기존 방식은 PyPDF로 1쪽 텍스트만 뽑아 LLM에 전달. Airflow DAG는 실제로 돌아간 적이 없음. 평균 목표가에는 같은 증권사의 리포트가 여러 건 포함.</p></section>
-<blockquote class="story-quote"><p>“하루 1회, 노트북 1대 작업에<br>컨테이너 7개는 필요 없다.”</p><footer>2026 · Airflow를 launchd로 바꾸며 남긴 결론</footer></blockquote>
-<section class="story-sec" aria-labelledby="decision"><div class="story-col story-sec" style="padding-top:0"><span class="kicker">02 — 무엇을 결정했나 · 2026 재구축</span><h2 id="decision" class="serif">라이선스와 장비 기준으로 파서 선별</h2></div><div class="story-wide"><ul class="options"><li class="rejected"><span class="tag">A · 기각</span><b>PyMuPDF</b><span>AGPL 라이선스 때문에 제외.</span></li><li class="rejected"><span class="tag">B · 기각</span><b>Marker/Surya · Chandra</b><span>매출 제한이 있거나 GPU 필요.</span></li><li class="chosen"><span class="tag">C · 채택</span><b>docling + 로컬 Ollama</b><span>로컬 모델로 파싱. 대신 결과를 그대로 믿지 않도록 가드 추가.</span></li></ul></div><div class="story-col story-sec" style="padding-top:8px"><p>LLM의 과잉 응답은 감수할 부분. 68자짜리 짧은 페이지에서도 모든 필드가 채워진 결과가 나옴. 그래서 150자 미만 페이지는 DB에 넣지 않고 검토 대기로 분류. LLM은 증권사 이름을 5번 중 2번만 맞혀서 머리글 필드는 정규식으로 읽도록 처리. 나중에 pdf-inspector도 시험했지만 실파일 322개에서 1.1배 빠른 데 그쳐 docling 유지.</p><p>스케줄러도 축소. 컨테이너에는 Chrome과 Ollama, 최신 Python이 없었음. Airflow DAG를 등록해 호스트에서 돌리는 대신 launchd와 일일 ETL 스크립트 하나로 교체. 이제 매일 수집과 파싱이 한 작업으로 실행됨.</p><p>마지막은 데이터 신뢰 규칙. 전체 리포트 평균과 증권사별 최신 목표가 가운데 후자 선택. 산업 리포트는 종목 집계에서 제외. 그 대가로 평균에 들어가는 값은 29건에서 15개로 감소. 대신 한 증권사가 리포트를 자주 낸다고 평균이 그쪽으로 쏠리지 않음.</p></div></section>
-<section class="story-sec" aria-labelledby="result"><div class="story-col story-sec" style="padding-top:0"><span class="kicker">03 — 무엇이 남았나 · 2026 재구축</span><h2 id="result" class="serif">같은 증권사는 한 번만</h2></div><div class="story-wide"><dl class="stats"><div><dt>삼성전자 평균 목표가<br>453,793원(29건) → 15개 증권사 최신값</dt><dd>487,333원</dd></div><div><dt>수집·파싱한 리포트, 종목 591개<br>2026-10-13 기준</dt><dd>2,536건</dd></div><div><dt>MD5 중복 게이트로 걸러 낸 재다운로드<br>수집 증권사 20곳(2026-08-26)</dt><dd>55%</dd></div></dl></div><div class="story-col"><p class="story-note">수치는 데이터 처리 지표. 사용자 지표는 포함하지 않음.</p></div></section>
-</article><nav class="story-next" aria-label="사례 이동"><a href="/work/">← 전체 경험</a><a href="/">한눈에 보기 →</a></nav></main><footer class="wrap view-footer"><p>문대한 · 서비스 기획 / PM</p><p><a href="mailto:mdh0204@naver.com">mdh0204@naver.com</a> · <a href="/resume/">이력서 보기</a> · <a href="/resume.pdf">이력서 PDF</a> · <a href="/portfolio.pdf">포트폴리오 PDF</a></p><p class="small">최종 수정 2026.10.15</p></footer></body></html>
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Finsight · 문대한 AI 서비스 기획</title>
+<meta name="description" content="증권사 리포트를 모아 종목별 목표가 변화를 보여 주는 서비스. 2025 한이음 5인 팀장·PM, 2026 개인 재구축에서 같은 증권사는 최신값 하나만 평균에 넣도록 기준을 바꿈.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#1D3A31">
+<link rel="canonical" href="https://moondh99.github.io/projects/finsight/">
+<meta property="og:type" content="article"><meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="Finsight · 문대한 AI 서비스 기획">
+<meta property="og:description" content="2025 한이음 5인 팀장·PM, 2026 개인 재구축에서 증권사별 최신값 평균과 150자 미만 검토 대기 기준을 정함.">
+<meta property="og:url" content="https://moondh99.github.io/projects/finsight/"><meta property="og:image" content="https://moondh99.github.io/assets/og-pm.png">
+<link rel="icon" href="/assets/favicon.svg">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@800&family=Courier+Prime:wght@400;700&display=swap">
+<link rel="stylesheet" href="/casefile.css">
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="wrap">
+<header class="site-head"><a class="brand" href="/">문대한</a>
+  <nav class="site-nav" aria-label="주요 메뉴"><a href="/#cases">대표 사례</a><a href="/#more" aria-current="page">보조 사례</a><a href="/#record">이력</a><a class="pdf" href="/portfolio.pdf" download="문대한_서비스기획_포트폴리오.pdf">PDF ↓</a></nav></header>
+
+<main id="main">
+<section class="cover" aria-labelledby="case-title">
+  <div><p class="crumb"><a href="/#more">보조 사례</a> / Finsight</p>
+    <h1 class="title" id="case-title">Finsight</h1>
+    <p class="lede">증권사 리포트를 매일 모아 종목별 투자의견과 목표가 변화를 한 화면에 보여 주는 서비스. 2025년 한이음 5인 팀에서 팀장·PM, 2026년 개인 재구축에서 같은 증권사는 최신값 하나만 평균에 넣도록 기준을 바꿈.</p></div>
+  <div class="btns"><a class="btn ghost" href="/#more">서류철로 돌아가기<span class="ic">↺</span></a></div>
+</section>
+
+<span class="cover-tab"><span>보조 사례</span>FINSIGHT · 2025.04–2026.10</span>
+<div class="case-sheet"><span class="clip" aria-hidden="true"></span>
+  <dl class="summary" aria-label="30초 요약">
+    <div><dt>문제</dt><dd>증권사 리포트는 여러 곳에 흩어져 있고 PDF 형식도 제각각. 평균 목표가에 같은 증권사의 옛 목표가가 중복 반영됨</dd></div>
+    <div><dt>본인 판단</dt><dd>평균은 증권사별 최신값만으로 계산. 글자가 150자 미만인 페이지는 적재하지 않고 검토 대기로 보냄</dd></div>
+    <div><dt>역할·기간</dt><dd>2025.04–10 한이음 드림업 5인 팀 팀장·PM, 기본 크롤러 담당 (수행확인서 기준 기간). 2026.07–10 개인 재구축</dd></div>
+    <div><dt>결과·AI 협업</dt><dd>2025는 발표·시연용 데모까지. 2026 재구축은 리포트 2,536건 수집·파싱. 2026 코드 구현은 AI 협업, 본인은 기준 결정과 검토</dd></div>
+  </dl>
+
+  <section class="page" aria-labelledby="s1"><p class="file">01 · 무엇을 정했나</p>
+    <h2 id="s1">결과를 그대로 믿지 않는 수집 기준</h2>
+    <p>2025년 팀에서는 기획, 일정 관리, 팀원 소통 조율과 기본 컨센서스 크롤러를 맡음. 증권사별 규칙 파서를 먼저 쓰고, 2주 뒤 선택형 LLM 분석 단계를 붙임.</p>
+    <p>2026년에는 같은 서비스를 혼자 다시 구축. 기존 화면 대부분이 목업이었고, Airflow DAG는 컨테이너 안에서 돌지 않는 구조였음. 아래처럼 범위와 기준을 다시 정함.</p>
+    <div class="options">
+      <div class="opt drop"><span class="mark">기각</span><div><h3>PyMuPDF, Marker/Surya 파서</h3><p>AGPL 라이선스, 가중치 라이선스의 매출·투자 제한 때문에 제외하고 docling 채택</p></div></div>
+      <div class="opt pick"><span class="mark">채택</span><div><h3>150자 미만 페이지는 검토 대기</h3><p>68자만 추출된 리포트에서 LLM이 모든 필드를 지어내 채운 실측이 근거</p></div></div>
+      <div class="opt pick"><span class="mark">채택</span><div><h3>증권사명과 종목코드는 LLM 대신 규칙으로 읽기</h3><p>LLM이 증권사명 5건 중 2건만 맞힘. 크롤러 폴더와 문서 머리글 정규식으로 대체</p></div></div>
+      <div class="opt pick"><span class="mark">채택</span><div><h3>Airflow 대신 launchd와 일일 ETL 스크립트 하나</h3><p>노트북 한 대에서 하루 한 번 도는 작업에 컨테이너 7개는 과하다고 판단</p></div></div>
+      <div class="opt drop"><span class="mark">기각</span><div><h3>pdf-inspector로 파서 교체</h3><p>평가용 문서에서는 11배 빨랐지만 실제 수집분 322건에서는 1.1배에 그쳐 docling으로 되돌림</p></div></div>
+      <div class="opt pick"><span class="mark">채택</span><div><h3>평균 목표가는 증권사별 최신값만</h3><p>산업분석과 중복 리포트를 빼고 증권사마다 가장 최근 목표가 하나만 반영</p></div></div>
+    </div>
+    <p>화면도 정리함. 9개 화면을 전수 조사해 7개로 줄이고, 이후 로그인과 회원가입을 빼서 접속하면 바로 종목 데이터가 보이는 공개 사이트로 전환. 화면은 서버가 준 값만 그리고, 빈 값은 빈 칸으로 두며 몇 건 기준인지 함께 표시하도록 원칙을 둠.</p>
+  </section>
+
+  <section class="page" aria-labelledby="s2"><p class="file">02 · 결과물</p>
+    <h2 id="s2">같은 증권사는 한 번만 셈</h2>
+    <div class="figs">
+      <figure class="fig"><div class="frame"><img src="/assets/cases/finsight-2026-reports.png" width="1414" height="939" alt="2026 재구축 메인 화면, 종목별 목표가 변화와 목표가 대비 현재가, 의견과 목표가 변경 목록"></div><figcaption><b>2026 재구축 메인 화면</b>목표가 변화는 최근 7일과 이전 7일을 비교하고 기준 건수를 함께 표시</figcaption></figure>
+      <figure class="fig"><div class="frame"><img src="/assets/cases/finsight-consensus-prototype.png" width="615" height="384" alt="2025 팀 프로토타입, 최근 일주일 리포트 요약 표"></div><figcaption><b>2025 팀 프로토타입 일부</b>팀원이 만든 HTML 목업, 가상 데이터</figcaption></figure>
+    </div>
+    <ul>
+      <li>삼성전자 평균 목표가 453,793원(리포트 29건 평균)에서 487,333원(15개 증권사 최신값)으로 바뀜</li>
+      <li>2026.07.03–10.13 리포트 2,536건, 종목 591개 수집·파싱</li>
+      <li>증권사 20곳 매일 수집, 파싱 전 MD5 중복 확인으로 재다운로드된 55%를 걸러 냄</li>
+    </ul>
+    <p class="note">수치는 데이터 처리 기준 · 2026 저장소 문서 기준</p>
+  </section>
+
+  <section class="page" aria-labelledby="s3"><p class="file">03 · 배운 점</p>
+    <h2 id="s3">평균을 어떻게 세는지가 곧 화면 정책</h2>
+    <p>리포트 단위 평균은 리포트를 자주 내는 증권사 쪽으로 쏠림. 계산 기준을 정하는 일이 화면에 보이는 숫자의 신뢰를 좌우함. 기술 선택도 라이선스와 장비, 실제 수집분 실측으로 판단. pdf-inspector처럼 평가용 문서와 실제 수집분 결과가 다르면 되돌림.</p>
+  </section>
+</div>
+
+<nav class="next" aria-label="다른 서류"><a class="btn ghost" href="/#more">← 서류철로 돌아가기<span class="ic">↺</span></a></nav>
+</main>
+
+<footer class="site-foot"><span>문대한 · AI 서비스 기획 · PM</span><span><a href="mailto:mdh0204@naver.com">mdh0204@naver.com</a> · <a href="https://github.com/moondh99" rel="noopener">github.com/moondh99</a></span></footer>
+</div>
+</body>
+</html>

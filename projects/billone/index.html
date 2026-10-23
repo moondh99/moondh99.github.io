@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>법안 한 장 · 문대한 AI 서비스 기획</title>
+<meta name="description" content="기사 속 법안을 국회·법제처 공식 원문 근거 카드로 보여 주는 서비스. 판정보다 근거, 근거가 없으면 발행 차단. 코드는 AI 작성, 본인은 기획·정책·검수.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#1D3A31">
+<link rel="canonical" href="https://moondh99.github.io/projects/billone/">
+<meta property="og:type" content="article"><meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="법안 한 장 · 문대한 AI 서비스 기획">
+<meta property="og:description" content="기사 속 법안을 공식 원문 근거 카드로 보여 주는 서비스. 근거가 없으면 발행하지 않음. 코드는 AI 작성, 본인은 기획·정책·검수.">
+<meta property="og:url" content="https://moondh99.github.io/projects/billone/"><meta property="og:image" content="https://moondh99.github.io/assets/og-pm.png">
+<link rel="icon" href="/assets/favicon.svg">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@800&family=Courier+Prime:wght@400;700&display=swap">
+<link rel="stylesheet" href="/casefile.css">
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="wrap">
+<header class="site-head"><a class="brand" href="/">문대한</a>
+  <nav class="site-nav" aria-label="주요 메뉴"><a href="/#cases">대표 사례</a><a href="/#more" aria-current="page">보조 사례</a><a href="/#record">이력</a><a class="pdf" href="/portfolio.pdf" download="문대한_서비스기획_포트폴리오.pdf">PDF ↓</a></nav></header>
+
+<main id="main">
+<section class="cover" aria-labelledby="case-title">
+  <div><p class="crumb"><a href="/#more">보조 사례</a> / 법안 한 장</p>
+    <h1 class="title" id="case-title">법안 한 장</h1>
+    <p class="lede">뉴스 기사 URL을 넣으면 관련 법안의 제안 이유, 조문 변화, 처리 과정, 표결을 국회·법제처 공식 자료 근거로 보여 주는 공유형 근거 카드 서비스. 원칙은 판정보다 근거, 근거가 없으면 카드를 발행하지 않음. 코드는 AI 작성, 본인은 기획·정책·검수.</p></div>
+  <div class="btns"><a class="btn" href="https://161-33-198-112.sslip.io/" rel="noopener">서비스 열기<span class="ic">↗</span></a><a class="btn ghost" href="/#more">서류철로 돌아가기<span class="ic">↺</span></a></div>
+</section>
+
+<span class="cover-tab"><span>보조 사례</span>법안 한 장 · 2026.09–10</span>
+<div class="case-sheet"><span class="clip" aria-hidden="true"></span>
+  <dl class="summary" aria-label="30초 요약">
+    <div><dt>문제</dt><dd>뉴스는 법안 효과를 짧게 단정하나 원문과 제안이유는 찾기 어려움. 기사에 의안번호가 없고 위원회 대안과 원안이 섞이는 경우가 많음</dd></div>
+    <div><dt>본인 판단</dt><dd>AI가 결론을 내리지 않고 공식 근거만 연결. 핵심 문장에 원문 근거가 없으면 공유 카드 발행 차단</dd></div>
+    <div><dt>역할·기간</dt><dd>본인은 기획과 정책 결정, 결과 검수 · 2026.09–10</dd></div>
+    <div><dt>결과·AI 협업</dt><dd>PRD v0.1과 Next.js 서비스 공개 배포 · 코드는 모두 AI 작성, 본인은 기획·정책·검수</dd></div>
+  </dl>
+
+  <section class="page" aria-labelledby="s1"><p class="file">01 · 무엇을 정했나</p>
+    <h2 id="s1">정치적으로 민감한 주제라 하지 않을 일부터 정함</h2>
+    <p>범용 AI에 법안 폐지 이유를 물었을 때 설명이 어려웠던 경험에서 출발. 기사 URL은 법안을 찾는 단서로만 쓰고, 사실 근거는 공포 법률, 국회 원문, 회의록 순으로 우선순위를 둠.</p>
+    <div class="options">
+      <div class="opt drop"><span class="mark">기각</span><div><h3>AI가 일치·불일치나 찬반을 판정</h3><p>기사 진위 판정, 의원 점수와 진영 분류도 비목표로 명시</p></div></div>
+      <div class="opt pick"><span class="mark">채택</span><div><h3>근거가 없으면 발행하지 않음</h3><p>법안, 최신 조문, 핵심 문장의 공식 근거 중 하나라도 확인하지 못하면 공유 카드를 만들지 않음</p></div></div>
+      <div class="opt pick"><span class="mark">채택</span><div><h3>공유 전 확인 조건 4개</h3><p>공식 문서 연결, 핵심 문장 원문 인용, 최신 조문 전후 비교, 공식 설명에 없는 부분이 모두 통과해야 공유 활성화</p></div></div>
+      <div class="opt pick"><span class="mark">채택</span><div><h3>위원회 대안을 의원 한 명에게 귀속하지 않음</h3><p>의원 원안, 위원회 병합·수정, 본회의 최종안, 공포 법률 순의 계보로 표시</p></div></div>
+      <div class="opt drop"><span class="mark">기각</span><div><h3>공유량을 성공 지표로 사용</h3><p>자극적 콘텐츠도 공유는 많을 수 있어, 카드 열람자의 원문 근거 클릭률을 목표 지표로 설정</p></div></div>
+    </div>
+    <p>실패도 숨기지 않게 설계. 기사 본문을 읽지 못하면 그 사실을 표시하고, 법안 후보가 불확실하면 임의로 확정하지 않고 사용자 확인을 받음. 정당 연상 색을 피해 청록 계열을 주조색으로 쓰고, 빨강은 오류·정정 상태에만 사용.</p>
+  </section>
+
+  <section class="page" aria-labelledby="s2"><p class="file">02 · 결과물 화면</p>
+    <h2 id="s2">30초 요약 세 문장과 확인 순서</h2>
+    <div class="figs">
+      <figure class="fig"><div class="frame"><img src="/assets/cases/billone/home.png" alt="법안 한 장 홈 화면, 기사 URL 입력창과 의안 2220257 근거 카드 미리보기"></div><figcaption><b>홈과 근거 카드 미리보기</b>발의 이유, 실제 변화, 설명 부족 순서의 세 문장 요약</figcaption></figure>
+      <figure class="fig"><div class="frame"><img src="/assets/cases/billone/steps.png" alt="확인 순서 네 단계, 기사 붙여넣기, 법안 찾기, 문장 검증하기, 근거로 공유하기"></div><figcaption><b>확인 순서 네 단계</b>기사 입력부터 근거 검증 후 공유까지, 가입 없이 열리는 카드 링크</figcaption></figure>
+    </div>
+    <p class="note">공개 페이지 https://161-33-198-112.sslip.io/ · 2026.10.23 캡처</p>
+  </section>
+</div>
+
+<nav class="next" aria-label="다른 서류"><a class="btn ghost" href="/#more">← 서류철로 돌아가기<span class="ic">↺</span></a></nav>
+</main>
+
+<footer class="site-foot"><span>문대한 · AI 서비스 기획 · PM</span><span><a href="mailto:mdh0204@naver.com">mdh0204@naver.com</a> · <a href="https://github.com/moondh99" rel="noopener">github.com/moondh99</a></span></footer>
+</div>
+</body>
+</html>

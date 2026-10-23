@@ -1,8 +1,113 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>양주 광역버스 좌석 정보 | 문대한 서비스 기획 PM</title><meta name="description" content="0석과 정보 없음을 나누고, 근거 없는 예측 확률은 null로 둔 광역버스 좌석 조회 API 사례"><meta name="robots" content="index,follow"><meta name="theme-color" content="#ffffff"><link rel="canonical" href="https://moondh99.github.io/projects/yangju/"><meta property="og:type" content="website"><meta property="og:locale" content="ko_KR"><meta property="og:title" content="양주 광역버스 좌석 정보 | 문대한 서비스 기획 PM"><meta property="og:description" content="0석과 정보 없음을 나누고, 근거 없는 예측 확률은 null로 둔 광역버스 좌석 조회 API 사례"><meta property="og:url" content="https://moondh99.github.io/projects/yangju/"><meta property="og:image" content="https://moondh99.github.io/assets/og-pm.png"><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/views.css"><link rel="stylesheet" href="/story.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap"><link rel="icon" href="/assets/favicon.svg"><link rel="stylesheet" href="/design-system.css"><script src="/design-interactions.js" defer></script></head><body class="detail-view story-view"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="bar"><div class="wrap nav"><a href="/" class="brand">문대한</a><nav aria-label="포트폴리오 보기" class="navlinks"><a href="/">한눈에 보기</a><a href="/work/">자세히 보기</a><a href="/resume/">이력서</a></nav></div></header><main id="main" tabindex="-1"><article class="story">
-<header class="story-wide story-hero"><span class="kicker">추가 사례 · 양주 광역버스 좌석 정보 · 2026</span><h1 class="serif">0석과 ‘모름’의<br>분리</h1><p class="lede">양주에서 서울로 출퇴근하는 광역버스 승객에게 좌석 정보를 주는 서비스. 모르는 값을 0으로 채우지 않고 근거 없는 확률은 보여 주지 않는 API 기준을 본인이 수립.</p><p class="lede"><strong>만차예보 · 양주시 AI 공모전 최우수상 수상</strong></p><dl class="story-meta"><div><dt>역할</dt><dd>5인 팀 · 개발·AI 서비스 설계, 범위 결정·검토</dd></div><div><dt>구현</dt><dd>명세 초안·코드·테스트는 AI 협업</dd></div></dl></header>
-<figure class="story-wide story-figure"><img src="/assets/cases/yangju-api-swagger.png" width="1440" height="1200" alt="로컬 좌석 조회 API의 Swagger 화면. 상단 설명에 현재 좌석은 탑승 확률이 아니며, 오래된 관측은 stale로 표시하고 예측 확률은 null로 둔다는 문구가 있다." fetchpriority="high"><figcaption>로컬 API Swagger — 현재 좌석은 탑승 확률이 아니고, 오래된 관측은 stale, 예측 확률은 null</figcaption></figure>
-<section class="story-col story-sec" aria-labelledby="problem"><span class="kicker">01 — 무엇이 문제였나</span><h2 id="problem" class="serif">0으로 들어온 빈칸</h2><p>2026 양주시 미래인재 AI 공모전에 5인 팀으로 참가. 내 정류장에서 탈 수 있는지 알려 주는 기획으로, 1차 기획안은 10월 4일 제출. 지금의 잔여석만으로는 내 정류장에 도착했을 때 만차인지 알기 어려움.</p><p>10월 3일에 덕정역 도착 API를 한 번 조회. 슬롯 56개 중 쓸 수 있는 좌석 값은 2행뿐. 빈 슬롯 37, 공란·해석 불가 28, 음수·미제공 8(플래그 겹침). 게다가 빈 슬롯은 기본값 0으로 들어옴. 그대로 쓰면 ‘정보 없음’이 ‘만석’으로 보임.</p><p>10월 7일 팀 회의용으로 API 명세·DB 설계 검토안 v0.1(22쪽)을 본인이 AI 협업으로 작성. 첫 안건은 현재 좌석과 0석 확률, 근거 부족을 어떻게 나눌지.</p></section>
-<blockquote class="story-quote"><p>“0으로 합치면,<br>정보 없음이 만석으로 읽힌다.”</p><footer>좌석 상태를 나눈 이유</footer></blockquote>
-<section class="story-sec" aria-labelledby="decision"><div class="story-col story-sec" style="padding-top:0"><span class="kicker">02 — 무엇을 결정했나</span><h2 id="decision" class="serif">모르는 값은 모른다고 응답</h2></div><div class="story-wide"><ul class="options"><li class="rejected"><span class="tag">A · 기각</span><b>모두 0으로 처리</b><span>빈 슬롯과 정보 없음이 만석 관측과 섞임.</span></li><li class="chosen"><span class="tag">B · 채택</span><b>0석·정보 없음·빈 슬롯 분리</b><span>실제 차량이 보고한 0만 만석으로 판단. -1이나 공란, 음수는 0으로 바꾸지 않고 빈 슬롯은 후보에서 제외.</span></li></ul></div><div class="story-col story-sec" style="padding-top:8px"><p>시각 기준도 결정. 옛 도착 예정 시간에 새 조회 시각이 붙으면 지금 본 값처럼 보임. 그래서 요청 시각 기준으로 보정하는 안은 기각. 수집 시각은 로컬 수신 시각으로 두고 도착 예정 시각은 수신 시각에 ETA를 더해 고정. 수집 주기×2+60초가 지나면 stale로 표시.</p><p>범위는 축소. 방향이나 정류장 매핑이 틀리면 곧 잘못된 좌석 안내가 됨. 덕정역과 덕현초교(G1300·1306 잠실 방향), 잠실광역환승센터(G1300 회차), 잠실역(1306 회차)까지 정류장 4곳, 매핑 6건만 유지. 검증 근거가 없는 반대편 정류장과 심야 G1300N, 다른 노선은 제외. 그만큼 조회할 수 있는 곳은 줄어듦.</p><p>마지막으로 예측 확률은 null로 공개. 운행 연결과 정답 라벨, 공개 기준이 없었기 때문. 확률 대신 out_of_scope, unverified_direction, missing_label_pipeline 순으로 근거가 부족한 이유를 상태로 전송.</p></div></section>
-<section class="story-sec" aria-labelledby="result"><div class="story-col story-sec" style="padding-top:0"><span class="kicker">03 — 무엇이 남았나</span><h2 id="result" class="serif">값과 상태를 함께 보내는 API</h2></div><div class="story-wide"><dl class="stats"><div><dt>실수집 첫 조회 3회 모두 HTTP 200<br>슬롯 72행 중 유효 좌석, API 보고 0석 1행</dt><dd>17행</dd></div><div><dt>API 테스트 passed<br>SQLite 통합 50개 포함, AI 작성</dt><dd>183</dd></div><div><dt>수집기 합성·로컬 테스트<br>AI 작성</dt><dd>92</dd></div></dl></div><div class="story-col"><p class="story-note">SQLite 로컬 구현. 팀 저장소와 통합하기 전이며 배포도 하지 않음.</p></div></section>
-</article><nav class="story-next" aria-label="사례 이동"><a href="/work/">← 전체 경험</a><a href="/projects/finsight/">다음 사례: Finsight →</a></nav></main><footer class="wrap view-footer"><p>문대한 · 서비스 기획 / PM</p><p><a href="mailto:mdh0204@naver.com">mdh0204@naver.com</a> · <a href="/resume/">이력서 보기</a> · <a href="/resume.pdf">이력서 PDF</a> · <a href="/portfolio.pdf">포트폴리오 PDF</a></p><p class="small">최종 수정 2026.10.20</p></footer></body></html>
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>탈 수 있을까? · 문대한 AI 서비스 기획</title>
+<meta name="description" content="내 정류장에 도착할 때 자리가 있을지 예보하는 양주 광역버스 서비스. 5인 팀에서 데이터 수집과 예보 API 담당, 0석과 정보 없음을 분리하고 근거 없는 확률은 null로 둠. 양주시 미래인재 AI 공모전 최우수상.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#1D3A31">
+<link rel="canonical" href="https://moondh99.github.io/projects/yangju/">
+<meta property="og:type" content="article"><meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="탈 수 있을까? · 문대한 AI 서비스 기획">
+<meta property="og:description" content="5인 팀에서 데이터 수집과 예보 API 담당, 0석과 정보 없음을 분리하고 근거 없는 확률은 null로 둠. 양주시 미래인재 AI 공모전 최우수상.">
+<meta property="og:url" content="https://moondh99.github.io/projects/yangju/"><meta property="og:image" content="https://moondh99.github.io/assets/og-pm.png">
+<link rel="icon" href="/assets/favicon.svg">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@800&family=Courier+Prime:wght@400;700&display=swap">
+<link rel="stylesheet" href="/casefile.css">
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="wrap">
+<header class="site-head"><a class="brand" href="/">문대한</a>
+  <nav class="site-nav" aria-label="주요 메뉴"><a href="/#cases" aria-current="page">대표 사례</a><a href="/#more">보조 사례</a><a href="/#record">이력</a><a class="pdf" href="/portfolio.pdf" download="문대한_서비스기획_포트폴리오.pdf">PDF ↓</a></nav></header>
+
+<main id="main">
+<section class="cover" aria-labelledby="case-title">
+  <div><p class="crumb"><a href="/#cases">대표 사례</a> / FILE 02</p>
+    <h1 class="title" id="case-title">탈 수 있을까?</h1>
+    <p class="lede">양주에서 서울로 출근하는 광역버스 승객에게 버스가 내 정류장에 도착할 때 자리가 있을지 예보하는 서비스. 5인 팀에서 데이터 수집과 예보 API, 모바일 웹 조회 흐름을 맡고 기획 논의에 참여함.</p></div>
+  <div class="btns"><a class="btn ghost" href="/projects/nca/">다음 서류 FILE 03 NCA<span class="ic">→</span></a></div>
+</section>
+
+<span class="cover-tab"><span>FILE 02</span>양주 만차예보 · 2026.09–10</span>
+<div class="case-sheet"><span class="clip" aria-hidden="true"></span>
+  <dl class="summary" aria-label="30초 요약">
+    <div><dt>문제</dt><dd>지금 보이는 잔여석으로는 내 정류장에서 탈 수 있을지 알기 어려움. 공공 API의 빈 좌석 슬롯이 기본값 0으로 들어와 '정보 없음'이 '만석'으로 보임</dd></div>
+    <div><dt>본인 판단</dt><dd>실제 차량이 보고한 0만 만석으로 처리하고 정보 없음과 빈 슬롯은 따로 구분. 근거가 부족한 예측 확률은 null로 둠</dd></div>
+    <div><dt>역할·기간</dt><dd>5인 팀 '타고가조', 데이터 수집과 예보 API, 모바일 웹 조회 흐름 담당, 기획 논의 참여 · 2026.09.23–10.17</dd></div>
+    <div><dt>인정</dt><dd>2026 양주시 미래인재 AI 공모전 최우수상 (팀 수상, 제2026-126호, 2026.10.17) · 로컬 API 코드와 테스트는 AI 협업, 응답 기준과 검수는 본인</dd></div>
+  </dl>
+
+  <section class="page" aria-labelledby="s1"><p class="file">01 · 배경</p>
+    <h2 id="s1">'언제 올까'에서 '탈 수 있을까'로</h2>
+    <p>옥정에서 좌석이 소진돼 고읍과 삼숭에서 타기 어렵다는 시민 건의가 있었고, 양주시는 2026년 2월 G1300과 1306을 증회함. 기획안에 쓴 STCIS 자료(2026.9.8–21 평일)에서 G1300 덕현초교 06시대 혼잡도는 97%, 관측일 10일 중 9일 혼잡.</p>
+    <p>기존 안내는 도착 예정 시간과 현재 잔여석까지만 보여 줌. 팀은 질문을 '내 정류장에 오면 탈 수 있을까'로 바꾸고 도착 시 만차 확률, 유사 운행 사례, 다음 버스 비교를 함께 주는 방향으로 정리함. 팀 설문 기준으로 '만차로 다음 버스를 기다렸다'는 응답은 42.8%.</p>
+    <div class="figs">
+      <figure class="fig"><div class="frame"><img src="/assets/cases/yangju/yangju-asis-tobe.jpg" alt="AS IS '버스는 언제 올까?'와 TO BE '내 정류장에 오면 탈 수 있을까?'를 나란히 비교한 슬라이드"></div><figcaption><b>질문 전환</b>도착 예정 시간과 현재 잔여석에서 도착 시 만차 확률과 유사 운행 비교로 · 팀 발표자료 p.4</figcaption></figure>
+    </div>
+    <p>시범 범위는 덕현초교 출발 G1300과 1306 두 노선, 평일 05:45–09:00 만차 예측.</p>
+  </section>
+
+  <section class="page" aria-labelledby="s2"><p class="file">02 · 문제 정의</p>
+    <h2 id="s2">빈칸이 0석으로 들어오는 데이터</h2>
+    <p>2026.10.03 덕정역 도착 API를 한 번 조회해 좌석 값을 확인. 정규화한 슬롯 56개 중 쓸 수 있는 좌석 값은 <b>2행</b>뿐임.</p>
+    <ul>
+      <li>빈 슬롯 37, 좌석 공란이나 숫자 해석 불가 28, 음수나 미제공 8 (한 행에 여러 표시가 겹쳐 합계는 56을 넘음)</li>
+      <li>빈 슬롯이 기본값 0으로 들어와, 그대로 쓰면 '정보 없음'이 '만석'으로 보임</li>
+    </ul>
+    <p class="note">단일 조회 결과 · 본인 로컬 검증 문서 기준</p>
+  </section>
+
+  <section class="page" aria-labelledby="s3"><p class="file">03 · 판단 기준과 결정</p>
+    <h2 id="s3">모르는 값은 모른다고 응답</h2>
+    <p class="quote">0으로 합치면 정보 없음이 만석으로 읽힘. 근거가 없으면 숫자 대신 이유를 보냄.</p>
+    <p>이 기준으로 수집과 예보 API의 응답 규칙을 아래처럼 정함.</p>
+    <div class="options">
+      <div class="opt drop"><span class="mark">피함</span><div><h3>API 기본값 0을 그대로 사용</h3><p>빈 슬롯과 정보 없음이 실제 만석 관측과 섞임</p></div></div>
+      <div class="opt pick"><span class="mark">채택</span><div><h3>0석, 정보 없음, 빈 슬롯 분리</h3><p>실제 차량이 보고한 0만 만석으로 판단. -1이나 공란, 음수는 0으로 바꾸지 않고 빈 슬롯은 후보에서 제외</p></div></div>
+      <div class="opt drop"><span class="mark">피함</span><div><h3>요청 시각에 도착 예정 시간을 다시 더함</h3><p>예전에 받은 도착 예정 시간이 조회할 때마다 뒤로 밀려 방금 본 값처럼 보임</p></div></div>
+      <div class="opt pick"><span class="mark">채택</span><div><h3>수신 시각 고정과 stale 표시</h3><p>도착 예정 시각은 수신 시각 기준으로 고정. 오래된 관측은 stale로 표시하고 계산에서 제외</p></div></div>
+      <div class="opt pick"><span class="mark">채택</span><div><h3>근거가 부족하면 확률은 null</h3><p>유사 사례 19건 이하면 확률을 내지 않고 20건부터 계산. 20건을 채워도 공개 승인은 따로 둠</p></div></div>
+      <div class="opt pick"><span class="mark">채택</span><div><h3>덕현초교 직접 관측을 기준으로</h3><p>덕정역 관측은 같은 차량, 같은 운행, 같은 방향이 확인될 때만 보조로 사용. 차량번호 일치만으로 같은 운행으로 보지 않음</p></div></div>
+    </div>
+    <p>예보 갱신 시점을 '도착 15·10·5분 전'에서 '3·2·1정거장 전'으로 바꾼 것은 팀 결정으로, 2026.10.15 최종 발표자료에 반영됨.</p>
+  </section>
+
+  <section class="page" aria-labelledby="s4"><p class="file">04 · 결과물</p>
+    <h2 id="s4">예보 화면과 예측 보류 구조</h2>
+    <p>팀 최종 발표자료(2026.10.15)의 서비스 화면. 예보 카드에 무좌석 위험과 함께 근거가 된 유사 운행 횟수를 같이 표시함.</p>
+    <div class="figs">
+      <figure class="fig"><div class="frame"><img src="/assets/cases/yangju/yangju-home.jpg" alt="'탈 수 있을까?' 모바일 웹 첫 화면, '오늘은, 앉아서 가볼까요?' 문구와 출발지 입력 영역"></div><figcaption><b>1. 첫 화면</b>출발지와 목적지를 정하고 버스별 예보로 이동 · 팀 발표자료 p.1</figcaption></figure>
+      <figure class="fig"><div class="frame"><img src="/assets/cases/yangju/yangju-forecast.jpg" alt="덕현초교에서 신림역까지 경로 카드, G1300 4분 후 잔여 5석, 무좌석 위험 4% 위험 낮음 13회 중 0회"></div><figcaption><b>2. 버스별 예보</b>'무좌석 위험 4% · 13회 중 0회'처럼 확률과 근거 사례 수를 함께 표시 · 팀 발표자료 p.9</figcaption></figure>
+    </div>
+    <div class="figs">
+      <figure class="fig"><div class="frame"><img src="/assets/cases/yangju/yangju-arch.jpg" alt="하네스가 관리하는 AI 구조도, 실시간 운행과 JSON 사례, Markdown 규칙에서 유사 운행 검색, 확률 추정과 사례 기반 계산, 검증을 거쳐 통과하면 경로 카드, 미통과하면 예측 보류"></div><figcaption><b>3. AI 구조</b>보정, 최신성, 근거, 일관성 검증을 통과하지 못하면 예측 보류 · 팀 공동 설계, 팀 발표자료 p.12</figcaption></figure>
+    </div>
+    <div class="two">
+      <div>
+        <p><b>본인 산출물.</b> 로컬 FastAPI 예보 API 0.1.0(경로 10개)과 GBIS 좌석 수집기, 검증 문서. 첫 공식 조회 3회 모두 정상 응답, 차량 슬롯 72행 중 유효 좌석 17행 확인. 팀 저장소와 통합 전 로컬 구현이며, Azure 서버는 생성과 관리까지 담당.</p>
+      </div>
+      <div>
+        <p><b>최우수상.</b> 2026 양주시 미래인재 AI 공모전 최우수상, 양주시장 명의, 팀 수상.</p>
+        <p><b>AI 협업 범위.</b> API 명세 초안, 코드, 테스트는 AI 협업. 좌석 상태 구분과 확률 공개 조건, 결과 검수는 본인.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="page" aria-labelledby="s5"><p class="file">05 · 배운 점</p>
+    <h2 id="s5">무엇을 모른다고 보여 줄지부터 정함</h2>
+    <p>예보 확률은 그 아래 관측 값이 맞아야 의미가 있음. 실제 조회로 빈칸이 0으로 들어오는 것을 먼저 확인했기 때문에 0석과 정보 없음을 나누는 기준을 문서로 남길 수 있었음.</p>
+    <p>근거가 부족할 때 숫자를 내지 않는 원칙은 팀 구조의 '검증 미통과 시 예측 보류'와 같은 방향. 다만 본인 산출물은 로컬 구현이고 화면과 발표자료는 팀 공동 작업이라, 둘을 나눠 기록해야 기여 범위가 정확해짐.</p>
+  </section>
+</div>
+
+<nav class="next" aria-label="다른 서류"><a class="btn ghost" href="/#cases">← 서류철로 돌아가기<span class="ic">↺</span></a><a class="btn" href="/projects/nca/">FILE 03 NCA<span class="ic">→</span></a></nav>
+</main>
+
+<footer class="site-foot"><span>문대한 · AI 서비스 기획 · PM</span><span><a href="mailto:mdh0204@naver.com">mdh0204@naver.com</a> · <a href="https://github.com/moondh99" rel="noopener">github.com/moondh99</a></span></footer>
+</div>
+</body>
+</html>

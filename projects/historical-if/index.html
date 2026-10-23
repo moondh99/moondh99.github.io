@@ -1,11 +1,85 @@
-<!doctype html><html lang="ko"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>실록 평행세계 | 문대한 서비스 기획 PM</title><meta name="description" content="조선왕조실록과 승정원일기 기사에 가정마다 근거를 연결하고, 선택 10번을 1만 개 평행세계로 시뮬레이션하는 역사 IF 게임 사례"><meta name="robots" content="index,follow"><meta name="theme-color" content="#ffffff"><link rel="canonical" href="https://moondh99.github.io/projects/historical-if/"><meta property="og:type" content="website"><meta property="og:locale" content="ko_KR"><meta property="og:title" content="실록 평행세계 | 문대한 서비스 기획 PM"><meta property="og:description" content="조선왕조실록과 승정원일기 기사에 가정마다 근거를 연결하고, 선택 10번을 1만 개 평행세계로 시뮬레이션하는 역사 IF 게임 사례"><meta property="og:url" content="https://moondh99.github.io/projects/historical-if/"><meta property="og:image" content="https://moondh99.github.io/assets/og-pm.png"><link rel="stylesheet" href="/style.css"><link rel="stylesheet" href="/views.css"><link rel="stylesheet" href="/story.css"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@700;800&amp;family=IBM+Plex+Mono:wght@500&amp;display=swap"><link rel="icon" href="/assets/favicon.svg"><link rel="stylesheet" href="/design-system.css"><script src="/design-interactions.js" defer></script></head><body class="detail-view story-view"><a class="skip" href="#main">본문으로 건너뛰기</a><header class="bar"><div class="wrap nav"><a href="/" class="brand">문대한</a><nav aria-label="포트폴리오 보기" class="navlinks"><a href="/">한눈에 보기</a><a href="/work/">자세히 보기</a><a href="/resume/">이력서</a></nav></div></header><main id="main" tabindex="-1"><article class="story">
-<header class="story-wide story-hero"><span class="kicker">개인 프로젝트 · 실록 평행세계 · 2026 · 진행 중</span><h1 class="serif">모든 가정에<br>사료 근거를</h1><p class="lede">조선의 큰 사건에서 왕의 자리에 앉아 선택 10번을 내리는 역사 IF 게임. 선택마다 1만 개 평행세계를 시뮬레이션하고, 결과를 움직이는 가정마다 실록이나 승정원일기 기사를 근거로 연결. 2026년 10월 10일 시작, 커밋 106개.</p><dl class="story-meta"><div><dt>역할</dt><dd>개인 프로젝트 · 기획, 범위와 에피소드 결정, 사료 출처 결정</dd></div><div><dt>구현</dt><dd>코드와 테스트는 AI 협업(Claude), 장면 이미지는 Codex로 생성</dd></div></dl></header>
-<figure class="story-wide story-figure"><img src="/assets/cases/historical-if/decision.jpg" width="1154" height="1280" alt="광해군 1618 에피소드의 첫 결정 화면. 수묵화풍 장면 삽화 아래에 '명의 원병 요청' 제목과 상황 설명, 국고 40, 민심 45, 명과의 관계 62 같은 점수 7개 막대, 적극 지원부터 거절까지 선택지 4개와 직접 명령 입력칸이 있다." fetchpriority="high"><figcaption>첫 결정 화면, 2026.10.15 로컬 실행 화면. 장면 삽화는 Codex로 만든 AI 생성 이미지이며 화면에도 'AI 상상도 · 실제 기록 아님'으로 표시</figcaption></figure>
-<section class="story-col story-sec" aria-labelledby="problem"><span class="kicker">01 — 무엇이 문제였나</span><h2 id="problem" class="serif">근거 없는 '만약'</h2><p>역사 IF는 그럴듯한 상상으로 흐르기 쉬움. 그래서 기획 문서(Implementation Plan v0.1)에서 사료, 모델, 게임 세 층을 나누고 사료 기사에서 주장, 가정, 규칙, 선택, 결과까지 거슬러 올라갈 수 있게 하는 것을 목표로 정함. 첫 범위는 광해군 1618~1623년으로 한정.</p><p>사료를 얻는 길부터 막힘. 실록 사이트는 자동 요청을 막고 공식 Open API도 없음. 마지막 에피소드인 병인·신미양요(1866~1871)는 확보한 실록 원문 묶음에 고종실록이 아예 없음.</p></section>
-<blockquote class="story-quote"><p>“실록에 없는 장면은<br>가상이라고 표시한다.”</p><footer>분기 사건과 장면 이미지에 붙인 원칙</footer></blockquote>
-<section class="story-sec" aria-labelledby="decision"><div class="story-col story-sec" style="padding-top:0"><span class="kicker">02 — 무엇을 결정했나</span><h2 id="decision" class="serif">사료 출처와 근거 연결 방식</h2></div><div class="story-wide"><ul class="options"><li class="chosen"><span class="tag">실록 · 채택</span><b>공공데이터포털 실록 원문 XML</b><span>국사편찬위원회가 공공누리 제1유형으로 공개한 파일을 받아 적재. 본문은 한문 원문. 음력 날짜를 양력으로 바꾸고 실록의 일진과 대조해 일치율 99.3% 확인.</span></li><li class="chosen"><span class="tag">승정원일기 · 채택</span><b>한국고전종합DB 국역본</b><span>고종실록이 없는 병인·신미양요는 본인 결정으로 승정원일기 고종대로 대체. 목차를 따라 1초 간격으로 받아 캐시하고 1866~1871년 국역 기사 29,781건 적재.</span></li></ul></div><div class="story-col story-sec" style="padding-top:8px"><p>근거 연결 방식도 정함. 기사 전부를 LLM 추출에 넣지 않고 결정과 관련이 깊은 기사부터 점수로 골라 주장(claim)을 뽑음. 시뮬레이션 가정마다 이 주장을 근거 링크로 붙임. 예를 들어 병자호란은 가정 11개에 근거 49개, 계유정난은 가정 10개에 근거 47개, 병인·신미양요는 가정 10개에 근거 52개 연결.</p><p>에피소드 구조는 선택 10번으로 고정. 점수 7개는 모두 0이 나쁜 방향이고 하나라도 0이 되면 그 자리에서 종료. 결정마다 실제 역사의 선택과 결과를 함께 보여 주고, 끝나면 실록 경로와 내 세계를 점수별로 비교. 실록과 다른 길로 갈라진 뒤의 사건에는 '가상 시나리오' 배지를 붙임.</p><p>서술 문단은 LLM이 쓰되 주어진 사실과 수치, 허용된 사건만 쓰게 하고 어기면 거부하도록 구현. 실제 역사 문구는 사료 원문과 대조 검토를 거쳐 과장되거나 근거 없는 문장 18개를 완화.</p></div></section>
-<figure class="story-wide story-figure"><img src="/assets/cases/historical-if/result.jpg" width="1154" height="1280" alt="첫 결정에서 '제한적으로 지원한다'를 고른 뒤의 결과 화면. 1만 개 평행세계 결과를 설명하는 서술 문단, 실제 역사와 같은 선택을 했다는 안내와 실제 경과, 명과의 관계와 후금과의 관계 등 점수별로 개선과 악화 세계 비율을 점으로 보여 주는 그래프가 있다." loading="lazy"><figcaption>결정 결과 화면, 2026.10.15 로컬 실행 화면. 서술 문단은 LLM 생성, 아래 '실제 역사'는 실록 기준 문구</figcaption></figure>
-<section class="story-sec" aria-labelledby="result"><div class="story-col story-sec" style="padding-top:0"><span class="kicker">03 — 결과물</span><h2 id="result" class="serif">에피소드 5개 플레이 가능</h2></div><div class="story-wide"><dl class="stats"><div><dt>플레이 가능한 에피소드<br>광해군, 병자호란, 임진왜란, 계유정난, 병인·신미양요</dt><dd>5</dd></div><div><dt>승정원일기 고종 1866~1871<br>국역 기사 적재</dt><dd>29,781</dd></div><div><dt>결정과 분기 장면 이미지<br>AI 생성(Codex)</dt><dd>118</dd></div></dl></div><div class="story-col"><p>실록은 광해군 1618~1623년 5,913건, 인조 1627~1637년 6,815건 등을 적재. 병인·신미양요는 기사 59건에서 주장 314개를 추출. 결정 화면, 결과 화면, 실제 역사 비교, 점수 막대, 직접 입력한 명령의 선택지 해석까지 동작. FastAPI 백엔드와 React 웹, PostgreSQL 구성.</p><p>개인 프로젝트이며 코드와 테스트는 Claude와 협업해 작성. 사용자 지표는 포함하지 않음.</p></div></section>
-<figure class="story-wide story-figure"><img src="/assets/cases/historical-if/cover.jpg" width="1280" height="800" alt="표지 화면. 왼쪽에 세로로 光海君과 一六一八, 오른쪽에 광해군 1618, 병자호란 1636, 임진왜란 1591, 계유정난 1452, 병인·신미양요 1866 에피소드 버튼 5개와 시작하기 버튼이 있다." loading="lazy"><figcaption>표지 화면, 에피소드 5개. 2026.10.15 로컬 실행 화면</figcaption></figure>
-<section class="story-col story-sec" aria-labelledby="left"><span class="kicker">04 — 무엇이 남았나</span><h2 id="left" class="serif">진행 중인 항목</h2><p>LLM이 추출한 주장은 아직 사람이 검토하지 않음. 6~8명 대상 대면 플레이 테스트는 질문지와 절차만 마련했고 미실시. 병인·신미양요 에피소드는 API 단위 확인까지만 기록되어 있고 브라우저 확인 기록은 없음.</p><p>2026년 10월 공개 버전 운영 중. <a class="live-link" href="https://ubuntu-1.tail711b91.ts.net:8443">실록 평행세계 열어 보기 ↗</a></p></section>
-</article><nav class="story-next" aria-label="사례 이동"><a href="/work/">← 전체 경험</a></nav></main><footer class="wrap view-footer"><p>문대한 · 서비스 기획 / PM</p><p><a href="mailto:mdh0204@naver.com">mdh0204@naver.com</a> · <a href="/resume/">이력서 보기</a> · <a href="/resume.pdf">이력서 PDF</a> · <a href="/portfolio.pdf">포트폴리오 PDF</a></p><p class="small">최종 수정 2026.10.15</p></footer></body></html>
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>실록 평행세계 · 문대한 AI 서비스 기획</title>
+<meta name="description" content="조선의 큰 사건에서 선택 10번을 내리는 역사 IF 게임. 가정마다 실록과 승정원일기 기사를 근거로 연결하고, 실록에 없는 장면은 가상으로 표시. 에피소드 5개 공개.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#1D3A31">
+<link rel="canonical" href="https://moondh99.github.io/projects/historical-if/">
+<meta property="og:type" content="article"><meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="실록 평행세계 · 문대한 AI 서비스 기획">
+<meta property="og:description" content="가정마다 사료 근거를 연결하고 실록에 없는 장면은 가상으로 표시한 역사 IF 게임. 에피소드 5개 공개.">
+<meta property="og:url" content="https://moondh99.github.io/projects/historical-if/"><meta property="og:image" content="https://moondh99.github.io/assets/og-pm.png">
+<link rel="icon" href="/assets/favicon.svg">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@800&family=Courier+Prime:wght@400;700&display=swap">
+<link rel="stylesheet" href="/casefile.css">
+</head>
+<body>
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="wrap">
+<header class="site-head"><a class="brand" href="/">문대한</a>
+  <nav class="site-nav" aria-label="주요 메뉴"><a href="/#cases">대표 사례</a><a href="/#more" aria-current="page">보조 사례</a><a href="/#record">이력</a><a class="pdf" href="/portfolio.pdf" download="문대한_서비스기획_포트폴리오.pdf">PDF ↓</a></nav></header>
+
+<main id="main">
+<section class="cover" aria-labelledby="case-title">
+  <div><p class="crumb"><a href="/#more">보조 사례</a> / 실록 평행세계</p>
+    <h1 class="title" id="case-title">실록 평행세계</h1>
+    <p class="lede">조선의 큰 사건에서 왕의 자리에 앉아 선택 10번을 내리는 역사 IF 게임. 선택마다 1만 개 평행세계를 시뮬레이션하고, 결과를 움직이는 가정마다 실록이나 승정원일기 기사를 근거로 연결함. 실록에 없는 장면은 가상이라고 화면에 표시.</p></div>
+  <div class="btns"><a class="btn" href="https://ubuntu-1.tail711b91.ts.net:8443" rel="noopener">게임 열기<span class="ic">↗</span></a><a class="btn ghost" href="/#more">서류철로 돌아가기<span class="ic">↺</span></a></div>
+</section>
+
+<span class="cover-tab"><span>보조 사례</span>실록 평행세계 · 2026.10</span>
+<div class="case-sheet"><span class="clip" aria-hidden="true"></span>
+  <dl class="summary" aria-label="30초 요약">
+    <div><dt>문제</dt><dd>역사 IF는 근거 없는 그럴듯한 상상으로 흐르기 쉬움. 실록 사이트는 자동 요청을 막고, 확보한 실록 원문에는 고종실록이 없음</dd></div>
+    <div><dt>본인 판단</dt><dd>사료 출처를 공개 원문 XML과 승정원일기 국역으로 정함. 실제 역사와 모델 가정을 화면에서 항상 구분하고, 범위는 문서로 먼저 제한</dd></div>
+    <div><dt>역할·기간</dt><dd>개인 프로젝트. 기획, 범위, 에피소드, 사료 출처 결정 · 2026.10.10–10.15, 커밋 114개</dd></div>
+    <div><dt>결과·AI 협업</dt><dd>플레이 가능한 에피소드 5개 공개 배포 · 코드와 테스트는 Claude 협업 작성, 장면 삽화는 Codex로 생성한 AI 이미지</dd></div>
+  </dl>
+
+  <section class="page" aria-labelledby="s1"><p class="file">01 · 무엇을 정했나</p>
+    <h2 id="s1">사료 출처와 가상 표시 원칙부터 정함</h2>
+    <p>근거를 사료 기사에서 주장, 가정, 규칙, 선택, 결과 순으로 거슬러 올라갈 수 있게 설계. 첫 범위는 광해군 1618–1623년으로 한정함.</p>
+    <div class="options">
+      <div class="opt drop"><span class="mark">기각</span><div><h3>실록 사이트 크롤링</h3><p>자동 요청이 막히고 공식 Open API도 없음</p></div></div>
+      <div class="opt pick"><span class="mark">채택</span><div><h3>공공데이터포털 실록 원문 XML 적재</h3><p>공공누리 제1유형 공개 파일. 음력을 양력으로 바꿔 실록 일진과 대조, 일치율 99.3% 확인</p></div></div>
+      <div class="opt pick"><span class="mark">채택</span><div><h3>병인·신미양요는 승정원일기 국역으로 대체</h3><p>고종실록이 없어 한국고전종합DB 승정원일기 고종대를 사용, 화면 문구도 '승정원일기'로 변경</p></div></div>
+      <div class="opt pick"><span class="mark">채택</span><div><h3>실록에 없는 장면은 가상으로 표시</h3><p>실록과 갈라진 분기 사건에 '가상 시나리오', 가상 보고 카드에 '가상 전개 · 실록에 없음' 배지, 장면 삽화에 'AI 상상도 · 실제 기록 아님' 표기. 근거가 약한 카드는 '침입' 대신 '침입 징후 보고'처럼 문구 범위를 줄임</p></div></div>
+      <div class="opt drop"><span class="mark">기각</span><div><h3>장면 트리 분기와 카드 수치 효과</h3><p>1차 범위에서 제외. 이전 선택에 따른 서문과 판당 최대 3장의 가상 보고 카드만 도입</p></div></div>
+    </div>
+    <p>에피소드 구조는 선택 10번으로 고정. 광해군 결정 18개 중 외교, 군사, 내치, 정변이 고르게 들어간 10개만 사용. 점수 7개 중 하나라도 0이 되면 종료하고, 끝나면 실록 경로와 플레이한 세계를 점수별로 비교함.</p>
+  </section>
+
+  <section class="page" aria-labelledby="s2"><p class="file">02 · 결과물</p>
+    <h2 id="s2">에피소드 5개와 근거가 붙은 결정 화면</h2>
+    <div class="figs">
+      <figure class="fig"><div class="frame"><img src="/assets/cases/historical-if/cover.jpg" alt="표지 화면, 에피소드 5개 탭과 시작하기 버튼"></div><figcaption><b>1. 에피소드 선택</b>광해군, 병자호란, 임진왜란, 계유정난, 병인·신미양요</figcaption></figure>
+      <figure class="fig"><div class="frame"><img src="/assets/cases/historical-if/decision.jpg" alt="결정 화면, 장면 삽화와 점수 7개 막대, 선택지 4개, 직접 명령 입력창"></div><figcaption><b>2. 결정 화면</b>장면 삽화는 Codex로 만든 AI 생성 이미지, 화면에도 'AI 상상도' 표기</figcaption></figure>
+      <figure class="fig"><div class="frame"><img src="/assets/cases/historical-if/result.jpg" alt="결과 화면, 실제 역사 비교와 평행세계 결과 점 시각화"></div><figcaption><b>3. 결과 화면</b>1만 개 세계의 결과와 '실제 역사'를 나란히 보여 줌. 상단 서술 문단은 LLM 생성</figcaption></figure>
+    </div>
+    <p class="note">2026.10.15 로컬 실행 화면</p>
+    <ul>
+      <li>사료 적재: 광해군 실록 5,913건, 인조실록 1627–1637년 6,815건, 승정원일기 고종 1866–1871년 국역 29,781건</li>
+      <li>가정마다 근거 연결: 병자호란 가정 11개에 근거 49개, 계유정난 10개에 47개, 임진왜란 10개에 54개, 병인·신미양요 10개에 52개</li>
+      <li>인용된 주장 403개를 LLM 판정자로 검토해 31개 수정</li>
+      <li>FastAPI 백엔드, React 웹, PostgreSQL 구성으로 서버 배포</li>
+    </ul>
+  </section>
+
+  <section class="page" aria-labelledby="s3"><p class="file">03 · 배운 점</p>
+    <h2 id="s3">하지 않을 것을 먼저 적어야 범위가 지켜짐</h2>
+    <p>장면 트리 분기와 카드 수치 효과를 제외한다고 문서에 먼저 적어 둔 덕분에 6일 안에 에피소드 5개까지 같은 방식으로 확장함. 엔딩 판정은 세계선 판정을 설계했다가 다른 선택을 해도 대부분 '이어진 세계'로 판정되는 모순을 발견해, 점수 0 종료와 실록 경로 비교로 단순화함.</p>
+  </section>
+</div>
+
+<nav class="next" aria-label="다른 서류"><a class="btn ghost" href="/#more">← 보조 사례로 돌아가기<span class="ic">↺</span></a></nav>
+</main>
+
+<footer class="site-foot"><span>문대한 · AI 서비스 기획 · PM</span><span><a href="mailto:mdh0204@naver.com">mdh0204@naver.com</a> · <a href="https://github.com/moondh99" rel="noopener">github.com/moondh99</a></span></footer>
+</div>
+</body>
+</html>
