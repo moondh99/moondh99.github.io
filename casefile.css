@@ -110,6 +110,8 @@ img{display:block;max-width:100%}
 .crumb a{border-bottom:1px solid rgba(185,203,193,.4)}
 .cover{padding:30px 0 34px;display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:end}
 .cover .title{margin:14px 0}
+.cover .id{display:flex;gap:28px;align-items:center}
+.cover .photo{flex:0 0 auto;width:136px;height:auto;padding:6px 6px 18px;background:var(--paper);border-radius:2px;box-shadow:var(--lift);transform:rotate(-2deg)}
 .cover-tab{display:inline-block;padding:10px 20px 12px;border-radius:14px 14px 0 0;background:var(--kraft);color:var(--ink);font:700 14px var(--body);margin-left:22px}
 .cover-tab span{font:400 11px var(--type);color:var(--sub);margin-right:8px}
 .case-sheet{background:var(--kraft);border-radius:4px 22px 22px 22px;padding:14px;box-shadow:0 40px 80px -40px rgba(0,0,0,.6);display:grid;gap:14px;margin-bottom:64px;position:relative}
@@ -161,5 +163,6 @@ img{display:block;max-width:100%}
   .page{padding:24px 20px}.two{grid-template-columns:1fr}
   .fig .frame{min-height:0}
   .cover-tab{margin-left:0}
+  .cover .id{gap:18px}.cover .photo{width:96px}
 }
 @media (max-width:520px){.record,.summary{grid-template-columns:1fr}.summary div{border-left:0;border-top:1px dashed var(--hair)}.summary div:first-child{border-top:0}.card{transform:none!important}}
