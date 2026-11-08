@@ -166,3 +166,15 @@ img{display:block;max-width:100%}
   .cover .id{gap:18px}.cover .photo{width:96px}
 }
 @media (max-width:520px){.record,.summary{grid-template-columns:1fr}.summary div{border-left:0;border-top:1px dashed var(--hair)}.summary div:first-child{border-top:0}.card{transform:none!important}}
+
+/* Haru: keep evidence and diagram inside the narrow case sheet. */
+.haru-case .case-sheet>*{min-width:0}
+.haru-case .figs{grid-template-columns:minmax(0,1fr)}
+.haru-case .opt{grid-template-columns:64px minmax(0,1fr)}
+.haru-case .page{overflow-wrap:anywhere}
+
+/* Resume cards must shrink inside the same mobile paper layout. */
+.resume-page .case-sheet>*{min-width:0}
+.resume-page .cards{grid-template-columns:repeat(auto-fill,minmax(min(270px,100%),1fr))}
+.resume-page .facts{grid-template-columns:72px minmax(0,1fr)}
+.resume-page .page{overflow-wrap:anywhere}

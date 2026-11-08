@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>하루설계(Haru) · 문대한 AI 서비스 기획</title>
+<meta name="description" content="6개 에이전트와 코드 검증으로 하루 시간표를 만드는 Haru. 2인 팀, 팀 리더 등록, AI 협업 구현. 2026 청도 바이브코딩 해커톤 최우수상.">
+<meta name="robots" content="index,follow">
+<meta name="theme-color" content="#1D3A31">
+<link rel="canonical" href="https://moondh99.github.io/projects/haru/">
+<meta property="og:type" content="article"><meta property="og:locale" content="ko_KR">
+<meta property="og:title" content="하루설계(Haru) · 문대한 AI 서비스 기획">
+<meta property="og:description" content="AI가 짠 시간표를 코드로 다시 검사. 2026 청도 바이브코딩 해커톤 최우수상, 2인 팀·팀 리더 등록.">
+<meta property="og:url" content="https://moondh99.github.io/projects/haru/"><meta property="og:image" content="https://moondh99.github.io/assets/og-pm.png">
+<link rel="icon" href="/assets/favicon.svg">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nanum+Myeongjo:wght@800&family=Courier+Prime:wght@400;700&display=swap">
+<link rel="stylesheet" href="/casefile.css?v=20261108-2">
+</head>
+<body class="haru-case">
+<a class="skip" href="#main">본문으로 건너뛰기</a>
+<div class="wrap">
+<header class="site-head"><a class="brand" href="/" aria-label="홈"><img src="/assets/favicon.svg" alt="" width="40" height="40"></a>
+  <nav class="site-nav" aria-label="주요 메뉴"><a href="/#cases" aria-current="page">대표 사례</a><a href="/#more">보조 사례</a><a href="/#record">이력</a><a class="pdf" href="/portfolio.pdf" download="문대한_서비스기획_포트폴리오.pdf">PDF ↓</a></nav></header>
+
+<main id="main">
+<section class="cover" aria-labelledby="case-title">
+  <div><p class="crumb"><a href="/#cases">대표 사례</a> / FILE 05</p>
+    <h1 class="title" id="case-title">하루설계(Haru)</h1>
+    <p class="lede">흩어진 할 일을 붙여 넣으면 고정 일정과 마감을 반영한 하루 시간표를 만드는 멀티 에이전트 웹앱. 2인 팀으로 참가해 2026 청도 바이브코딩 해커톤 최우수상을 받음.</p></div>
+  <div class="btns"><a class="btn" href="https://sports.donga.com/region/article/all/20261106/134978492/1" rel="noopener">수상 보도 보기<span class="ic">↗</span></a><a class="btn ghost" href="https://github.com/moondh99/haru-seolgye" rel="noopener">GitHub 저장소<span class="ic">↗</span></a></div>
+</section>
+<span class="cover-tab"><span>FILE 05</span>하루설계 · 2026.11</span>
+<div class="case-sheet"><span class="clip" aria-hidden="true"></span>
+  <dl class="summary" aria-label="30초 요약">
+    <div><dt>문제</dt><dd>메신저와 메모에 흩어진 할 일을 모아도 고정 일정, 마감, 하루 업무량을 함께 맞추기 어려움</dd></div>
+    <div><dt>설계 판단</dt><dd>모델은 정리와 배치를 제안하고, 시간 계산과 충돌·부하 검사는 코드가 수행. 사용자가 확인한 뒤에만 캘린더 파일을 내보냄</dd></div>
+    <div><dt>역할·기간</dt><dd>2인 팀, 문대한 팀 리더 등록 · 2026.11.05 · AI 협업 구현. 개인별 세부 작업 분담은 기록에서 구분되지 않음</dd></div>
+    <div><dt>인정</dt><dd>2026 청도 바이브코딩 해커톤 최우수상 · 팀 수상. 아래 설계와 구현은 팀 산출물 기준으로 설명</dd></div>
+  </dl>
+  <section class="page" aria-labelledby="s1"><p class="file">01 · 문제와 범위</p>
+    <h2 id="s1">할 일 목록을 실제 시간표로 옮기는 과정</h2>
+    <p>회의가 많고 할 일이 여러 곳에 흩어진 직장인과 프리랜서를 대상으로 삼음. 메모를 정리하는 것에서 멈추지 않고 고정 일정, 소요 시간, 마감, 우선순위를 함께 반영하는 흐름을 설계.</p>
+    <p>사용자는 메모를 입력하고 에이전트 진행 과정을 본 뒤 시간표와 배치 이유를 검토. 캘린더 파일(.ics)은 확인 버튼을 누른 뒤에만 내려받을 수 있음.</p>
+    <p class="note">아침 계획에 15~20분이 든다는 수치는 기획 가정. 사용자 비교 실험을 하지 않았으므로 시간 절감 성과로 제시하지 않음.</p>
+  </section>
+  <section class="page" aria-labelledby="s2"><p class="file">02 · 에이전트와 코드의 경계</p>
+    <h2 id="s2">AI가 짠 시간표를 코드로 다시 검사</h2>
+    <p>정리, 시간 추정, 우선순위, 배치, 위험 점검, 코칭을 6개 에이전트가 나눠 맡음. 시간 추정과 우선순위 작업은 병렬로 실행하고, 날짜 해석·빈 시간 계산·일정 검증·파일 내보내기는 별도 MCP 도구로 분리.</p>
+    <div class="figs"><figure class="fig"><div class="frame"><img src="/assets/cases/haru/haru-workflow.svg" alt="6개 에이전트가 작업을 나누고 코드와 MCP가 날짜, 시간, 충돌, 근무 시간, 부하를 검사하는 구조"></div><figcaption><b>에이전트와 도구의 역할</b>제출본 PRD·TRD를 바탕으로 정리한 구조 요약. 실제 서비스 화면이 아님.</figcaption></figure></div>
+    <div class="options">
+      <div class="opt pick"><span class="mark">계산</span><div><h3>날짜·시간 계산과 규칙 검사는 코드</h3><p>모델의 시간 계산을 그대로 믿지 않고 일정 겹침, 근무 시간, 여유 시간, 업무 부하 등을 검사하도록 분리.</p></div></div>
+      <div class="opt pick"><span class="mark">권한</span><div><h3>내보내기 도구는 에이전트에게 주지 않음</h3><p>사용자 확인 값이 없는 요청은 서버가 거부. 에이전트의 일정 제안이 캘린더 내보내기로 곧바로 이어지지 않게 함.</p></div></div>
+      <div class="opt pick"><span class="mark">표시</span><div><h3>실제 AI 실행과 기록 재생을 구분</h3><p>기록된 실행은 AI 호출이 없다는 라벨을 표시. 재생 결과를 새로운 AI 실행인 것처럼 보여 주지 않음.</p></div></div>
+    </div>
+    <p class="note">기술: .NET 10 · Microsoft Agent Framework · GitHub Copilot SDK · MCP · Aspire · Azure Container Apps.</p>
+  </section>
+  <section class="page" aria-labelledby="s3"><p class="file">03 · 작업 방식</p>
+    <h2 id="s3">구현 전에 문서와 확인 조건을 정함</h2>
+    <p>작업 규칙, PRD, TRD, 설계 결정 기록을 먼저 두고 모델·에이전트·지침·도구를 분리. 사람은 방향 설정과 승인을, AI는 조사·구현·문서·검증을 맡는 방식으로 진행.</p>
+    <p>배포를 일찍 시도해 Azure 환경 모드 문제를 확인하고 설정을 명시하도록 변경. 실제 화면 점검에서 병렬 도구 호출의 결과가 다른 줄에 붙는 문제와 중지 배너 표시 문제를 찾아 제출 커밋에서 수정.</p>
+    <p class="note">문대한은 행사 등록 이슈의 팀 리더. 팀원별 구현 분담을 증명하는 기록은 없어 위 작업을 개인 단독 성과로 구분하지 않음.</p>
+  </section>
+  <section class="page" aria-labelledby="s4"><p class="file">04 · 제출본과 후속 개선</p>
+    <h2 id="s4">수상 제출본과 이후 고도화를 구분</h2>
+    <div class="two">
+      <div><h3>최종 제출 · 9222bc0</h3><p>2026.11.05 제출 이슈 #148에 등록된 커밋. 6개 에이전트, MCP 계산·검증, 실시간 타임라인, 사용자 확인 후 내보내기를 포함.</p><p>제출본 README에는 Azure 실제 AI 실행 39.4초가 기록됨. 특정 입력의 실행 기록이며 평균 성능이나 시간 절감 효과를 뜻하지 않음.</p></div>
+      <div><h3>후속 고도화 · 823c063 이후</h3><p>무효한 시간표는 완료 처리하지 않는 조건, 이전 유효 계획 복원, 배치 변화와 소요 시간 출처 표시 등을 보강.</p><p>고도화는 제출 커밋에 포함되지 않았고 마감 뒤 재배포됨. 심사가 어느 배포 버전을 확인했는지는 기록만으로 확정할 수 없음.</p></div>
+    </div>
+    <p class="note">수상 근거와 제출 커밋을 별도로 연결해 수상 사실이 후속 기능의 검증 근거로 읽히지 않도록 함.</p>
+  </section>
+  <section class="page" aria-labelledby="s5"><p class="file">05 · 결과와 현재 상태</p>
+    <h2 id="s5">최우수상, 그리고 공개 데모의 한계</h2>
+    <p><b>2026 청도 바이브코딩 해커톤 최우수상.</b> 수상 보도에서 문대한·김예린 2인의 하루설계 팀을 확인할 수 있음.</p>
+    <p><b>2026.11.08 확인:</b> 공개 데모 서버는 응답하지만 AI 사용 가능 상태는 false. 현재는 기록 데모를 볼 수 있으며 새로운 실제 AI 실행은 제공되지 않는 상태. 아래 링크는 이 한계를 확인한 뒤 체험하는 용도.</p>
+    <p><a href="https://api.proudbush-c0263160.koreacentral.azurecontainerapps.io" rel="noopener">하루설계 데모 열기 (기록 재생)</a></p>
+    <p>사용자 비교 실험과 시간표 직접 편집은 아직 없음. 고도화 버전의 실제 AI 실행 검증은 로컬 기록이며, 고도화 Azure 배포본에서의 실제 AI 호출 검증과 구분함.</p>
+  </section>
+  <section class="page" aria-labelledby="s6"><p class="file">06 · 확인할 수 있는 자료</p>
+    <h2 id="s6">수상·역할·구현 근거</h2>
+    <ul>
+      <li><a href="https://sports.donga.com/region/article/all/20261106/134978492/1" rel="noopener">수상 보도 · 스포츠동아, 2026.11.06</a></li>
+      <li><a href="https://github.com/hackersground-kr/hackathon-cheongdo/issues/35" rel="noopener">팀 리더 등록 · 행사 이슈 #35 (등록명 기깔컴퍼니)</a></li>
+      <li><a href="https://github.com/hackersground-kr/hackathon-cheongdo/issues/148" rel="noopener">최종 제출 · 행사 이슈 #148</a></li>
+      <li><a href="https://github.com/moondh99/haru-seolgye/tree/9222bc04d97170102c29808b5714a549238f87e1" rel="noopener">제출 커밋의 소스와 PRD·TRD</a></li>
+      <li><a href="https://github.com/moondh99/haru-seolgye/commit/823c063" rel="noopener">후속 고도화 커밋</a></li>
+    </ul>
+  </section>
+</div>
+<nav class="next" aria-label="다른 서류"><a class="btn ghost" href="/#cases">← 서류철로 돌아가기<span class="ic">↺</span></a><a class="btn" href="/projects/dearlog/">FILE 01 Dear Log<span class="ic">→</span></a></nav>
+</main>
+<footer class="site-foot"><span>문대한 · AI 서비스 기획 · PM</span><span><a href="mailto:mdh0204@naver.com">mdh0204@naver.com</a> · <a href="https://github.com/moondh99" rel="noopener">github.com/moondh99</a> · <a href="https://app.notion.com/p/justdomoon/AI-4028d99ee0f281b3898ae2b15fcb5146" rel="noopener">Notion 포트폴리오</a></span></footer>
+</div>
+</body>
+</html>
